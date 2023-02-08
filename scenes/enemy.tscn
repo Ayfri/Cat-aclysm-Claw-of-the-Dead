@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhi5rtjl8u6nk"]
+
+[ext_resource type="Texture2D" uid="uid://cea6m7n1ugub7" path="res://assets/sprites/test/icon.svg" id="1_6n7tm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rsfv0"]
+
+[node name="enemy" type="Area2D"]
+position = Vector2(106, 112)
+scale = Vector2(3, 3)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rsfv0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.140625, 0.171875)
+texture = ExtResource("1_6n7tm")
