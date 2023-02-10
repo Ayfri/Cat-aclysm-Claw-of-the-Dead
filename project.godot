@@ -15,8 +15,14 @@ run/main_scene="res://scenes/map.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://assets/scripts/globals.gd"
+
 [display]
 
+window/size/viewport_width=1600
+window/size/viewport_height=900
 window/stretch/mode="canvas_items"
 
 [input]

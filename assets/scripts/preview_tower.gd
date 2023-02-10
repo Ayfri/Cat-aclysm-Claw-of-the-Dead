@@ -1,4 +1,4 @@
-extends CharacterBody2D;
+extends StaticBody2D;
 class_name PreviewTower;
 
 @onready @export var isPreview: bool = false:
@@ -14,3 +14,6 @@ func _set_preview(value: bool) -> void:
 func _set_isValidPlacement(value: bool) -> void:
 	modulate =  Color(1, 1, 1, modulate.a) if value else Color(.8, .2, .2, modulate.a);
 	isValidPlacement = value;
+
+func snap_position_to_grid() -> void:
+	position = position.snapped(Vector2.ONE * Globals.tileSize);

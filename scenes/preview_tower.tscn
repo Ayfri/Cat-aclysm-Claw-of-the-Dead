@@ -1,20 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://hs2o3dhkikgx"]
+[gd_scene load_steps=3 format=3 uid="uid://bxnhyjdjocpg8"]
 
-[ext_resource type="Script" path="res://assets/scripts/tower.gd" id="1_uxd61"]
+[ext_resource type="Script" path="res://assets/scripts/preview_tower.gd" id="1_ujffx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_shqa7"]
-size = Vector2(45.25, 44.75)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4fsx"]
+size = Vector2(30, 30)
 
-[node name="Tower" type="CharacterBody2D"]
-script = ExtResource("1_uxd61")
+[node name="Tower" type="StaticBody2D"]
+script = ExtResource("1_ujffx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_shqa7")
+shape = SubResource("RectangleShape2D_o4fsx")
+one_way_collision_margin = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="."]

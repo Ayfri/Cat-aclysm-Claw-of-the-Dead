@@ -4,8 +4,11 @@ class_name Map;
 const TowerScene := preload("res://scenes/preview_tower.tscn");
 
 @export @onready var editing := false;
-@onready var sprites: Array[PreviewTower] = [];
 @onready var editingSprite: PreviewTower;
+
+
+
+
 
 func _process(_delta: float) -> void:
 	map_editing();
@@ -17,8 +20,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var sprite := get_positioning_sprite();
 		sprite.position = event.position;
+		sprite.snap_position_to_grid();
 		var collision := sprite.move_and_collide(Vector2(), true);
-		sprite.isValidPlacement = !(collision && collision.get_collider().is_class(sprite.get_class()));
+		sprite.isValidPlacement = !(collision && collision.get_collider() is PreviewTower);
 
 func map_editing() -> void:
 	if editing:
@@ -37,8 +41,8 @@ func map_editing() -> void:
 			editingSprite = TowerScene.instantiate() as PreviewTower;
 			editingSprite.isPreview = true;
 			editingSprite.position = get_viewport().get_mouse_position();
+			editingSprite.snap_position_to_grid();
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN);
-			sprites.append(editingSprite);
 			add_child(editingSprite);
 
 func get_positioning_sprite() -> PreviewTower:

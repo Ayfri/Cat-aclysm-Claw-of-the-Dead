@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://8yoixb3o7cfq"]
+[gd_scene load_steps=4 format=3 uid="uid://8yoixb3o7cfq"]
 
 [ext_resource type="Texture2D" uid="uid://cw60trsh3e7ig" path="res://assets/sprites/maps/debug.png" id="1_n32os"]
 [ext_resource type="Script" path="res://assets/scripts/map.gd" id="1_uwg4q"]
+[ext_resource type="Script" path="res://assets/scripts/grid.gd" id="3_p51gx"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_uwg4q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(0.6, 0.6)
+position = Vector2(800, 450)
+scale = Vector2(0.833333, 0.833333)
 texture = ExtResource("1_n32os")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -20,3 +21,8 @@ position = Vector2(18, 466)
 
 [node name="EnnemyEnd" type="Marker2D" parent="."]
 position = Vector2(1127, 78)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_p51gx")
