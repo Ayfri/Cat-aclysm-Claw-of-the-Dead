@@ -28,7 +28,10 @@ func map_editing() -> void:
 			return;
 
 		sprite.isPreview = false;
+		
 		cancel_editing();
+		if Input.is_action_pressed('Bulk Place Towers'):
+			activate_editing();
 		return;
 
 	if Input.is_action_just_pressed('Change Map Editing Mode'):
