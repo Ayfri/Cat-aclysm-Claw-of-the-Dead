@@ -1,10 +1,10 @@
 extends StaticBody2D;
 class_name PreviewTower;
 
-@onready @export var isPreview: bool = false:
+@export var isPreview: bool = false:
 	set = _set_preview;
 
-@onready @export var isValidPlacement: bool = true:
+@export var isValidPlacement: bool = true:
 	set = _set_isValidPlacement;
 
 func _set_preview(value: bool) -> void:
