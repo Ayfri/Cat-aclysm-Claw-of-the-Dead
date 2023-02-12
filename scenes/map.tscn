@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://8yoixb3o7cfq"]
+[gd_scene load_steps=8 format=3 uid="uid://8yoixb3o7cfq"]
 
 [ext_resource type="Texture2D" uid="uid://cw60trsh3e7ig" path="res://assets/sprites/maps/debug.png" id="1_n32os"]
 [ext_resource type="Script" path="res://assets/scripts/map.gd" id="1_uwg4q"]
 [ext_resource type="Texture2D" uid="uid://b0hu7j3qp5syk" path="res://assets/sprites/maps/grid.png" id="2_qfodt"]
 [ext_resource type="Shader" path="res://assets/shaders/map.gdshader" id="4_fotjd"]
 [ext_resource type="Texture2D" uid="uid://xkfs36j6u3h1" path="res://assets/sprites/masks/circle.png" id="5_2jnwn"]
+[ext_resource type="Script" path="res://assets/scripts/zones.gd" id="6_codll"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nm0lp"]
 shader = ExtResource("4_fotjd")
@@ -28,3 +29,44 @@ visible = false
 material = SubResource("ShaderMaterial_nm0lp")
 texture = ExtResource("2_qfodt")
 offset = Vector2(0, 2)
+
+[node name="Zones" type="Node2D" parent="."]
+visible = false
+script = ExtResource("6_codll")
+
+[node name="Zone1" type="Area2D" parent="Zones" groups=["Zones"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone1"]
+polygon = PackedVector2Array(526, 291, 597, 245, 774, 224, 837, 254, 826, 173, 741, 155, 597, 155, 509, 212)
+
+[node name="Zone2" type="Area2D" parent="Zones" groups=["Zones"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone2"]
+polygon = PackedVector2Array(116, 514, 409, 397, 370, 327, 258, 335, 111, 416)
+
+[node name="Zone3" type="Area2D" parent="Zones" groups=["Zones"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone3"]
+polygon = PackedVector2Array(709, 365, 652, 367, 643, 402, 645, 459, 674, 497, 724, 536, 804, 507, 862, 447, 855, 403, 776, 389)
+
+[node name="Zone4" type="Area2D" parent="Zones" groups=["Zones"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone4"]
+polygon = PackedVector2Array(321, 666, 321, 578, 519, 505, 575, 589, 668, 664, 656, 799, 563, 796, 565, 700, 482, 627)
+
+[node name="Zone5" type="Area2D" parent="Zones" groups=["Zones"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone5"]
+polygon = PackedVector2Array(802, 662, 905, 600, 971, 540, 1068, 556, 1008, 662, 898, 707, 902, 826, 792, 820)
+
+[node name="Zone6" type="Area2D" parent="Zones" groups=["Zones"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone6"]
+position = Vector2(-11, 281)
+polygon = PackedVector2Array(1248, 7, 1317, 60, 1184, 138, 1100, 159, 1072, 103)
+
+[node name="Zone7" type="Area2D" parent="Zones" groups=["Zones"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone7"]
+position = Vector2(16, 264)
+polygon = PackedVector2Array(951, 20, 1004.87, -8.35141, 1141, -80, 1079, -121, 972, -69, 925, -23)

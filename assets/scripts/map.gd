@@ -3,8 +3,13 @@ class_name Map;
 
 const TowerScene := preload("res://scenes/preview_tower.tscn");
 
-@onready var editing := false;
+@onready var editing := false:
+	set = _set_editing;
 @onready var editingSprite: PreviewTower;
+
+func _set_editing(value: bool) -> void:
+	$Zones.visible = value;
+	editing = value;
 
 func _process(_delta: float) -> void:
 	map_editing();
@@ -18,8 +23,6 @@ func _input(event: InputEvent) -> void:
 		sprite.position = event.position;
 		sprite.snap_position_to_grid();
 		$Grid.position = sprite.position;
-		var collision := sprite.move_and_collide(Vector2(), true);
-		sprite.isValidPlacement = !(collision && collision.get_collider() is PreviewTower);
 
 func map_editing() -> void:
 	if editing && Input.is_action_just_pressed('Place Tower'):

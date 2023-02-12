@@ -1,11 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxnhyjdjocpg8"]
+[gd_scene load_steps=2 format=3 uid="uid://bxnhyjdjocpg8"]
 
 [ext_resource type="Script" path="res://assets/scripts/preview_tower.gd" id="1_ujffx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4fsx"]
-size = Vector2(30, 30)
-
-[node name="Tower" type="StaticBody2D"]
+[node name="Tower" type="Area2D"]
 script = ExtResource("1_ujffx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -18,8 +15,10 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_o4fsx")
-one_way_collision_margin = 0.0
-
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-15, -15, 15, -15, 15, 15, -15, 15)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
