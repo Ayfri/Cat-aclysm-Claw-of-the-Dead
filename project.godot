@@ -19,6 +19,16 @@ config/icon="res://icon.svg"
 
 Globals="*res://assets/scripts/globals.gd"
 
+[debug]
+
+gdscript/warnings/unsafe_property_access=1
+gdscript/warnings/unsafe_method_access=1
+gdscript/warnings/unsafe_cast=1
+gdscript/warnings/unsafe_call_argument=1
+gdscript/warnings/int_as_enum_without_cast=2
+gdscript/warnings/static_called_on_instance=2
+gdscript/warnings/confusable_identifier=2
+
 [display]
 
 window/size/viewport_width=1600
@@ -40,5 +50,15 @@ window/stretch/mode="canvas_items"
 "Bulk Place Towers"={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+"Zoom In"={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":8,"position":Vector2(65, 18),"global_position":Vector2(69, 63),"factor":1.0,"button_index":4,"pressed":true,"double_click":false,"script":null)
+]
+}
+"Zoom Out"={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(70, 16),"global_position":Vector2(74, 61),"factor":1.0,"button_index":5,"pressed":true,"double_click":false,"script":null)
 ]
 }

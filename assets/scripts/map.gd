@@ -20,13 +20,13 @@ func _input(event: InputEvent) -> void:
 
 	if event is InputEventMouseMotion:
 		var sprite := get_positioning_sprite();
-		sprite.position = event.position;
+		sprite.position = get_global_mouse_position();
 		sprite.snap_position_to_grid();
 		$Grid.position = sprite.position;
 
 func map_editing() -> void:
 	if editing && Input.is_action_just_pressed('Place Tower'):
-		var sprite = get_positioning_sprite();
+		var sprite := get_positioning_sprite();
 		if !sprite.isValidPlacement:
 			return;
 
@@ -51,7 +51,7 @@ func activate_editing() -> void:
 	$Grid.visible = editing;
 	editingSprite = TowerScene.instantiate() as PreviewTower;
 	editingSprite.isPreview = true;
-	editingSprite.position = get_viewport().get_mouse_position();
+	editingSprite.position = get_global_mouse_position();
 	editingSprite.snap_position_to_grid();
 	$Grid.position = editingSprite.position;
 	add_child(editingSprite);

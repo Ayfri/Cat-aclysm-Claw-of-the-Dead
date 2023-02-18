@@ -38,6 +38,7 @@ func test_current_overlapping_area() -> void:
 	var areaPolygonTransformed: PackedVector2Array = [];
 	var currentPolygonTransformed: PackedVector2Array = [];
 	for point in overlappingArea.polygon:
+		@warning_ignore('return_value_discarded')
 		areaPolygonTransformed.append(point * overlappingArea.transform.affine_inverse());
 	for point in $CollisionPolygon2D.polygon:
 		currentPolygonTransformed.append(point * transform.affine_inverse());

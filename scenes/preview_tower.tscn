@@ -1,19 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxnhyjdjocpg8"]
+[gd_scene load_steps=3 format=3 uid="uid://bxnhyjdjocpg8"]
 
 [ext_resource type="Script" path="res://assets/scripts/preview_tower.gd" id="1_ujffx"]
+[ext_resource type="Texture2D" uid="uid://b6jmbweyvlkxi" path="res://assets/sprites/towers/tree.png" id="2_54qn8"]
 
 [node name="Tower" type="Area2D"]
 script = ExtResource("1_ujffx")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(32, 32)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1.92268e-06, -1.9976e-06)
+scale = Vector2(0.457143, 0.457143)
+texture = ExtResource("2_54qn8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
