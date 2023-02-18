@@ -13,9 +13,6 @@ var _zoom_level := min_zoom:
 	set = _set_zoom_level;
 
 func _set_zoom_level(value: float) -> void:
-	if _zoom_level == min_zoom:
-		position = _mouse_position;
-
 	_zoom_level = clamp(value, min_zoom, max_zoom);
 
 	if _zoom_level == max_zoom:
@@ -27,12 +24,6 @@ func _set_zoom_level(value: float) -> void:
 	tween.set_parallel(true);
 
 	if _zoom_level > zoom.x && position != _mouse_position:
-#		tween.tween_property(
-#			self,
-#			"position",
-#			lerp(position, _mouse_position, .5),
-#			pan_duration
-#		);
 		position = lerp(position, _mouse_position, .5);
 
 	tween.tween_property(
@@ -49,6 +40,8 @@ func _unhandled_input(event: InputEvent):
 	var mouse_event := event as InputEventMouse;
 	if mouse_event is InputEventMouseMotion:
 		_mouse_position = get_global_mouse_position();
+		if _zoom_level == min_zoom:
+			position = _mouse_position;
 		
 		if mouse_event.button_mask == MOUSE_BUTTON_MASK_MIDDLE:
 			var clamped_position: Vector2 = mouse_event.relative / zoom;
