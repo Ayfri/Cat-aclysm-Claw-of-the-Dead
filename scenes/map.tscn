@@ -87,8 +87,6 @@ polygon = PackedVector2Array(1248, 7, 1317, 60, 1184, 138, 1100, 159, 1072, 103)
 position = Vector2(16, 264)
 polygon = PackedVector2Array(951, 20, 1004.87, -8.35141, 1141, -80, 1079, -121, 972, -69, 925, -23)
 
-<<<<<<< HEAD
 [node name="power_up" parent="." instance=ExtResource("8_bythd")]
-=======
 [node name="Enemy" parent="." instance=ExtResource("8_nchx0")]
->>>>>>> 9d2b18e0010b14d592b6259f837d8687d6ab49e7
+
