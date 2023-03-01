@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://8yoixb3o7cfq"]
+[gd_scene load_steps=10 format=3 uid="uid://8yoixb3o7cfq"]
 
 [ext_resource type="Texture2D" uid="uid://cw60trsh3e7ig" path="res://assets/sprites/maps/debug.png" id="1_n32os"]
 [ext_resource type="Script" path="res://assets/scripts/map.gd" id="1_uwg4q"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/map.gdshader" id="4_fotjd"]
 [ext_resource type="Texture2D" uid="uid://xkfs36j6u3h1" path="res://assets/sprites/masks/circle.png" id="5_2jnwn"]
 [ext_resource type="Script" path="res://assets/scripts/zones.gd" id="6_codll"]
+[ext_resource type="PackedScene" uid="uid://bhd4f1vigfci2" path="res://scenes/power_up.tscn" id="8_bythd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nm0lp"]
 shader = ExtResource("4_fotjd")
@@ -84,3 +85,5 @@ polygon = PackedVector2Array(1248, 7, 1317, 60, 1184, 138, 1100, 159, 1072, 103)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone7"]
 position = Vector2(16, 264)
 polygon = PackedVector2Array(951, 20, 1004.87, -8.35141, 1141, -80, 1079, -121, 972, -69, 925, -23)
+
+[node name="power_up" parent="." instance=ExtResource("8_bythd")]

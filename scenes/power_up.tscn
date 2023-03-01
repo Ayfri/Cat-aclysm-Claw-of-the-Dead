@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhd4f1vigfci2"]
+
+[ext_resource type="Script" path="res://assets/scripts/power_up.gd" id="1_67yvn"]
+[ext_resource type="Texture2D" uid="uid://iw6u8fvm16k3" path="res://icon.svg" id="2_wy5a3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cej7k"]
+radius = 90.0
+height = 180.0
+
+[node name="power_up" type="Area2D"]
+script = ExtResource("1_67yvn")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wy5a3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_cej7k")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
