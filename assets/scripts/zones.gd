@@ -1,5 +1,5 @@
-extends Node2D;
 class_name Zones;
+extends Node2D;
 
 var zones: Array[Area2D];
 

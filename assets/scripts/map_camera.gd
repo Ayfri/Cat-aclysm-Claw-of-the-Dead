@@ -1,4 +1,4 @@
-extends Camera2D
+extends Camera2D;
 
 @export var min_zoom := 1.0;
 @export var max_zoom := 10.0;

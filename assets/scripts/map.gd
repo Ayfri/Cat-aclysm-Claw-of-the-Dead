@@ -1,5 +1,5 @@
-extends Node2D;
 class_name Map;
+extends Node2D;
 
 const PreviewTowerScene := preload("res://scenes/preview_tower.tscn");
 const TowerScene := preload("res://scenes/tower.tscn");
