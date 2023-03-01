@@ -1,5 +1,5 @@
-extends Area2D;
 class_name PreviewTower;
+extends Area2D;
 
 @export var isPreview := false:
 	set = _set_preview;

@@ -13,7 +13,7 @@ point_count = 2
 radius = 80.1828
 height = 183.262
 
-[node name="enemy" type="Node2D"]
+[node name="Enemy" type="Node2D"]
 position = Vector2(49, 213)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
@@ -25,12 +25,12 @@ curve = SubResource("Curve2D_hbxpj")
 position = Vector2(106, 766)
 rotation = -0.431343
 
-[node name="enemy" type="Area2D" parent="Path2D/PathFollow2D"]
+[node name="Enemy" type="Area2D" parent="Path2D/PathFollow2D"]
 script = ExtResource("1_ma2nx")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/enemy"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Enemy"]
 shape = SubResource("CapsuleShape2D_sxhob")
 
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/enemy"]
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Enemy"]
 texture = ExtResource("1_6n7tm")

@@ -1,7 +1,8 @@
-extends Node2D;
 class_name Map;
+extends Node2D;
 
-const TowerScene := preload("res://scenes/preview_tower.tscn");
+const PreviewTowerScene := preload("res://scenes/preview_tower.tscn");
+const TowerScene := preload("res://scenes/tower.tscn");
 
 @onready var editing := false:
 	set = _set_editing;
@@ -30,7 +31,11 @@ func map_editing() -> void:
 		if !sprite.isValidPlacement:
 			return;
 
-		sprite.isPreview = false;
+		var tower_sprite := TowerScene.instantiate();
+		tower_sprite.position = sprite.position;
+
+		remove_child(sprite);
+		add_child(tower_sprite);
 
 		cancel_editing();
 		if Input.is_action_pressed('Bulk Place Towers'):
@@ -49,7 +54,7 @@ func activate_editing() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN);
 	editing = true;
 	$Grid.visible = editing;
-	editingSprite = TowerScene.instantiate() as PreviewTower;
+	editingSprite = PreviewTowerScene.instantiate() as PreviewTower;
 	editingSprite.isPreview = true;
 	editingSprite.position = get_global_mouse_position();
 	editingSprite.snap_position_to_grid();
