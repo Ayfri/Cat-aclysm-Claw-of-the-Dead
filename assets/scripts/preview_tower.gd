@@ -6,13 +6,16 @@ class_name PreviewTower;
 
 @export var isValidPlacement := true:
 	set = _set_isValidPlacement;
-	
-var overlappingArea: CollisionPolygon2D = null;
+
+var overlappingZone: CollisionPolygon2D = null;
 var isOverlappingTowers: Array[Area2D] = [];
 
 func _set_preview(value: bool) -> void:
-	modulate.a = .6 if value else 1.0
+	modulate.a = .6 if value else 1.0;
 	isPreview = value;
+	if !value:
+		z_index = get_viewport().get_visible_rect().size.y + position.y;
+		print(z_index);
 
 func _set_isValidPlacement(value: bool) -> void:
 	if !isPreview:
@@ -22,7 +25,7 @@ func _set_isValidPlacement(value: bool) -> void:
 
 func snap_position_to_grid() -> void:
 	position = position.snapped(Vector2.ONE * Globals.tileSize);
-	
+
 func _ready() -> void:
 	isValidPlacement = false;
 	pass;
@@ -32,17 +35,16 @@ func _input(event: InputEvent) -> void:
 		test_current_overlapping_area();
 
 func test_current_overlapping_area() -> void:
-	if overlappingArea == null || !isOverlappingTowers.is_empty():
+	if overlappingZone == null || !isOverlappingTowers.is_empty():
 		return;
 
 	var areaPolygonTransformed: PackedVector2Array = [];
 	var currentPolygonTransformed: PackedVector2Array = [];
-	for point in overlappingArea.polygon:
-		@warning_ignore('return_value_discarded')
-		areaPolygonTransformed.append(point * overlappingArea.transform.affine_inverse());
+	for point in overlappingZone.polygon:
+		areaPolygonTransformed.append(point * overlappingZone.transform.affine_inverse() * overlappingZone.transform);
 	for point in $CollisionPolygon2D.polygon:
 		currentPolygonTransformed.append(point * transform.affine_inverse());
-	
+
 	var result := Geometry2D.clip_polygons(currentPolygonTransformed, areaPolygonTransformed);
 	isValidPlacement = result.is_empty();
 
@@ -53,14 +55,13 @@ func _on_area_entered(area: Area2D) -> void:
 		return;
 	var polygon := area.get_node_or_null("CollisionPolygon2D") as CollisionPolygon2D;
 	if polygon != null:
-		overlappingArea = polygon;
+		overlappingZone = polygon;
 		test_current_overlapping_area();
 
 func _on_area_exited(area: Area2D) -> void:
 	if area is PreviewTower:
 		isOverlappingTowers.remove_at(isOverlappingTowers.find(area));
 		return;
-	if area.get_node_or_null("CollisionPolygon2D") == overlappingArea:
-		overlappingArea = null;
+	if area.get_node_or_null("CollisionPolygon2D") == overlappingZone:
+		overlappingZone = null;
 		isValidPlacement = false;
-

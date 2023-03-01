@@ -31,7 +31,7 @@ func map_editing() -> void:
 			return;
 
 		sprite.isPreview = false;
-		
+
 		cancel_editing();
 		if Input.is_action_pressed('Bulk Place Towers'):
 			activate_editing();
@@ -44,7 +44,7 @@ func map_editing() -> void:
 
 		remove_child(editingSprite);
 		cancel_editing();
-		
+
 func activate_editing() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN);
 	editing = true;

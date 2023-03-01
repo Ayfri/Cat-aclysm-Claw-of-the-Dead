@@ -8,14 +8,19 @@ script = ExtResource("1_ujffx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-1.92268e-06, -1.9976e-06)
-scale = Vector2(0.457143, 0.457143)
+position = Vector2(-0.5, -22.5)
+scale = Vector2(2, 2)
 texture = ExtResource("2_54qn8")
+metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+z_as_relative = false
+position = Vector2(1, 7)
+scale = Vector2(2.5, 2.667)
 polygon = PackedVector2Array(-15, -15, 15, -15, 15, 15, -15, 15)
+metadata/_edit_group_ = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

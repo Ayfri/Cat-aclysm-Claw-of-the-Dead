@@ -42,13 +42,13 @@ func _unhandled_input(event: InputEvent):
 		_mouse_position = get_global_mouse_position();
 		if _zoom_level == min_zoom:
 			position = _mouse_position;
-		
+
 		if mouse_event.button_mask == MOUSE_BUTTON_MASK_MIDDLE:
 			var clamped_position: Vector2 = mouse_event.relative / zoom;
 			position -= clamped_position;
-	
+
 	if mouse_event.is_action_pressed("Zoom Out"):
 		_set_zoom_level(_zoom_level * (1 - zoom_factor));
 	if mouse_event.is_action_pressed("Zoom In"):
 		_set_zoom_level(_zoom_level * (1 + zoom_factor));
-		
+
