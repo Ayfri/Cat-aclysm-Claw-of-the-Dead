@@ -7,11 +7,8 @@
 [ext_resource type="Shader" path="res://assets/shaders/map.gdshader" id="4_fotjd"]
 [ext_resource type="Texture2D" uid="uid://xkfs36j6u3h1" path="res://assets/sprites/masks/circle.png" id="5_2jnwn"]
 [ext_resource type="Script" path="res://assets/scripts/zones.gd" id="6_codll"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://bhd4f1vigfci2" path="res://scenes/power_up.tscn" id="8_bythd"]
-=======
 [ext_resource type="PackedScene" uid="uid://b2xokag7mxnk5" path="res://scenes/enemy.tscn" id="8_nchx0"]
->>>>>>> 9d2b18e0010b14d592b6259f837d8687d6ab49e7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nm0lp"]
 shader = ExtResource("4_fotjd")
