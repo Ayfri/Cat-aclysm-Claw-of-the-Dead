@@ -1,4 +1,4 @@
 extends Node;
 
-@export var tileSize = 16;
-@export var runSpeed = 200;
+@export var tile_size = 16;
+@export var enemy_speed = 200;
