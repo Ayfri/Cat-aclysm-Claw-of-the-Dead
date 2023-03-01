@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjdme"]
 radius = 213.258
 
-[node name="tower" type="Area2D"]
+[node name="Tower" type="Area2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_4tf75")
 metadata/_edit_group_ = true

@@ -7,7 +7,7 @@
 radius = 16.0
 height = 144.0
 
-[node name="bullet" type="CharacterBody2D"]
+[node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_13oop")
 metadata/_edit_group_ = true
 

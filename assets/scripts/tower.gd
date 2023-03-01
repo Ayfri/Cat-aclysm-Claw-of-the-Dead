@@ -10,7 +10,7 @@ enum Target {Closest = 0, Furthest = 1, Strongest = 2, Weakest = 3, Random = 4};
 @onready var damage = 5;
 @onready var price: int;
 @onready var sellPrice: int;
-@onready var Sprite = $Sprite2D
+@onready var sprite = $Sprite2D
 @onready var typeTarget: Target;
 @onready var target: Enemy;
 @onready var targetableEnemy: Array[Enemy];
