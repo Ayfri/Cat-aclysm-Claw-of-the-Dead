@@ -1,12 +1,12 @@
 class_name Tower
-extends Area2D 
+extends Area2D
 
 const Bullet = preload("res://scenes/bullet.tscn")
 enum Target {Closest = 0, Furthest = 1, Strongest = 2, Weakest = 3, Random = 4};
 
 #@onready var bulletSpeed: int;
 #@onready var damage: int;
-@onready var bulletSpeed = 100;
+@onready var bulletSpeed = 300;
 @onready var damage = 5;
 @onready var price: int;
 @onready var sellPrice: int;
@@ -47,13 +47,13 @@ func fireTarget():
 		bullet.global_position = $Aim.global_position
 
 
-func _on_area_entered(area: Enemy):
-	if "enemy" in area.name:
+func _on_area_entered(area: Area2D):
+	if area is Enemy:
 		print("un ennemi est entré")
 		targetableEnemy.append(area)
 
 
-func _on_area_exited(area: Enemy):
+func _on_area_exited(area: Area2D):
 	print("un ennemi est sorti")
 	if targetableEnemy.find(area) != -1 :
 		targetableEnemy.erase(area)

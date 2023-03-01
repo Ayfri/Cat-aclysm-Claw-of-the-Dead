@@ -4,18 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://v2lotfyqqtds" path="res://assets/sprites/test/icon.svg" id="1_yloia"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_maibc"]
-radius = 16.0
-height = 144.0
+radius = 4.0
+height = 34.0
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_13oop")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 1)
+rotation = 1.5708
+scale = Vector2(0.05, 0.25)
 texture = ExtResource("1_yloia")
 
 [node name="Area2D" type="Area2D" parent="."]
+rotation = 1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_maibc")

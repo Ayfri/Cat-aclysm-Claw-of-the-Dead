@@ -7,7 +7,6 @@
 radius = 213.258
 
 [node name="Tower" type="Area2D"]
-scale = Vector2(3, 3)
 script = ExtResource("1_4tf75")
 metadata/_edit_group_ = true
 

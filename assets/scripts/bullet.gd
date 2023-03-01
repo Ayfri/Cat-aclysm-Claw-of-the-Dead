@@ -25,6 +25,6 @@ func _process(delta):
 	pass
 
 
-func _on_area_2d_area_entered(area):
-	if "enemy" in area.name:
+func _on_area_2d_area_entered(area: Area2D):
+	if area is Enemy:
 		queue_free()
