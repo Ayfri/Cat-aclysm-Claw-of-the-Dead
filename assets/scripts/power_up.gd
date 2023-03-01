@@ -14,9 +14,9 @@ func _process(delta):
 		visible = true
 
 func apply_powerup_effect():
-		EnemyStats.runspeed = 400;
+		Globals.enemy_speed = 400;
 		await get_tree().create_timer(2.0).timeout
-		EnemyStats.runspeed = 20;
+		Globals.enemy_speed = 20;
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
