@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://8yoixb3o7cfq"]
+[gd_scene load_steps=11 format=3 uid="uid://8yoixb3o7cfq"]
 
 [ext_resource type="Texture2D" uid="uid://cw60trsh3e7ig" path="res://assets/sprites/maps/debug.png" id="1_n32os"]
 [ext_resource type="Script" path="res://assets/scripts/map.gd" id="1_uwg4q"]
@@ -88,5 +88,6 @@ position = Vector2(16, 264)
 polygon = PackedVector2Array(951, 20, 1004.87, -8.35141, 1141, -80, 1079, -121, 972, -69, 925, -23)
 
 [node name="power_up" parent="." instance=ExtResource("8_bythd")]
-[node name="Enemy" parent="." instance=ExtResource("8_nchx0")]
 
+[node name="Enemy" parent="." instance=ExtResource("8_nchx0")]
+position = Vector2(28, 223)
