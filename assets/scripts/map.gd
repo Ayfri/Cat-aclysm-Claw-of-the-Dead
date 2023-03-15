@@ -31,7 +31,7 @@ func map_editing() -> void:
 		if !sprite.isValidPlacement:
 			return;
 
-		var tower_sprite := TowerScene.instantiate();
+		var tower_sprite := TowerScene.instantiate() as Tower;
 		tower_sprite.position = sprite.position;
 
 		remove_child(sprite);

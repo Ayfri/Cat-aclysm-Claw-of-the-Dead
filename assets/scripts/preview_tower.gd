@@ -7,8 +7,8 @@ extends Area2D;
 @export var isValidPlacement := true:
 	set = _set_isValidPlacement;
 
-var overlappingZone: CollisionPolygon2D = null;
-var isOverlappingTowers: Array[Area2D] = [];
+@export var overlappingZone: CollisionPolygon2D = null;
+@export var overlappingTowers: Array[Area2D] = [];
 
 func _set_preview(value: bool) -> void:
 	modulate.a = .6 if value else 1.0;
@@ -35,7 +35,7 @@ func _input(event: InputEvent) -> void:
 		test_current_overlapping_area();
 
 func test_current_overlapping_area() -> void:
-	if overlappingZone == null || !isOverlappingTowers.is_empty():
+	if overlappingZone == null || !overlappingTowers.is_empty():
 		return;
 
 	var areaPolygonTransformed: PackedVector2Array = [];
@@ -49,19 +49,21 @@ func test_current_overlapping_area() -> void:
 	isValidPlacement = result.is_empty();
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is PreviewTower:
-		isOverlappingTowers.append(area);
+	if area.name == "PlacementHitbox":
+		overlappingTowers.append(area);
 		isValidPlacement = false;
 		return;
+
 	var polygon := area.get_node_or_null("CollisionPolygon2D") as CollisionPolygon2D;
 	if polygon != null:
 		overlappingZone = polygon;
 		test_current_overlapping_area();
 
 func _on_area_exited(area: Area2D) -> void:
-	if area is PreviewTower:
-		isOverlappingTowers.remove_at(isOverlappingTowers.find(area));
+	if area.name == "PlacementHitbox":
+		overlappingTowers.remove_at(overlappingTowers.find(area));
 		return;
+
 	if area.get_node_or_null("CollisionPolygon2D") == overlappingZone:
 		overlappingZone = null;
 		isValidPlacement = false;

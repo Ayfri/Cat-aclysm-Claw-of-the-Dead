@@ -40,5 +40,5 @@ func _on_area_entered(area: Area2D):
 		targetableEnemy.append(area);
 
 func _on_area_exited(area: Area2D):
-	if targetableEnemy.find(area) != -1:
+	if area is Enemy && targetableEnemy.find(area) != -1:
 		targetableEnemy.erase(area);

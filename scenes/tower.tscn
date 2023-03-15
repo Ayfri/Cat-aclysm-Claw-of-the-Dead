@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmlq2yjrn6dhb"]
+[gd_scene load_steps=5 format=3 uid="uid://bmlq2yjrn6dhb"]
 
 [ext_resource type="Script" path="res://assets/scripts/tower.gd" id="1_4tf75"]
 [ext_resource type="Texture2D" uid="uid://b6jmbweyvlkxi" path="res://assets/sprites/towers/tree.png" id="2_tlb2q"]
@@ -6,12 +6,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjdme"]
 radius = 213.258
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdln7"]
+size = Vector2(76, 78)
+
 [node name="Tower" type="Area2D"]
 script = ExtResource("1_4tf75")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-0.5, -22.5)
 scale = Vector2(2, 2)
 texture = ExtResource("2_tlb2q")
 
@@ -24,6 +28,15 @@ shape = SubResource("CircleShape2D_hjdme")
 
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="PlacementHitbox" type="Area2D" parent="."]
+position = Vector2(1, 8)
+collision_layer = 2
+collision_mask = 2
+
+[node name="PlacementHitboxShape" type="CollisionShape2D" parent="PlacementHitbox"]
+shape = SubResource("RectangleShape2D_mdln7")
+debug_color = Color(0.654902, 0.321569, 1, 0.419608)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
