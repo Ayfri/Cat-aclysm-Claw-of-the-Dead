@@ -2,6 +2,6 @@
 .godot/
 .import/
 .mono/
-assets/
+addons/
 *.translation
 export_presets.cfg
