@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://crrvi62hvfjip"]
+
+[ext_resource type="Script" path="res://assets/scripts/level_interface.gd" id="1_am2w4"]
+[ext_resource type="Theme" uid="uid://cvuqor137cfgp" path="res://assets/themes/main_theme.tres" id="2_804w8"]
+
+[node name="level_interface" type="CanvasLayer"]
+script = ExtResource("1_am2w4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 195.0
+offset_bottom = 63.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_804w8")
+theme_type_variation = &"main"
+bbcode_enabled = true
+shortcut_keys_enabled = false

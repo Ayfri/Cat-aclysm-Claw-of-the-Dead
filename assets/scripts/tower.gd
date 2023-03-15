@@ -27,7 +27,7 @@ func select_target():
 	target = targetableEnemy.back()
 
 func fire_target():
-	
+
 	if $ReloadTimer.is_stopped():
 		$ReloadTimer.start();
 		var bullet = BulletScene.instantiate();
