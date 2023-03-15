@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2xokag7mxnk5"]
+
+[ext_resource type="Script" path="res://assets/scripts/path.gd" id="1_ce8kx"]
+
+[sub_resource type="Curve2D" id="Curve2D_hbxpj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -230, 896, 0, 0, 0, 0, 1024, 420, 0, 0, 0, 0, 1136, 186, 0, 0, 0, 0, 1468, 138, 0, 0, 0, 0, 1728, 302, 0, 0, 0, 0, 3102, -246)
+}
+point_count = 6
+
+[node name="Path" type="Node2D"]
+position = Vector2(49, 213)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_ce8kx")
+metadata/_edit_group_ = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_hbxpj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
