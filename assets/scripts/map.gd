@@ -68,6 +68,6 @@ func cancel_editing() -> void:
 	editingSprite = null;
 
 func get_positioning_sprite() -> PreviewTower:
-	var children = get_children();
-	var sprite = children[children.find(editingSprite)];
+	var children := get_children();
+	var sprite := children[children.find(editingSprite)];
 	return sprite if sprite is PreviewTower else null;

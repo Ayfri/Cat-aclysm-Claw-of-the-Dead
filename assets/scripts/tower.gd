@@ -1,7 +1,7 @@
 class_name Tower;
 extends Area2D;
 
-const BulletScene = preload("res://scenes/bullet.tscn")
+const BulletScene := preload("res://scenes/bullet.tscn")
 enum Target {Closest = 0, Furthest = 1, Strongest = 2, Weakest = 3, Random = 4};
 
 @onready var bulletSpeed := 300;
@@ -11,15 +11,16 @@ enum Target {Closest = 0, Furthest = 1, Strongest = 2, Weakest = 3, Random = 4};
 @onready var sprite = $Sprite2D
 @onready var typeTarget: Target;
 @onready var target: Enemy;
-@onready var targetableEnemy: Array[Enemy];
+@onready var targetableEnemy: Array[Enemy] = [];
 
 func _process(delta: float):
 	if targetableEnemy.is_empty():
-		return
+		return;
+
 	if target != null:
-		fire_target()
+		fire_target();
 	else:
-		select_target()
+		select_target();
 
 func select_target():
 	target = targetableEnemy.back()

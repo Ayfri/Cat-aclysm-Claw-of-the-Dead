@@ -6,4 +6,4 @@ extends Area2D;
 
 func _process(delta):
 	var parent := get_parent();
-	parent.progress = parent.progress + Globals.runSpeed * delta;
+	parent.progress = parent.progress + Globals.enemy_speed * delta;

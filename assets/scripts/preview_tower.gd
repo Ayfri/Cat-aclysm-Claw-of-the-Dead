@@ -24,7 +24,7 @@ func _set_isValidPlacement(value: bool) -> void:
 	isValidPlacement = value;
 
 func snap_position_to_grid() -> void:
-	position = position.snapped(Vector2.ONE * Globals.tileSize);
+	position = position.snapped(Vector2.ONE * Globals.tile_size);
 
 func _ready() -> void:
 	isValidPlacement = false;
