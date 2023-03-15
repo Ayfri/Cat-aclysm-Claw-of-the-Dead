@@ -18,6 +18,7 @@ func _process(delta: float):
 		return;
 
 	if target != null:
+		select_target();
 		fire_target();
 	else:
 		select_target();
@@ -26,6 +27,7 @@ func select_target():
 	target = targetableEnemy.back()
 
 func fire_target():
+	
 	if $ReloadTimer.is_stopped():
 		$ReloadTimer.start();
 		var bullet = BulletScene.instantiate();
@@ -42,4 +44,5 @@ func _on_area_entered(area: Area2D):
 func _on_area_exited(area: Area2D):
 	if targetableEnemy.find(area) != -1:
 		targetableEnemy.erase(area);
-		target = null;
+		if target == area:
+			target = null;
