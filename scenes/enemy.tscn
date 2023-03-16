@@ -1,36 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2xokag7mxnk5"]
+[gd_scene load_steps=4 format=3 uid="uid://b2xokag7mxnk5"]
 
 [ext_resource type="Texture2D" uid="uid://v2lotfyqqtds" path="res://assets/sprites/test/icon.svg" id="1_6n7tm"]
 [ext_resource type="Script" path="res://assets/scripts/enemy.gd" id="1_ma2nx"]
-
-[sub_resource type="Curve2D" id="Curve2D_hbxpj"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -230, 896, 0, 0, 0, 0, 1024, 420, 0, 0, 0, 0, 1136, 186, 0, 0, 0, 0, 1468, 138, 0, 0, 0, 0, 1728, 302, 0, 0, 0, 0, 3102, -246)
-}
-point_count = 6
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxhob"]
 radius = 80.1828
 height = 183.262
 
-[node name="Enemy" type="Node2D"]
-position = Vector2(49, 213)
-scale = Vector2(0.5, 0.5)
-metadata/_edit_group_ = true
-
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_hbxpj")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D"]
 position = Vector2(-230, 896)
 rotation = -0.362785
 
-[node name="Enemy" type="Area2D" parent="Path2D/PathFollow2D"]
+[node name="Enemy" type="Area2D" parent="."]
 script = ExtResource("1_ma2nx")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Enemy"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource("CapsuleShape2D_sxhob")
 
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Enemy"]
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 texture = ExtResource("1_6n7tm")

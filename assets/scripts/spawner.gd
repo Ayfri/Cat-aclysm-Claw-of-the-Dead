@@ -1,6 +1,6 @@
 extends Node2D
 
-const enemy = preload("res://assets/scripts/enemy.gd");
+const enemy = preload("res://scenes/enemy.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,4 +13,5 @@ func _process(delta):
 
 
 func _on_spawn_interval_timeout():
-	var enemy = Enemy
+	var enemy_instance = enemy.instantiate();
+	get_node("Path2D").add_child(enemy_instance);

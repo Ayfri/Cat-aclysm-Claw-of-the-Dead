@@ -6,4 +6,4 @@ func _process(delta):
 	var parent := get_parent();
 	parent.progress = parent.progress + Globals.enemy_speed * delta;
 	if parent.progress_ratio == 1:
-		queue_free()
+		queue_free();
