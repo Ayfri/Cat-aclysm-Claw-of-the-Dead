@@ -9,7 +9,7 @@ radius = 213.258
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdln7"]
 size = Vector2(76, 78)
 
-[node name="Tower" type="Area2D"]
+[node name="Tower" type="Node2D"]
 script = ExtResource("1_4tf75")
 metadata/_edit_group_ = true
 
@@ -19,7 +19,10 @@ position = Vector2(-0.5, -22.5)
 scale = Vector2(2, 2)
 texture = ExtResource("2_tlb2q")
 
-[node name="HitArea" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+input_pickable = false
+
+[node name="HitArea" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_hjdme")
 
 [node name="BulletContainer" type="Node" parent="."]
@@ -33,10 +36,47 @@ one_shot = true
 position = Vector2(1, 8)
 collision_layer = 2
 collision_mask = 2
+input_pickable = false
 
 [node name="PlacementHitboxShape" type="CollisionShape2D" parent="PlacementHitbox"]
 shape = SubResource("RectangleShape2D_mdln7")
 debug_color = Color(0.654902, 0.321569, 1, 0.419608)
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[node name="ClickableArea" type="Area2D" parent="."]
+
+[node name="ClickableAreaShape" type="CollisionPolygon2D" parent="ClickableArea"]
+polygon = PackedVector2Array(-42, 47, -25, 16, -37, 9, -37, -12, -7, -25, -7, -36, -32, -48, -32, -69, 3, -86, 10, -86, 44, -66, 44, -47, 64, -39, 58, -16, 40, -8, 40, 12, 13, 25, 20, 47)
+
+[node name="CenterContainer" type="BoxContainer" parent="."]
+visible = false
+offset_right = 253.0
+offset_bottom = 40.0
+
+[node name="SelectWeakestEnemy" type="Button" parent="CenterContainer"]
+layout_mode = 2
+text = "Weakest"
+
+[node name="SelectStrongestEnemy" type="Button" parent="CenterContainer"]
+layout_mode = 2
+text = "Strongest"
+
+[node name="SelectFirstEnemy" type="Button" parent="CenterContainer"]
+layout_mode = 2
+text = "First"
+
+[node name="SelectLastEnemy" type="Button" parent="CenterContainer"]
+layout_mode = 2
+text = "Last"
+
+[node name="SelectRandomEnemy" type="Button" parent="CenterContainer"]
+layout_mode = 2
+text = "Random"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="input_event" from="ClickableArea" to="." method="_on_clickable_area_input_event"]
+[connection signal="pressed" from="CenterContainer/SelectWeakestEnemy" to="." method="_on_select_weakest_enemy_pressed"]
+[connection signal="pressed" from="CenterContainer/SelectStrongestEnemy" to="." method="_on_select_strongest_enemy_pressed"]
+[connection signal="pressed" from="CenterContainer/SelectFirstEnemy" to="." method="_on_select_first_enemy_pressed"]
+[connection signal="pressed" from="CenterContainer/SelectLastEnemy" to="." method="_on_select_last_enemy_pressed"]
+[connection signal="pressed" from="CenterContainer/SelectRandomEnemy" to="." method="_on_select_random_enemy_pressed"]
