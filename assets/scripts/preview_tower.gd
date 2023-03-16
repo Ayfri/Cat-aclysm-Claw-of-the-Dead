@@ -1,9 +1,6 @@
 class_name PreviewTower;
 extends Area2D;
 
-@export var isPreview := false:
-	set = _set_preview;
-
 @export var isValidPlacement := true:
 	set = _set_isValidPlacement;
 
@@ -12,14 +9,11 @@ extends Area2D;
 
 func _set_preview(value: bool) -> void:
 	modulate.a = .6 if value else 1.0;
-	isPreview = value;
 	if !value:
 		z_index = get_viewport().get_visible_rect().size.y + position.y;
 		print(z_index);
 
 func _set_isValidPlacement(value: bool) -> void:
-	if !isPreview:
-		return;
 	modulate =  Color(1, 1, 1, modulate.a) if value else Color(.8, .2, .2, modulate.a);
 	isValidPlacement = value;
 

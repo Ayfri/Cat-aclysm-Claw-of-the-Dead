@@ -55,7 +55,6 @@ func activate_editing() -> void:
 	editing = true;
 	$Grid.visible = editing;
 	editingSprite = PreviewTowerScene.instantiate() as PreviewTower;
-	editingSprite.isPreview = true;
 	editingSprite.position = get_global_mouse_position();
 	editingSprite.snap_position_to_grid();
 	$Grid.position = editingSprite.position;
