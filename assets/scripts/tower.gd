@@ -11,7 +11,7 @@ enum Target {Closest = 0, Furthest = 1, Strongest = 2, Weakest = 3, Random = 4};
 @onready var sprite = $Sprite2D
 @onready var typeTarget: Target;
 @onready var target: Enemy;
-@onready var targetableEnemy: Array[Enemy] = [];
+@onready var targetableEnemy: Array[Area2D] = [];
 
 func _process(delta: float):
 	if targetableEnemy.is_empty():
@@ -24,7 +24,7 @@ func _process(delta: float):
 		select_target();
 
 func select_target():
-	target = targetableEnemy.back()
+	target = targetableEnemy.front()
 
 func fire_target():
 

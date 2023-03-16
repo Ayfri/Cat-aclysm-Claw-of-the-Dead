@@ -7,11 +7,14 @@ var speed: int;
 
 func _physics_process(delta: float):
 	if target == null:
+		queue_free()
 		return;
 	velocity = global_position.direction_to(target.global_position) * speed;
 	look_at(target.global_position);
 	move_and_slide();
 
+
 func _on_area_2d_area_entered(area: Area2D):
 	if area is Enemy:
+		area.enemyLife -= 5;
 		queue_free();

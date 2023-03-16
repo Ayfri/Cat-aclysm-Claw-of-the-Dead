@@ -3,9 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://v2lotfyqqtds" path="res://assets/sprites/test/icon.svg" id="1_6n7tm"]
 [ext_resource type="Script" path="res://assets/scripts/enemy.gd" id="1_ma2nx"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxhob"]
-radius = 80.1828
-height = 183.262
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybsmp"]
+size = Vector2(130.616, 129.529)
 
 [node name="PathFollow2D" type="PathFollow2D"]
 position = Vector2(-230, 896)
@@ -16,7 +15,8 @@ script = ExtResource("1_ma2nx")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-shape = SubResource("CapsuleShape2D_sxhob")
+position = Vector2(-0.11615, 0.0576172)
+shape = SubResource("RectangleShape2D_ybsmp")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 texture = ExtResource("1_6n7tm")
