@@ -6,7 +6,7 @@ func _process(_delta: float) -> void:
 	if Globals.level == null: return;
 
 	var text = """
-		[img=32x32]assets/sprites/ui/coin_cat.png[/img][font_size=big]test %s[/font_size]
+		[img=40x40]assets/sprites/ui/coin_cat.png[/img][font_size=42]%s[/font_size]
 	""".strip_edges();
 
 	scoreLabel.text = text % Globals.level.money;

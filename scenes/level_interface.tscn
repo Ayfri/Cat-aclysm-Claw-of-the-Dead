@@ -7,10 +7,8 @@
 script = ExtResource("1_am2w4")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 195.0
-offset_bottom = 63.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+offset_right = 258.0
+offset_bottom = 59.0
 theme = ExtResource("2_804w8")
 theme_type_variation = &"main"
 bbcode_enabled = true

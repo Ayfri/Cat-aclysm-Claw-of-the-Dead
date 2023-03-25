@@ -5,5 +5,5 @@
 [resource]
 default_font = ExtResource("1_2xwyq")
 default_font_size = 20
-/font_sizes/big = 40
-/font_sizes/medium = 20
+/font_sizes/big = 80
+/font_sizes/medium = 40
