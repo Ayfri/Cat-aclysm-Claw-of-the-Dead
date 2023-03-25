@@ -1,7 +1,9 @@
 class_name Level;
 extends Node2D;
 
-@export var money := 0;
+const starting_money := 30;
+
+@export var money := starting_money;
 @onready var map := $Map as Map;
 
 

@@ -4,6 +4,10 @@ extends Node2D;
 const PreviewTowerScene := preload("res://scenes/preview_tower.tscn");
 const TowerScene := preload("res://scenes/tower.tscn");
 
+
+var current_tower_index := 0;
+
+
 @onready var editing := false:
 	set(value):
 		$Zones.visible = value;
@@ -32,8 +36,10 @@ func activate_editing() -> void:
 	editing = true;
 	$Grid.visible = editing;
 	editing_sprite = PreviewTowerScene.instantiate() as PreviewTower;
+	editing_sprite.stats = Globals.tower_stats[current_tower_index];
 	editing_sprite.position = get_global_mouse_position();
 	editing_sprite.snap_position_to_grid();
+
 	$Grid.position = editing_sprite.position;
 	add_child(editing_sprite);
 
@@ -54,10 +60,13 @@ func get_positioning_sprite() -> PreviewTower:
 func map_editing() -> void:
 	if editing && Input.is_action_just_pressed('Place Tower'):
 		var sprite := get_positioning_sprite();
-		if !sprite.is_valid_placement:
-			return;
+		if !sprite.is_valid_placement: return;
+
+		var tower_stats := Globals.tower_stats[current_tower_index];
+		Globals.level.money -= tower_stats.base_price;
 
 		var tower_sprite := TowerScene.instantiate() as Tower;
+		tower_sprite.stats = tower_stats;
 		tower_sprite.position = sprite.position;
 
 		remove_child(sprite);

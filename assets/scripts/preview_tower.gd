@@ -1,8 +1,12 @@
 class_name PreviewTower;
 extends Area2D;
 
+var stats: TowerStats;
+
 @export var is_valid_placement := true:
 	set(value):
+		if stats == null || Globals.level.money < stats.base_price: value = false;
+
 		modulate =  Color(1, 1, 1, modulate.a) if value else Color(.8, .2, .2, modulate.a);
 		is_valid_placement = value;
 

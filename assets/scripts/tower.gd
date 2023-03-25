@@ -4,15 +4,16 @@ extends Node2D;
 const BulletScene := preload("res://scenes/bullet.tscn");
 enum Target {First = 0, Last = 1, Strongest = 2, Weakest = 3, Random = 4};
 
-@onready var bullet_speed := 300;
-@onready var damage := 5;
-@onready var price: int;
-@onready var random_generator := RandomNumberGenerator.new();
-@onready var sellPrice: int;
+
+var bullet_speed := 300;
+var random_generator := RandomNumberGenerator.new();
+var stats: TowerStats
+var type_target: Target;
+var target: Enemy;
+var targetable_enemy: Array[Enemy] = [];
+
+
 @onready var sprite := %Sprite as Sprite2D;
-@onready var type_target: Target;
-@onready var target: Enemy;
-@onready var targetable_enemy: Array[Enemy] = [];
 @onready var target_menu := $CenterContainer as CenterContainer;
 
 
@@ -74,7 +75,7 @@ func fire_target() -> void:
 	if $ReloadTimer.is_stopped():
 		$ReloadTimer.start();
 		var bullet = BulletScene.instantiate();
-		bullet.damage = damage;
+		bullet.damage = stats.base_damage;
 		bullet.speed = bullet_speed;
 		bullet.target = target;
 		$BulletContainer.add_child(bullet);
