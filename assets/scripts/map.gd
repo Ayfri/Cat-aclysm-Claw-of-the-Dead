@@ -5,15 +5,16 @@ const PreviewTowerScene := preload("res://scenes/preview_tower.tscn");
 const TowerScene := preload("res://scenes/tower.tscn");
 
 @onready var editing := false:
-	set = _set_editing;
-@onready var editingSprite: PreviewTower;
+	set(value):
+		$Zones.visible = value;
+		editing = value;
 
-func _set_editing(value: bool) -> void:
-	$Zones.visible = value;
-	editing = value;
+@onready var editing_sprite: PreviewTower;
+
 
 func _process(_delta: float) -> void:
 	map_editing();
+
 
 func _input(event: InputEvent) -> void:
 	if !editing:
@@ -25,10 +26,35 @@ func _input(event: InputEvent) -> void:
 		sprite.snap_position_to_grid();
 		$Grid.position = sprite.position;
 
+
+func activate_editing() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN);
+	editing = true;
+	$Grid.visible = editing;
+	editing_sprite = PreviewTowerScene.instantiate() as PreviewTower;
+	editing_sprite.position = get_global_mouse_position();
+	editing_sprite.snap_position_to_grid();
+	$Grid.position = editing_sprite.position;
+	add_child(editing_sprite);
+
+
+func cancel_editing() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
+	editing = false;
+	$Grid.visible = editing;
+	editing_sprite = null;
+
+
+func get_positioning_sprite() -> PreviewTower:
+	var children := get_children();
+	var sprite := children[children.find(editing_sprite)];
+	return sprite if sprite is PreviewTower else null;
+
+
 func map_editing() -> void:
 	if editing && Input.is_action_just_pressed('Place Tower'):
 		var sprite := get_positioning_sprite();
-		if !sprite.isValidPlacement:
+		if !sprite.is_valid_placement:
 			return;
 
 		var tower_sprite := TowerScene.instantiate() as Tower;
@@ -47,26 +73,5 @@ func map_editing() -> void:
 			activate_editing();
 			return;
 
-		remove_child(editingSprite);
+		remove_child(editing_sprite);
 		cancel_editing();
-
-func activate_editing() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN);
-	editing = true;
-	$Grid.visible = editing;
-	editingSprite = PreviewTowerScene.instantiate() as PreviewTower;
-	editingSprite.position = get_global_mouse_position();
-	editingSprite.snap_position_to_grid();
-	$Grid.position = editingSprite.position;
-	add_child(editingSprite);
-
-func cancel_editing() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
-	editing = false;
-	$Grid.visible = editing;
-	editingSprite = null;
-
-func get_positioning_sprite() -> PreviewTower:
-	var children := get_children();
-	var sprite := children[children.find(editingSprite)];
-	return sprite if sprite is PreviewTower else null;

@@ -13,7 +13,8 @@ size = Vector2(76, 78)
 script = ExtResource("1_4tf75")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(-0.5, -22.5)
 scale = Vector2(2, 2)

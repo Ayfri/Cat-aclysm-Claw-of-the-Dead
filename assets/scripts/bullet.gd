@@ -5,7 +5,8 @@ var damage: int;
 var target: Enemy;
 var speed: int;
 
-func _physics_process(delta: float):
+
+func _physics_process(_delta: float) -> void:
 	if target == null:
 		queue_free();
 		return;
@@ -14,7 +15,7 @@ func _physics_process(delta: float):
 	move_and_slide();
 
 
-func _on_area_2d_area_entered(area: Area2D):
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Enemy:
-		area.enemyLife -= 3;
+		area.health -= 3;
 		queue_free();

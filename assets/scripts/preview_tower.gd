@@ -1,63 +1,60 @@
 class_name PreviewTower;
 extends Area2D;
 
-@export var isValidPlacement := true:
-	set = _set_isValidPlacement;
+@export var is_valid_placement := true:
+	set(value):
+		modulate =  Color(1, 1, 1, modulate.a) if value else Color(.8, .2, .2, modulate.a);
+		is_valid_placement = value;
 
-@export var overlappingZone: CollisionPolygon2D = null;
-@export var overlappingTowers: Array[Area2D] = [];
+@export var overlapping_zone: CollisionPolygon2D = null;
+@export var overlapping_towers: Array[Area2D] = [];
 
-func _set_preview(value: bool) -> void:
-	modulate.a = .6 if value else 1.0;
-	if !value:
-		z_index = get_viewport().get_visible_rect().size.y + position.y;
-		print(z_index);
 
-func _set_isValidPlacement(value: bool) -> void:
-	modulate =  Color(1, 1, 1, modulate.a) if value else Color(.8, .2, .2, modulate.a);
-	isValidPlacement = value;
+func _init() -> void:
+	self.is_valid_placement = false;
 
-func snap_position_to_grid() -> void:
-	position = position.snapped(Vector2.ONE * Globals.tile_size);
-
-func _ready() -> void:
-	isValidPlacement = false;
-	pass;
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion || event is InputEventMouseButton:
 		test_current_overlapping_area();
 
-func test_current_overlapping_area() -> void:
-	if overlappingZone == null || !overlappingTowers.is_empty():
-		return;
-
-	var areaPolygonTransformed: PackedVector2Array = [];
-	var currentPolygonTransformed: PackedVector2Array = [];
-	for point in overlappingZone.polygon:
-		areaPolygonTransformed.append(point * overlappingZone.transform.affine_inverse() * overlappingZone.transform);
-	for point in $CollisionPolygon2D.polygon:
-		currentPolygonTransformed.append(point * transform.affine_inverse());
-
-	var result := Geometry2D.clip_polygons(currentPolygonTransformed, areaPolygonTransformed);
-	isValidPlacement = result.is_empty();
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "PlacementHitbox":
-		overlappingTowers.append(area);
-		isValidPlacement = false;
+		overlapping_towers.append(area);
+		is_valid_placement = false;
 		return;
 
 	var polygon := area.get_node_or_null("CollisionPolygon2D") as CollisionPolygon2D;
 	if polygon != null:
-		overlappingZone = polygon;
+		overlapping_zone = polygon;
 		test_current_overlapping_area();
+
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.name == "PlacementHitbox":
-		overlappingTowers.remove_at(overlappingTowers.find(area));
+		overlapping_towers.remove_at(overlapping_towers.find(area));
 		return;
 
-	if area.get_node_or_null("CollisionPolygon2D") == overlappingZone:
-		overlappingZone = null;
-		isValidPlacement = false;
+	if area.get_node_or_null("CollisionPolygon2D") == overlapping_zone:
+		overlapping_zone = null;
+		is_valid_placement = false;
+
+
+func snap_position_to_grid() -> void:
+	position = position.snapped(Vector2.ONE * Globals.tile_size);
+
+
+func test_current_overlapping_area() -> void:
+	if overlapping_zone == null || !overlapping_towers.is_empty():
+		return;
+
+	var area_polygon_transformed: PackedVector2Array = [];
+	var current_polygon_transformed: PackedVector2Array = [];
+	for point in overlapping_zone.polygon:
+		area_polygon_transformed.append(point * overlapping_zone.transform.affine_inverse() * overlapping_zone.transform);
+	for point in $CollisionPolygon2D.polygon:
+		current_polygon_transformed.append(point * transform.affine_inverse());
+
+	var result := Geometry2D.clip_polygons(current_polygon_transformed, area_polygon_transformed);
+	is_valid_placement = result.is_empty();

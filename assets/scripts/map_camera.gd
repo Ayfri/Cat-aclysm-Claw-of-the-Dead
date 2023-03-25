@@ -2,13 +2,12 @@ extends Camera2D;
 
 @export var min_zoom := 1.0;
 @export var max_zoom := 10.0;
-@export var zoom_factor := .1;
+@export var pan_duration := 0.1;
+@export var pan_speed := 0.1;
+@export var zoom_factor := 0.1;
 @export var zoom_duration := 0.2;
-@export var pan_duration := 0.1
-@export var pan_speed := 0.1
 
 var _mouse_position: Vector2;
-
 var _zoom_level := min_zoom:
 	set = _set_zoom_level;
 
@@ -33,9 +32,9 @@ func _set_zoom_level(value: float) -> void:
 		zoom_duration
 	);
 
-func _unhandled_input(event: InputEvent):
-	if not event is InputEventMouse:
-		return;
+
+func _unhandled_input(event: InputEvent) -> void:
+	if !event is InputEventMouse: return;
 
 	var mouse_event := event as InputEventMouse;
 	if mouse_event is InputEventMouseMotion:
@@ -51,4 +50,3 @@ func _unhandled_input(event: InputEvent):
 		_set_zoom_level(_zoom_level * (1 - zoom_factor));
 	if mouse_event.is_action_pressed("Zoom In"):
 		_set_zoom_level(_zoom_level * (1 + zoom_factor));
-

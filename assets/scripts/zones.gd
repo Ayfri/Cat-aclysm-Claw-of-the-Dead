@@ -3,6 +3,7 @@ extends Node2D;
 
 var zones: Array[Area2D];
 
+
 func _ready() -> void:
 	var children: Array = get_children(true)
 	var zonesChildren = children.filter(func(s: Node): return s.is_in_group("Zones"));

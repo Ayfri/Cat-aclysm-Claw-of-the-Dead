@@ -8,14 +8,16 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_ujffx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.588235)
 texture_filter = 1
 position = Vector2(-0.5, -22.5)
 scale = Vector2(2, 2)
 texture = ExtResource("2_54qn8")
 metadata/_edit_group_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 z_as_relative = false
