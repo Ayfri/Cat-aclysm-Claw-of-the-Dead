@@ -18,5 +18,9 @@ texture = ExtResource("2_wy5a3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cej7k")
 
+[node name="TimerSprite" type="Timer" parent="."]
+autostart = true
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerSprite" to="." method="_on_timer_sprite_timeout"]
