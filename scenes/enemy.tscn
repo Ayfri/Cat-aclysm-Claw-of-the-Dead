@@ -9,6 +9,7 @@ size = Vector2(130.616, 129.529)
 [node name="PathFollow2D" type="PathFollow2D"]
 position = Vector2(-230, 896)
 rotation = -0.362785
+loop = false
 
 [node name="Enemy" type="Area2D" parent="."]
 script = ExtResource("1_ma2nx")
