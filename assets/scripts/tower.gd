@@ -14,7 +14,7 @@ var targetable_enemy: Array[Enemy] = [];
 
 
 @onready var sprite := %Sprite as Sprite2D;
-@onready var target_menu := $CenterContainer as CenterContainer;
+@onready var target_menu := $CenterContainer as BoxContainer;
 
 
 func _ready() -> void:
@@ -74,7 +74,7 @@ func get_strongest_enemy(enemies: Array[Enemy]) -> Enemy:
 func fire_target() -> void:
 	if $ReloadTimer.is_stopped():
 		$ReloadTimer.start();
-		var bullet = BulletScene.instantiate();
+		var bullet := BulletScene.instantiate() as Bullet;
 		bullet.damage = stats.base_damage;
 		bullet.speed = bullet_speed;
 		bullet.target = target;
