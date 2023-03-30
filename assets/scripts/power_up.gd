@@ -24,14 +24,14 @@ func _on_timer_sprite_timeout():
 		$Sprite2D.texture = sprite_debuff;
 	else:
 		$Sprite2D.texture = sprite_buff;
-	
+
 
 func apply_powerup_effect() -> void:
 	if $Sprite2D.texture == sprite_debuff:
 		Globals.enemy_speed = 400;
 		await get_tree().create_timer(2.0).timeout;
 		Globals.enemy_speed = 200;
-		
+
 	else:
 		Globals.enemy_speed = 100;
 		await get_tree().create_timer(2.0).timeout;

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://xkfs36j6u3h1" path="res://assets/sprites/masks/circle.png" id="5_2jnwn"]
 [ext_resource type="Script" path="res://assets/scripts/zones.gd" id="6_codll"]
 [ext_resource type="PackedScene" uid="uid://bhd4f1vigfci2" path="res://scenes/power_up.tscn" id="8_bythd"]
-[ext_resource type="PackedScene" path="res://scenes/spawner.tscn" id="9_8m8la"]
+[ext_resource type="PackedScene" uid="uid://cbwhtm1ayfu3n" path="res://scenes/spawner.tscn" id="9_8m8la"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nm0lp"]
 shader = ExtResource("4_fotjd")
