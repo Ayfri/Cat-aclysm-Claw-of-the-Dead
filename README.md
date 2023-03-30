@@ -5,35 +5,36 @@ You play with cats, and you have to defend your city from the zombie invasion us
 
 ## Engine
 
-The game is made with [Godot Engine](https://godotengine.org/) 4.0.0.
+The game is made with [Godot Engine](https://godotengine.org/) 4.0.1.
 
 ## GitHub
 
 #### Commit :
 
-type(scope): subject
+**type(scope): subject**
 
-type: type of commit
-scope: the scope that is affected by this commit
-subject: a short description of the commit, 20 words max
+* **type**: type of commit
+* **scope**: the scope that is affected by this commit 1 to 2 word, can contain space
+* **subject**: a short description of the commit, around 20 words max, can contain capitalization or not
 
 #### Types :
 
-* ci : Modification of files and scripts related to continuous integration
-* chore : Modification of the build system or development tools
-* feat : New feature
-* fix : Bug fix
-* perf : Optimization of the code to improve performance
-* refactor : Modification of the code without changing functionality
+* `ci` : Change of files and scripts related to continuous integration
+* `chore` : Change of the build system or development tools
+* `feat` : New feature
+* `fix` : Bug fix
+* `perf` : Optimization of the code to improve performance
+* `refactor` : Modification of the code without changing functionality
+* `style` : Change to the code style
 
 #### Examples :
 
 ```
-feat(zombies): add new pigeon zombie
+feat(zombies): Add new pigeon zombie.
 ```
 
 ```
-fix(towers): fix tower range upgrade not working
+fix(tower gui): fix tower name not being displayed correctly
 ```
 
 ```
@@ -48,6 +49,7 @@ Use the built-in editor from Godot to code or use any JetBrains IDE to edit godo
 ### Code Architecture :
 
 ```
+/.gitignore
 /project.godot
 /assets/fonts/**.ttf : fonts
 /assets/localization/**.po : localization files
@@ -57,7 +59,7 @@ Use the built-in editor from Godot to code or use any JetBrains IDE to edit godo
 /assets/sprites/particles/**.png : particles
 /assets/sprites/towers/**.png : tower sprites
 /assets/sprites/zombies/**.png : zombie sprites
-/assets/tilemaps/**.png : tilemaps
+/assets/themes/**.tres : themes
 /scenes/main.tscn : main scene
 /scenes/**.tscn : scenes
 ```
@@ -67,12 +69,15 @@ Use the built-in editor from Godot to code or use any JetBrains IDE to edit godo
 * Everything is in english
 * Use `snake_case` for files
 * Use `PascalCase` for nodes
-* Use `camelCase` for variables and functions
-* Use `PascalCase` for classes, enums, constants and signals
+* Use `snake_case` for variables, constants, functions and signals
+* Use `PascalCase` for classes, enums and autoloads
 * Name every node with its function on the parent node (or the object name if root)
-* Type everything unless it's obvious (e.g. `var x: int = 1` is fine, but `var x = 1` is simpler)
+* Type everything unless it's obvious (e.g. `var x: int = 1` is fine, but `var x := 1` is simpler)
+* Have the most safest line possible without creating too many variables (ex : if you need to access a node once, don't create a variable just for that)
+* Cast every nodes to their types, ex : `var player := $Player as Area2D`
 * Keep lines relatively short (140 characters max)
 * Use tabs for indentation
+* Use `;` for every line
 
 ## Exporting
 
