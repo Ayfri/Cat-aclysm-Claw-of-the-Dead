@@ -55,51 +55,51 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone1"]
-polygon = PackedVector2Array(526, 291, 597, 245, 774, 224, 837, 254, 826, 173, 741, 155, 597, 155, 509, 212)
+polygon = PackedVector2Array(526, 291, 597, 241, 774, 224, 872, 250, 849, 157, 745, 142, 573, 148, 503, 185)
 
 [node name="Zone2" type="Area2D" parent="Zones" groups=["Zones"]]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone2"]
-polygon = PackedVector2Array(116, 514, 409, 397, 370, 327, 258, 335, 111, 416)
+polygon = PackedVector2Array(116, 514, 429, 379, 398, 296, 220, 328, 77, 412)
 
 [node name="Zone3" type="Area2D" parent="Zones" groups=["Zones"]]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone3"]
-polygon = PackedVector2Array(709, 365, 652, 367, 643, 402, 645, 459, 674, 497, 724, 536, 804, 507, 862, 447, 855, 403, 776, 389)
+polygon = PackedVector2Array(709, 365, 652, 367, 645, 421, 656, 479, 724, 536, 800, 506, 846, 461, 866, 429, 837, 391, 776, 389)
 
 [node name="Zone4" type="Area2D" parent="Zones" groups=["Zones"]]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone4"]
-polygon = PackedVector2Array(321, 666, 321, 578, 519, 505, 575, 589, 668, 664, 656, 799, 563, 796, 565, 700, 482, 627)
+polygon = PackedVector2Array(310, 700, 321, 578, 515, 512, 578, 603, 663, 670, 650, 820, 550, 823, 547, 740, 456, 651)
 
 [node name="Zone5" type="Area2D" parent="Zones" groups=["Zones"]]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone5"]
-polygon = PackedVector2Array(802, 662, 905, 600, 971, 540, 1068, 556, 1008, 662, 898, 707, 902, 826, 792, 820)
+polygon = PackedVector2Array(812, 660, 905, 613, 993, 532, 1116, 593, 935, 720, 935, 841, 799, 820)
 
 [node name="Zone6" type="Area2D" parent="Zones" groups=["Zones"]]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone6"]
-position = Vector2(-11, 281)
-polygon = PackedVector2Array(1248, 7, 1317, 60, 1184, 138, 1100, 159, 1072, 103)
+position = Vector2(-6, 286)
+polygon = PackedVector2Array(1248, 7, 1314, 64.9999, 1119, 182, 1063, 106)
 
 [node name="Zone7" type="Area2D" parent="Zones" groups=["Zones"]]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zones/Zone7"]
-position = Vector2(16, 264)
-polygon = PackedVector2Array(951, 20, 1004.87, -8.35141, 1141, -80, 1079, -121, 972, -69, 925, -23)
+position = Vector2(-5, 270)
+polygon = PackedVector2Array(960, 22, 1123, -72, 1059, -113, 960, -82, 913, -42)
 
 [node name="power_up" parent="." instance=ExtResource("8_bythd")]
 
