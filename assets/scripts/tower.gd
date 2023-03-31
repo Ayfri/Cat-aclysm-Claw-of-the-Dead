@@ -75,9 +75,10 @@ func fire_target() -> void:
 	if $ReloadTimer.is_stopped():
 		$ReloadTimer.start();
 		var bullet := BulletScene.instantiate() as Bullet;
-		bullet.damage = stats.base_damage;
+		bullet.damages = stats.base_damage;
 		bullet.speed = bullet_speed;
 		bullet.target = target;
+		bullet.tower = self;
 		$BulletContainer.add_child(bullet);
 		bullet.global_position = $Aim.global_position;
 

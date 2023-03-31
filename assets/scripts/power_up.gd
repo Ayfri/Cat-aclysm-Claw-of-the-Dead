@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 
 func _on_timer_sprite_timeout():
 	random_spawn = randi() % 3 + 1;
-	print(random_spawn)
+
 	if random_spawn == 3:
 		$Sprite2D.texture = sprite_debuff;
 	else:
