@@ -48,36 +48,85 @@ debug_color = Color(0.654902, 0.321569, 1, 0.419608)
 [node name="ClickableAreaShape" type="CollisionPolygon2D" parent="ClickableArea"]
 polygon = PackedVector2Array(-42, 47, -25, 16, -37, 9, -37, -12, -7, -25, -7, -36, -32, -48, -32, -69, 3, -86, 10, -86, 44, -66, 44, -47, 64, -39, 58, -16, 40, -8, 40, 12, 13, 25, 20, 47)
 
-[node name="CenterContainer" type="BoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 visible = false
-offset_right = 253.0
-offset_bottom = 40.0
+z_index = 2000
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.5
+offset_top = -120.0
+offset_right = 124.5
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="SelectWeakestEnemy" type="Button" parent="CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+modulate = Color(0, 0, 0, 0.458824)
+show_behind_parent = true
+layout_mode = 2
+
+[node name="ContainerButtonWeakest" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="SelectWeakestEnemy" type="Button" parent="MarginContainer/ContainerButtonWeakest"]
 layout_mode = 2
 text = "Weakest"
 
-[node name="SelectStrongestEnemy" type="Button" parent="CenterContainer"]
+[node name="ContainerButtonStrongest" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="SelectStrongestEnemy" type="Button" parent="MarginContainer/ContainerButtonStrongest"]
 layout_mode = 2
 text = "Strongest"
 
-[node name="SelectFirstEnemy" type="Button" parent="CenterContainer"]
+[node name="ContainerButtonFirst" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="SelectFirstEnemy" type="Button" parent="MarginContainer/ContainerButtonFirst"]
 layout_mode = 2
 text = "First"
 
-[node name="SelectLastEnemy" type="Button" parent="CenterContainer"]
+[node name="ContainerButtonLast" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="SelectLastEnemy" type="Button" parent="MarginContainer/ContainerButtonLast"]
 layout_mode = 2
 text = "Last"
 
-[node name="SelectRandomEnemy" type="Button" parent="CenterContainer"]
+[node name="ContainerButtonRandom" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="SelectRandomEnemy" type="Button" parent="MarginContainer/ContainerButtonRandom"]
 layout_mode = 2
 text = "Random"
+
+[node name="ContainerButtonClose" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="CloseGui" type="Button" parent="MarginContainer/ContainerButtonClose"]
+layout_mode = 2
+text = "X"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
 [connection signal="input_event" from="ClickableArea" to="." method="_on_clickable_area_input_event"]
-[connection signal="pressed" from="CenterContainer/SelectWeakestEnemy" to="." method="_on_select_weakest_enemy_pressed"]
-[connection signal="pressed" from="CenterContainer/SelectStrongestEnemy" to="." method="_on_select_strongest_enemy_pressed"]
-[connection signal="pressed" from="CenterContainer/SelectFirstEnemy" to="." method="_on_select_first_enemy_pressed"]
-[connection signal="pressed" from="CenterContainer/SelectLastEnemy" to="." method="_on_select_last_enemy_pressed"]
-[connection signal="pressed" from="CenterContainer/SelectRandomEnemy" to="." method="_on_select_random_enemy_pressed"]
+[connection signal="pressed" from="MarginContainer/ContainerButtonWeakest/SelectWeakestEnemy" to="." method="_on_select_weakest_enemy_pressed"]
+[connection signal="pressed" from="MarginContainer/ContainerButtonStrongest/SelectStrongestEnemy" to="." method="_on_select_strongest_enemy_pressed"]
+[connection signal="pressed" from="MarginContainer/ContainerButtonFirst/SelectFirstEnemy" to="." method="_on_select_first_enemy_pressed"]
+[connection signal="pressed" from="MarginContainer/ContainerButtonLast/SelectLastEnemy" to="." method="_on_select_last_enemy_pressed"]
+[connection signal="pressed" from="MarginContainer/ContainerButtonRandom/SelectRandomEnemy" to="." method="_on_select_random_enemy_pressed"]
+[connection signal="pressed" from="MarginContainer/ContainerButtonClose/CloseGui" to="." method="_on_close_gui_pressed"]

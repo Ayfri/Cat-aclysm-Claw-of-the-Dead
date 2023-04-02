@@ -14,7 +14,7 @@ var targetable_enemy: Array[Enemy] = [];
 
 
 @onready var sprite := %Sprite as Sprite2D;
-@onready var target_menu := $CenterContainer as BoxContainer;
+@onready var target_menu := $MarginContainer as MarginContainer;
 
 
 func _ready() -> void:
@@ -120,6 +120,18 @@ func _on_select_random_enemy_pressed() -> void:
 	target_menu.visible = false;
 
 
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+		if GuiTowerManager.last_visible_gui != null:
+			GuiTowerManager.last_visible_gui.visible = false;
+
+
 func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		target_menu.visible = !target_menu.visible;
+		if target_menu.visible:
+			GuiTowerManager.last_visible_gui = target_menu;
+
+
+func _on_close_gui_pressed():
+	target_menu.visible = false;
