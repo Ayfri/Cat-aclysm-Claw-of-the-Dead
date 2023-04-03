@@ -120,10 +120,11 @@ func _on_select_random_enemy_pressed() -> void:
 	target_menu.visible = false;
 
 
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		if GuiTowerManager.last_visible_gui != null:
 			GuiTowerManager.last_visible_gui.visible = false;
+			GuiTowerManager.last_visible_gui = null;
 
 
 func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
