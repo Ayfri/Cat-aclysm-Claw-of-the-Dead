@@ -15,6 +15,8 @@ var targetable_enemy: Array[Enemy] = [];
 
 @onready var sprite := %Sprite as Sprite2D;
 @onready var target_menu := $MarginContainer as MarginContainer;
+@onready var glowing_effect := $Sprite/GlowingEffect as PointLight2D;
+@onready var z_index_save: int = sprite.z_index;
 
 
 func _ready() -> void:
@@ -124,6 +126,8 @@ func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		if GuiTowerManager.last_visible_gui != null:
 			GuiTowerManager.last_visible_gui.visible = false;
+			GuiTowerManager.last_visible_gui.get_parent().find_child("Sprite").z_index = z_index_save;
+			GuiTowerManager.last_visible_gui.get_parent().find_child("Sprite").find_child("GlowingEffect").enabled = false;
 			GuiTowerManager.last_visible_gui = null;
 
 
@@ -131,8 +135,11 @@ func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _sha
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		target_menu.visible = !target_menu.visible;
 		if target_menu.visible:
+			glowing_effect.enabled = true;
+			sprite.z_index = target_menu.z_index+2;
 			GuiTowerManager.last_visible_gui = target_menu;
 
 
 func _on_close_gui_pressed():
 	target_menu.visible = false;
+	glowing_effect.enabled = false;

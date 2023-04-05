@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmlq2yjrn6dhb"]
+[gd_scene load_steps=6 format=3 uid="uid://bmlq2yjrn6dhb"]
 
 [ext_resource type="Script" path="res://assets/scripts/tower.gd" id="1_4tf75"]
 [ext_resource type="Texture2D" uid="uid://b6jmbweyvlkxi" path="res://assets/sprites/towers/tree.png" id="2_tlb2q"]
+[ext_resource type="Texture2D" uid="uid://ysbg6tqkoqoe" path="res://assets/light/2d_lights_and_shadows_neutral_point_light.webp" id="3_75ab0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjdme"]
 radius = 213.258
@@ -19,6 +20,15 @@ texture_filter = 1
 position = Vector2(-0.5, -22.5)
 scale = Vector2(2, 2)
 texture = ExtResource("2_tlb2q")
+
+[node name="GlowingEffect" type="PointLight2D" parent="Sprite"]
+position = Vector2(0.25, 5.25)
+scale = Vector2(1.01758, 1.06641)
+enabled = false
+range_z_min = 2001
+range_z_max = 2002
+texture = ExtResource("3_75ab0")
+texture_scale = 0.4
 
 [node name="Area2D" type="Area2D" parent="."]
 input_pickable = false
@@ -56,14 +66,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -124.5
+offset_left = -119.0
 offset_top = -120.0
-offset_right = 124.5
+offset_right = 130.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
-modulate = Color(0, 0, 0, 0.458824)
+modulate = Color(0, 0, 0, 0.741176)
 show_behind_parent = true
 layout_mode = 2
 
