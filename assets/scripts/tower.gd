@@ -100,26 +100,47 @@ func _on_area_exited(area: Area2D) -> void:
 func _on_select_weakest_enemy_pressed() -> void:
 	type_target = Target.Weakest;
 	target_menu.visible = false;
+	glowing_effect.enabled = false;
 
 
 func _on_select_strongest_enemy_pressed() -> void:
 	type_target = Target.Strongest;
 	target_menu.visible = false;
+	glowing_effect.enabled = false;
 
 
 func _on_select_last_enemy_pressed() -> void:
 	type_target = Target.Last;
 	target_menu.visible = false;
+	glowing_effect.enabled = false;
 
 
 func _on_select_first_enemy_pressed() -> void:
 	type_target = Target.First;
 	target_menu.visible = false;
+	glowing_effect.enabled = false;
 
 
 func _on_select_random_enemy_pressed() -> void:
 	type_target = Target.Random;
 	target_menu.visible = false;
+	glowing_effect.enabled = false;
+
+
+func _on_close_gui_pressed():
+	target_menu.visible = false;
+	glowing_effect.enabled = false;
+
+
+func _on_updrage_tower_pressed():
+	target_menu.visible = false;
+	glowing_effect.enabled = false;
+
+
+func _on_destroy_tower_pressed():
+	target_menu.visible = false;
+	glowing_effect.enabled = false;
+	self.queue_free();
 
 
 func _unhandled_input(event: InputEvent):
@@ -138,8 +159,3 @@ func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _sha
 			glowing_effect.enabled = true;
 			sprite.z_index = target_menu.z_index+2;
 			GuiTowerManager.last_visible_gui = target_menu;
-
-
-func _on_close_gui_pressed():
-	target_menu.visible = false;
-	glowing_effect.enabled = false;
