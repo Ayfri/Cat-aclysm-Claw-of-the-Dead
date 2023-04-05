@@ -123,7 +123,7 @@ func _on_select_random_enemy_pressed() -> void:
 
 
 func _unhandled_input(event: InputEvent):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+	if event.is_pressed() and ((event is InputEventMouseButton and (event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT)) or (event is InputEventKey and event.keycode == KEY_SPACE)) :
 		if GuiTowerManager.last_visible_gui != null:
 			GuiTowerManager.last_visible_gui.visible = false;
 			GuiTowerManager.last_visible_gui.get_parent().find_child("Sprite").z_index = z_index_save;
