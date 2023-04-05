@@ -14,7 +14,9 @@ var targetable_enemy: Array[Enemy] = [];
 
 
 @onready var sprite := %Sprite as Sprite2D;
-@onready var target_menu := $CenterContainer as BoxContainer;
+@onready var target_menu := $MarginContainer as MarginContainer;
+@onready var glowing_effect := $Sprite/GlowingEffect as PointLight2D;
+@onready var z_index_save: int = sprite.z_index;
 
 
 func _ready() -> void:
@@ -75,9 +77,10 @@ func fire_target() -> void:
 	if $ReloadTimer.is_stopped():
 		$ReloadTimer.start();
 		var bullet := BulletScene.instantiate() as Bullet;
-		bullet.damage = stats.base_damage;
+		bullet.damages = stats.base_damage;
 		bullet.speed = bullet_speed;
 		bullet.target = target;
+		bullet.tower = self;
 		$BulletContainer.add_child(bullet);
 		bullet.global_position = $Aim.global_position;
 
@@ -97,28 +100,62 @@ func _on_area_exited(area: Area2D) -> void:
 func _on_select_weakest_enemy_pressed() -> void:
 	type_target = Target.Weakest;
 	target_menu.visible = false;
+	glowing_effect.enabled = false;
 
 
 func _on_select_strongest_enemy_pressed() -> void:
 	type_target = Target.Strongest;
 	target_menu.visible = false;
+	glowing_effect.enabled = false;
 
 
 func _on_select_last_enemy_pressed() -> void:
 	type_target = Target.Last;
 	target_menu.visible = false;
+	glowing_effect.enabled = false;
 
 
 func _on_select_first_enemy_pressed() -> void:
 	type_target = Target.First;
 	target_menu.visible = false;
+	glowing_effect.enabled = false;
 
 
 func _on_select_random_enemy_pressed() -> void:
 	type_target = Target.Random;
 	target_menu.visible = false;
+	glowing_effect.enabled = false;
+
+
+func _on_close_gui_pressed():
+	target_menu.visible = false;
+	glowing_effect.enabled = false;
+
+
+func _on_updrage_tower_pressed():
+	target_menu.visible = false;
+	glowing_effect.enabled = false;
+
+
+func _on_destroy_tower_pressed():
+	target_menu.visible = false;
+	glowing_effect.enabled = false;
+	self.queue_free();
+
+
+func _unhandled_input(event: InputEvent):
+	if event.is_pressed() and ((event is InputEventMouseButton and (event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT)) or (event is InputEventKey and event.keycode == KEY_SPACE)) :
+		if GuiTowerManager.last_visible_gui != null:
+			GuiTowerManager.last_visible_gui.visible = false;
+			GuiTowerManager.last_visible_gui.get_parent().find_child("Sprite").z_index = z_index_save;
+			GuiTowerManager.last_visible_gui.get_parent().find_child("Sprite").find_child("GlowingEffect").enabled = false;
+			GuiTowerManager.last_visible_gui = null;
 
 
 func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		target_menu.visible = !target_menu.visible;
+		if target_menu.visible:
+			glowing_effect.enabled = true;
+			sprite.z_index = target_menu.z_index+2;
+			GuiTowerManager.last_visible_gui = target_menu;

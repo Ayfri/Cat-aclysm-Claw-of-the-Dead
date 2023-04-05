@@ -1,9 +1,10 @@
 class_name Bullet;
 extends CharacterBody2D;
 
-var damage: int;
-var target: Enemy;
+var damages: float;
 var speed: int;
+var target: Enemy;
+var tower: Tower;
 
 
 func _physics_process(_delta: float) -> void:
@@ -17,5 +18,5 @@ func _physics_process(_delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Enemy:
-		area.health -= 3;
+		area.on_hit.emit(tower, damages);
 		queue_free();
