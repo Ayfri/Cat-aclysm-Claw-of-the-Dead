@@ -8,7 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://xkfs36j6u3h1" path="res://assets/sprites/masks/circle.png" id="5_2jnwn"]
 [ext_resource type="Script" path="res://assets/scripts/zones.gd" id="6_codll"]
 [ext_resource type="PackedScene" uid="uid://bhd4f1vigfci2" path="res://scenes/power_up.tscn" id="8_bythd"]
+<<<<<<< HEAD
+[ext_resource type="PackedScene" uid="uid://b2xokag7mxnk5" path="res://scenes/path.tscn" id="9_3orfk"]
+=======
 [ext_resource type="PackedScene" uid="uid://cbwhtm1ayfu3n" path="res://scenes/spawner.tscn" id="9_8m8la"]
+>>>>>>> 4c806422410099f053c1832a0e2b236dd84d6d3a
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nm0lp"]
 shader = ExtResource("4_fotjd")
@@ -103,4 +107,4 @@ polygon = PackedVector2Array(960, 22, 1123, -72, 1059, -113, 960, -82, 913, -42)
 
 [node name="power_up" parent="." instance=ExtResource("8_bythd")]
 
-[node name="spawner" parent="." instance=ExtResource("9_8m8la")]
+[node name="Path" parent="." instance=ExtResource("9_3orfk")]
