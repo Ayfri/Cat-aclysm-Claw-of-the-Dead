@@ -4,9 +4,10 @@ extends Area2D
 
 signal on_hit(tower: Tower, damages: float);
 
-
-var health := 10.0;
-var money_reward := 5.0;
+var stats: EnemyStats = Globals.enemy_stats[0];
+var health := stats.base_health;
+var money_reward := stats.base_reward;
+var speed := stats.base_speed;
 
 @onready var animated_sprite := $AnimatedSprite2D as AnimatedSprite2D;
 @onready var parent := get_parent() as PathFollow2D;
@@ -21,7 +22,7 @@ func _init() -> void:
 func _process(delta: float) -> void:
 	if is_dead: return;
 
-	parent.progress = parent.progress + Globals.enemy_speed * delta;
+	parent.progress = parent.progress + (speed * Globals.enemy_speed_multiplier * delta);
 
 	var x_pos_difference := parent.position.x - previous_point.x;
 	var y_pos_difference := parent.position.y - previous_point.y;

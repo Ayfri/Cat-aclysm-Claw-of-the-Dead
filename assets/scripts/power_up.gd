@@ -28,14 +28,14 @@ func _on_timer_sprite_timeout():
 
 func apply_powerup_effect() -> void:
 	if $Sprite2D.texture == sprite_debuff:
-		Globals.enemy_speed = 400;
+		Globals.enemy_speed_multiplier = 2;
 		await get_tree().create_timer(2.0).timeout;
-		Globals.enemy_speed = 200;
+		Globals.enemy_speed_multiplier = 1;
 
 	else:
-		Globals.enemy_speed = 100;
+		Globals.enemy_speed_multiplier = 0.5;
 		await get_tree().create_timer(2.0).timeout;
-		Globals.enemy_speed = 200;
+		Globals.enemy_speed_multiplier = 1;
 
 func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
