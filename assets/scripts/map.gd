@@ -65,6 +65,12 @@ func map_editing() -> void:
 		var tower_stats := Globals.tower_stats[current_tower_index];
 		Globals.level.money -= tower_stats.base_price;
 
+		var last_visible_gui := GuiTowerManager.last_visible_gui
+		if last_visible_gui != null:
+			last_visible_gui.hide();
+			last_visible_gui.get_parent().find_child("Sprite").find_child("GlowingEffect").enabled = false;
+			GuiTowerManager.last_visible_gui = null;
+
 		var tower_sprite := TowerScene.instantiate() as Tower;
 		tower_sprite.stats = tower_stats;
 		tower_sprite.position = sprite.position;

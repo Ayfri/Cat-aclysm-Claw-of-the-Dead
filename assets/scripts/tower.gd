@@ -7,20 +7,24 @@ enum Target {First = 0, Last = 1, Strongest = 2, Weakest = 3, Random = 4};
 
 var bullet_speed := 300;
 var random_generator := RandomNumberGenerator.new();
-var stats: TowerStats
+var stats: TowerStats;
 var type_target: Target;
 var target: Enemy;
 var targetable_enemy: Array[Enemy] = [];
+var upgraded := false;
 
 
 @onready var sprite := %Sprite as Sprite2D;
 @onready var target_menu := $MarginContainer as MarginContainer;
 @onready var glowing_effect := $Sprite/GlowingEffect as PointLight2D;
+@onready var timer := get_tree().create_timer(0.2);
+@onready var upgrade_button := $MarginContainer/ContainerButtonUpgrade as VBoxContainer;
 @onready var z_index_save: int = sprite.z_index;
 
 
 func _ready() -> void:
 	random_generator.randomize();
+	timer.timeout.connect(_enable_menu);
 
 
 func _process(_delta: float) -> void:
@@ -28,6 +32,11 @@ func _process(_delta: float) -> void:
 
 	select_target();
 	if target != null: fire_target();
+
+
+func _enable_menu():
+	timer = null;
+
 
 
 func select_target() -> void:
@@ -77,10 +86,11 @@ func fire_target() -> void:
 	if $ReloadTimer.is_stopped():
 		$ReloadTimer.start();
 		var bullet := BulletScene.instantiate() as Bullet;
-		bullet.damages = stats.base_damage;
+		bullet.damages = stats.base_damage + stats.upgrade_damages if upgraded else stats.base_damage;
 		bullet.speed = bullet_speed;
 		bullet.target = target;
 		bullet.tower = self;
+
 		$BulletContainer.add_child(bullet);
 		bullet.global_position = $Aim.global_position;
 
@@ -132,9 +142,13 @@ func _on_close_gui_pressed():
 	glowing_effect.enabled = false;
 
 
-func _on_updrage_tower_pressed():
+func _on_upgrade_tower_pressed():
+	if Globals.level.money < stats.upgrade_price: return;
 	target_menu.visible = false;
 	glowing_effect.enabled = false;
+
+	upgraded = true;
+	upgrade_button.queue_free();
 
 
 func _on_destroy_tower_pressed():
@@ -143,8 +157,9 @@ func _on_destroy_tower_pressed():
 	self.queue_free();
 
 
-func _unhandled_input(event: InputEvent):
-	if event.is_pressed() and ((event is InputEventMouseButton and (event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT)) or (event is InputEventKey and event.keycode == KEY_SPACE)) :
+func _unhandled_input(event: InputEvent) -> void:
+	var right_or_left_click: bool = event is InputEventMouseButton and (event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT);
+	if event.is_pressed() and right_or_left_click:
 		if GuiTowerManager.last_visible_gui != null:
 			GuiTowerManager.last_visible_gui.visible = false;
 			GuiTowerManager.last_visible_gui.get_parent().find_child("Sprite").z_index = z_index_save;
@@ -153,6 +168,8 @@ func _unhandled_input(event: InputEvent):
 
 
 func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+	if timer != null: return;
+
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		target_menu.visible = !target_menu.visible;
 		if target_menu.visible:
