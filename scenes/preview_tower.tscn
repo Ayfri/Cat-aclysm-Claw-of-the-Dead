@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://assets/scripts/preview_tower.gd" id="1_ujffx"]
 [ext_resource type="Texture2D" uid="uid://b6jmbweyvlkxi" path="res://assets/sprites/towers/tree.png" id="2_54qn8"]
 
-[node name="Tower" type="Area2D"]
+[node name="PreviewTower" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_ujffx")

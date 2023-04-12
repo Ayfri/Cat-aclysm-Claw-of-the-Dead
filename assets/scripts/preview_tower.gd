@@ -19,15 +19,18 @@ func _init() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion || event is InputEventMouseButton:
-		test_current_overlapping_area();
+	test_current_overlapping_area();
 
 
 func _on_area_entered(area: Area2D) -> void:
+	# Check for overlapping towers
 	if area.name == "PlacementHitbox":
 		overlapping_towers.append(area);
 		is_valid_placement = false;
 		return;
+
+	# Check for zones
+	if !area.name.begins_with("Zone"): return;
 
 	var polygon := area.get_node_or_null("CollisionPolygon2D") as CollisionPolygon2D;
 	if polygon != null:
@@ -39,6 +42,9 @@ func _on_area_exited(area: Area2D) -> void:
 	if area.name == "PlacementHitbox":
 		overlapping_towers.remove_at(overlapping_towers.find(area));
 		return;
+
+
+	if !area.name.begins_with("Zone"): return;
 
 	if area.get_node_or_null("CollisionPolygon2D") == overlapping_zone:
 		overlapping_zone = null;
@@ -55,8 +61,10 @@ func test_current_overlapping_area() -> void:
 
 	var area_polygon_transformed: PackedVector2Array = [];
 	var current_polygon_transformed: PackedVector2Array = [];
+
 	for point in overlapping_zone.polygon:
-		area_polygon_transformed.append(point * overlapping_zone.transform.affine_inverse() * overlapping_zone.transform);
+		area_polygon_transformed.append(point * overlapping_zone.transform.affine_inverse());
+
 	for point in $CollisionPolygon2D.polygon:
 		current_polygon_transformed.append(point * transform.affine_inverse());
 
