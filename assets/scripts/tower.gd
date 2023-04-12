@@ -2,6 +2,7 @@ class_name Tower;
 extends Node2D;
 
 const BulletScene := preload("res://scenes/bullet.tscn");
+var bullet_texture := preload("res://assets/sprites/projectiles/arrow.png");
 enum Target {First = 0, Last = 1, Strongest = 2, Weakest = 3, Random = 4};
 
 
@@ -90,6 +91,7 @@ func fire_target() -> void:
 		bullet.speed = bullet_speed;
 		bullet.target = target;
 		bullet.tower = self;
+		bullet.sprite_texture = bullet_texture;
 
 		$BulletContainer.add_child(bullet);
 		bullet.global_position = $Aim.global_position;
@@ -146,7 +148,7 @@ func _on_upgrade_tower_pressed():
 	if Globals.level.money < stats.upgrade_price: return;
 	target_menu.visible = false;
 	glowing_effect.enabled = false;
-
+	bullet_texture = load("res://assets/sprites/projectiles/bullet.png");
 	upgraded = true;
 	upgrade_button.queue_free();
 

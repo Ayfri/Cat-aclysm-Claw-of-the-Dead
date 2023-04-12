@@ -6,6 +6,10 @@ var speed: int;
 var target: Enemy;
 var tower: Tower;
 
+@export var sprite_texture: Texture2D;
+
+func _ready() -> void:
+	$Sprite2D.texture = sprite_texture;
 
 func _physics_process(_delta: float) -> void:
 	if target == null:
