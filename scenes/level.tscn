@@ -5,8 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://crrvi62hvfjip" path="res://scenes/level_interface.tscn" id="3_xgdqo"]
 
 [node name="Level" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_uvlv4")
 
 [node name="level_interface" parent="." instance=ExtResource("3_xgdqo")]
 
 [node name="Map" parent="." instance=ExtResource("2_wn1wg")]
+process_mode = 1

@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfmh16ne56gx5"]
+
+[ext_resource type="Theme" uid="uid://cvuqor137cfgp" path="res://assets/themes/main_theme.tres" id="1_22uwq"]
+[ext_resource type="Script" path="res://assets/scripts/pause.gd" id="2_uahcj"]
+
+[node name="pause_interface" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("2_uahcj")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_22uwq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 300.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 0
+
+[node name="MarginContainer3" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ReturnButton" type="Button" parent="Control/MarginContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Return to game"
+
+[node name="RestartButton" type="Button" parent="Control/MarginContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+
+[node name="QuitToMenuButton" type="Button" parent="Control/MarginContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit To Menu
+"
+
+[node name="ExitToDesktopButton" type="Button" parent="Control/MarginContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Exit To Desktop"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -204.5
+offset_top = -139.0
+offset_right = 204.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 80
+
+[node name="Label" type="Label" parent="Control/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 140
+text = "PAUSED"
+
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer3/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer3/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer3/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer3/ExitToDesktopButton" to="." method="_on_exit_to_desktop_button_pressed"]
