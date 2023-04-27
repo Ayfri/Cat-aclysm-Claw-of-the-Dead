@@ -1,8 +1,49 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmlq2yjrn6dhb"]
+[gd_scene load_steps=12 format=3 uid="uid://bmlq2yjrn6dhb"]
 
 [ext_resource type="Script" path="res://assets/scripts/tower.gd" id="1_4tf75"]
-[ext_resource type="Texture2D" uid="uid://b6jmbweyvlkxi" path="res://assets/sprites/towers/tree.png" id="2_tlb2q"]
-[ext_resource type="Texture2D" uid="uid://ysbg6tqkoqoe" path="res://assets/light/2d_lights_and_shadows_neutral_point_light.webp" id="3_75ab0"]
+[ext_resource type="Texture2D" uid="uid://bwt25uomsitx2" path="res://assets/sprites/towers/tree_1.png" id="2_u5xix"]
+[ext_resource type="Texture2D" uid="uid://j25c65ccu2nt" path="res://assets/sprites/towers/tree_2.png" id="3_3crxl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh0k0"]
+atlas = ExtResource("2_u5xix")
+region = Rect2(4, 5, 55, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wfw6"]
+atlas = ExtResource("2_u5xix")
+region = Rect2(68, 5, 55, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gni0c"]
+atlas = ExtResource("3_3crxl")
+region = Rect2(4, 5, 55, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5xu8"]
+atlas = ExtResource("3_3crxl")
+region = Rect2(68, 5, 55, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bvneo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh0k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wfw6")
+}],
+"loop": true,
+"name": &"idle_1",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gni0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5xu8")
+}],
+"loop": true,
+"name": &"idle_2",
+"speed": 2.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjdme"]
 radius = 213.258
@@ -10,24 +51,27 @@ radius = 213.258
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdln7"]
 size = Vector2(76, 78)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfmlb"]
+size = Vector2(109, 141)
+
 [node name="Tower" type="Node2D"]
 script = ExtResource("1_4tf75")
 metadata/_edit_group_ = true
 
-[node name="Sprite" type="Sprite2D" parent="."]
-unique_name_in_owner = true
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-0.5, -22.5)
+position = Vector2(15, -15)
 scale = Vector2(2, 2)
-texture = ExtResource("2_tlb2q")
+sprite_frames = SubResource("SpriteFrames_bvneo")
+animation = &"idle_2"
+autoplay = "idle_1"
 
-[node name="GlowingEffect" type="PointLight2D" parent="Sprite"]
+[node name="GlowingEffect" type="PointLight2D" parent="AnimatedSprite"]
 position = Vector2(0.25, 5.25)
 scale = Vector2(1.01758, 1.06641)
 enabled = false
 range_z_min = 2001
 range_z_max = 2002
-texture = ExtResource("3_75ab0")
 texture_scale = 0.4
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -55,8 +99,9 @@ debug_color = Color(0.654902, 0.321569, 1, 0.419608)
 
 [node name="ClickableArea" type="Area2D" parent="."]
 
-[node name="ClickableAreaShape" type="CollisionPolygon2D" parent="ClickableArea"]
-polygon = PackedVector2Array(-42, 47, -25, 16, -37, 9, -37, -12, -7, -25, -7, -36, -32, -48, -32, -69, 3, -86, 10, -86, 44, -66, 44, -47, 64, -39, 58, -16, 40, -8, 40, 12, 13, 25, 20, 47)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableArea"]
+position = Vector2(15, -15)
+shape = SubResource("RectangleShape2D_hfmlb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 visible = false

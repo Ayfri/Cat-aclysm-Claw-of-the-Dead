@@ -2,7 +2,7 @@ extends Node2D;
 
 var wave = 0
 var mobs_left = 0
-var wave_mobs = [5,5,5,5,5,5,0] 
+var wave_mobs = [5,5,5,5,5,5,0]
 var wave_speed = [1.0,1.0,0.5,0.5,0.3,0.2,100.0]
 
 var instance
@@ -13,7 +13,7 @@ const enemy = preload("res://scenes/enemy.tscn")
 
 
 
-	
+
 func _on_timer_timeout():
 	if wave <= len(wave_mobs) && wave <= len(wave_speed):
 		mobs_left = wave_mobs[wave]

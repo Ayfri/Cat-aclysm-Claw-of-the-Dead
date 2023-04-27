@@ -15,9 +15,9 @@ var targetable_enemy: Array[Enemy] = [];
 var upgraded := false;
 
 
-@onready var sprite := %Sprite as Sprite2D;
+@onready var sprite := $AnimatedSprite as AnimatedSprite2D;
 @onready var target_menu := $MarginContainer as MarginContainer;
-@onready var glowing_effect := $Sprite/GlowingEffect as PointLight2D;
+@onready var glowing_effect := $AnimatedSprite/GlowingEffect as PointLight2D;
 @onready var timer := get_tree().create_timer(0.2);
 @onready var upgrade_button := $MarginContainer/ContainerButtonUpgrade as VBoxContainer;
 @onready var z_index_save: int = sprite.z_index;
@@ -37,7 +37,6 @@ func _process(_delta: float) -> void:
 
 func _enable_menu():
 	timer = null;
-
 
 
 func select_target() -> void:
@@ -150,6 +149,7 @@ func _on_upgrade_tower_pressed():
 	glowing_effect.enabled = false;
 	bullet_texture = load("res://assets/sprites/projectiles/bullet.png");
 	upgraded = true;
+	sprite.play("idle_2")
 	upgrade_button.queue_free();
 
 
@@ -164,8 +164,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed() and right_or_left_click:
 		if GuiTowerManager.last_visible_gui != null:
 			GuiTowerManager.last_visible_gui.visible = false;
-			GuiTowerManager.last_visible_gui.get_parent().find_child("Sprite").z_index = z_index_save;
-			GuiTowerManager.last_visible_gui.get_parent().find_child("Sprite").find_child("GlowingEffect").enabled = false;
+			GuiTowerManager.last_visible_gui.get_parent().get_node("AnimatedSprite").z_index = z_index_save;
+			GuiTowerManager.last_visible_gui.get_parent().get_node("AnimatedSprite/GlowingEffect").enabled = false;
 			GuiTowerManager.last_visible_gui = null;
 
 
