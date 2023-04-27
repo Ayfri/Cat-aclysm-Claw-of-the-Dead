@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://crrvi62hvfjip"]
+[gd_scene load_steps=2 format=3 uid="uid://crrvi62hvfjip"]
 
 [ext_resource type="Script" path="res://assets/scripts/level_interface.gd" id="1_am2w4"]
-[ext_resource type="Theme" uid="uid://cvuqor137cfgp" path="res://assets/themes/main_theme.tres" id="2_804w8"]
 
 [node name="level_interface" type="CanvasLayer"]
 script = ExtResource("1_am2w4")
@@ -12,8 +11,6 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 270.0
 offset_bottom = 60.0
-theme = ExtResource("2_804w8")
-theme_type_variation = &"main"
 bbcode_enabled = true
 shortcut_keys_enabled = false
 
@@ -23,7 +20,5 @@ offset_left = 10.0
 offset_top = 60.0
 offset_right = 270.0
 offset_bottom = 110.0
-theme = ExtResource("2_804w8")
-theme_type_variation = &"main"
 bbcode_enabled = true
 shortcut_keys_enabled = false

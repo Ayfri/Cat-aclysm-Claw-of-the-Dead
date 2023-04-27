@@ -1,9 +1,9 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://cvuqor137cfgp"]
 
-[ext_resource type="FontFile" uid="uid://b3wnpu6apeew8" path="res://assets/fonts/jungle-adventurer.regular.ttf" id="1_2xwyq"]
+[ext_resource type="FontFile" uid="uid://ctmmqfwaqk3sb" path="res://assets/fonts/Pixel NES.otf" id="1_sr4u3"]
 
 [resource]
-default_font = ExtResource("1_2xwyq")
+default_font = ExtResource("1_sr4u3")
 default_font_size = 20
 /font_sizes/big = 80
 /font_sizes/medium = 40

@@ -45,6 +45,11 @@ project/assembly_name="CatAClysm Beta"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[gui]
+
+theme/custom="res://assets/themes/main_theme.tres"
+theme/custom_font="res://assets/fonts/Pixel NES.otf"
+
 [input]
 
 "Change Map Editing Mode"={

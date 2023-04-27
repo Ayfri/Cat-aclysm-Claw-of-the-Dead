@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfmh16ne56gx5"]
+[gd_scene load_steps=2 format=3 uid="uid://dhwj4mesmj1ee"]
 
-[ext_resource type="Theme" uid="uid://cvuqor137cfgp" path="res://assets/themes/main_theme.tres" id="1_22uwq"]
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="2_uahcj"]
 
 [node name="pause_interface" type="CanvasLayer"]
@@ -16,7 +15,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_22uwq")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
