@@ -1,4 +1,4 @@
-class_name Tower;
+class_name ITower;
 extends Node2D;
 
 const BulletScene := preload("res://scenes/bullet.tscn");
@@ -15,9 +15,9 @@ var targetable_enemy: Array[Enemy] = [];
 var upgraded := false;
 
 
-@onready var sprite := $AnimatedSprite as AnimatedSprite2D;
+@onready var sprite := $AnimatedSprite2D as AnimatedSprite2D;
 @onready var target_menu := $MarginContainer as MarginContainer;
-@onready var glowing_effect := $AnimatedSprite/GlowingEffect as PointLight2D;
+@onready var glowing_effect := $AnimatedSprite2D/GlowingEffect as PointLight2D;
 @onready var timer := get_tree().create_timer(0.2);
 @onready var upgrade_button := $MarginContainer/ContainerButtonUpgrade as VBoxContainer;
 @onready var z_index_save: int = sprite.z_index;
@@ -164,8 +164,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed() and right_or_left_click:
 		if GuiTowerManager.last_visible_gui != null:
 			GuiTowerManager.last_visible_gui.visible = false;
-			GuiTowerManager.last_visible_gui.get_parent().get_node("AnimatedSprite").z_index = z_index_save;
-			GuiTowerManager.last_visible_gui.get_parent().get_node("AnimatedSprite/GlowingEffect").enabled = false;
+			GuiTowerManager.last_visible_gui.get_parent().get_node("AnimatedSprite2D").z_index = z_index_save;
+			GuiTowerManager.last_visible_gui.get_parent().get_node("AnimatedSprite2D/GlowingEffect").enabled = false;
 			GuiTowerManager.last_visible_gui = null;
 
 

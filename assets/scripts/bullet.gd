@@ -4,7 +4,7 @@ extends CharacterBody2D;
 var damages: float;
 var speed: int;
 var target: Enemy;
-var tower: Tower;
+var tower: ITower;
 
 @export var sprite_texture: Texture2D;
 

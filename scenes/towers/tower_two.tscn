@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://co06ncq2rn1g2"]
+
+[ext_resource type="PackedScene" uid="uid://dyao8oeedxc4t" path="res://scenes/towers/i_tower.tscn" id="1_deuxm"]
+[ext_resource type="Script" path="res://assets/scripts/towers/tower_two.gd" id="2_yp1wc"]
+[ext_resource type="Texture2D" uid="uid://b58hsotuaol1n" path="res://assets/sprites/towers/big_1.png" id="3_c068d"]
+[ext_resource type="Texture2D" uid="uid://cd5l66rchmp0j" path="res://assets/sprites/towers/big_2.png" id="4_0hh2x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gd2uo"]
+atlas = ExtResource("3_c068d")
+region = Rect2(1, 0, 62, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seaxq"]
+atlas = ExtResource("3_c068d")
+region = Rect2(65, 0, 62, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttxuj"]
+atlas = ExtResource("4_0hh2x")
+region = Rect2(2, 0, 62, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oopn5"]
+atlas = ExtResource("4_0hh2x")
+region = Rect2(66, 0, 62, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dspq2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gd2uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seaxq")
+}],
+"loop": true,
+"name": &"idle_1",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttxuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oopn5")
+}],
+"loop": true,
+"name": &"idle_2",
+"speed": 5.0
+}]
+
+[node name="TowerTwo" instance=ExtResource("1_deuxm")]
+script = ExtResource("2_yp1wc")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_dspq2")
+animation = &"idle_2"

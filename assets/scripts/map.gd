@@ -1,8 +1,7 @@
 class_name Map;
 extends Node2D;
 
-const PreviewTowerScene := preload("res://scenes/preview_tower.tscn");
-const TowerScene := preload("res://scenes/tower.tscn");
+const PreviewTowerScene := preload("res://scenes/towers/preview_tower.tscn");
 
 
 var current_tower_index := 0;
@@ -71,7 +70,7 @@ func map_editing() -> void:
 			last_visible_gui.get_parent().find_child("Sprite").find_child("GlowingEffect").enabled = false;
 			GuiTowerManager.last_visible_gui = null;
 
-		var tower_sprite := TowerScene.instantiate() as Tower;
+		var tower_sprite := tower_stats.tower_scene.instantiate() as ITower;
 		tower_sprite.stats = tower_stats;
 		tower_sprite.position = sprite.position;
 

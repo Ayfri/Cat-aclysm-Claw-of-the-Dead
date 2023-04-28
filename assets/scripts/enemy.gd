@@ -2,7 +2,7 @@ class_name Enemy;
 extends Area2D
 
 
-signal on_hit(tower: Tower, damages: float);
+signal on_hit(tower: ITower, damages: float);
 
 var stats: EnemyStats = Globals.enemy_stats[0];
 var health := stats.base_health;
@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		Globals.level.health -= 1;
 		parent.queue_free();
 
-func _on_hit(tower: Tower, damages: float) -> void:
+func _on_hit(tower: ITower, damages: float) -> void:
 	if is_dead: return;
 
 	health -= damages;

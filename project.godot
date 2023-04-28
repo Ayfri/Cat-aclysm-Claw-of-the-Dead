@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://assets/scripts/globals.gd"
-GuiTowerManager="*res://assets/scripts/gui_tower_manager.gd"
+GuiTowerManager="*res://assets/scripts/towers/gui_tower_manager.gd"
 
 [debug]
 

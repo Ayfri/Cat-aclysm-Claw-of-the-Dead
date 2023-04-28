@@ -1,19 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxnhyjdjocpg8"]
+[gd_scene load_steps=3 format=3 uid="uid://dcu2mey0vv56k"]
 
-[ext_resource type="Script" path="res://assets/scripts/preview_tower.gd" id="1_ujffx"]
-[ext_resource type="Texture2D" uid="uid://b6jmbweyvlkxi" path="res://assets/sprites/towers/tree.png" id="2_54qn8"]
+[ext_resource type="Script" path="res://assets/scripts/towers/preview_tower.gd" id="1_6agia"]
+[ext_resource type="Texture2D" uid="uid://b6jmbweyvlkxi" path="res://assets/sprites/towers/tree.png" id="2_f5fou"]
 
 [node name="PreviewTower" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_ujffx")
+script = ExtResource("1_6agia")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.588235)
 texture_filter = 1
 position = Vector2(-0.5, -22.5)
 scale = Vector2(2, 2)
-texture = ExtResource("2_54qn8")
+texture = ExtResource("2_f5fou")
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
