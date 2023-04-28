@@ -1,38 +1,37 @@
 extends Node2D;
 
-var wave = 0
-var mobs_left = 0
-var wave_mobs = [5,5,5,5,5,5,0]
-var wave_speed = [1.0,1.0,0.5,0.5,0.3,0.2,100.0]
+var current_wave = 0;
+var mobs_to_spawn = 0;
 
-var instance
-const enemy = preload("res://scenes/enemy.tscn")
-@onready var WaveTimer := $WaveTimer as Timer;
-@onready var EnemyTimer := $EnemyTimer as Timer;
-@onready var Chemin := $Path2D as Path2D;
+#Always put even numbers
+var wave_mobs = [2,10,20,30,40,50,60];
 
-
-
-
-func _on_timer_timeout():
-	if wave <= len(wave_mobs) && wave <= len(wave_speed):
-		mobs_left = wave_mobs[wave]
-		WaveTimer.wait_time = wave_speed[wave]
-		EnemyTimer.start();
-	#else:
-		#if Chemin.get_children().back() == :
-			#print("GAGNE");
-			#get_tree().change_scene("res://scenes/Win.tscn");
-		#else:
-			#WaveTimer.wait_time = 1;
-			#WaveTimer.start()
+const enemy = preload("res://scenes/enemy.tscn");
+@onready var pre_wave_timer := $PreWaveTimer as Timer;
+@onready var enemy_spawn_timer := $EnemySpawnTimer as Timer;
+@onready var first_path := $FirstPath as Path2D;
+@onready var second_path := $SecondPath as Path2D;
+@onready var third_path := $ThirdPath as Path2D;
+@onready var all_paths : Array[Path2D] = [first_path, second_path, third_path];
 
 
-func _on_enemy_timer_timeout():
-	Chemin.add_child(enemy.instantiate());
-	mobs_left -= 1;
-	if mobs_left > 0:
-		EnemyTimer.start();
-	else:
-		WaveTimer.start()
-		wave += 1;
+func _process(delta):
+	print("pre_wave_timer:",pre_wave_timer.time_left);
+	print("enemy_spawn_timer:",enemy_spawn_timer.time_left);
+	if first_path.get_child_count() < 1 && second_path.get_child_count() < 1 && third_path.get_child_count() < 1 && mobs_to_spawn == 0:
+		if pre_wave_timer.is_stopped():
+			pre_wave_timer.start();
+
+
+func _on_pre_wave_timer_timeout():
+	if current_wave <= len(wave_mobs):
+		current_wave += 1;
+		mobs_to_spawn += wave_mobs[current_wave-1];
+		enemy_spawn_timer.start();
+
+
+func _on_enemy_spawn_timer_timeout():
+	all_paths.pick_random().add_child(enemy.instantiate());
+	mobs_to_spawn -= 1;
+	if mobs_to_spawn > 0:
+		enemy_spawn_timer.start();

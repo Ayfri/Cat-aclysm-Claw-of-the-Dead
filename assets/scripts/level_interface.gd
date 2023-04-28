@@ -9,6 +9,7 @@ func _process(_delta: float) -> void:
 	var money_label_text := """
 		[img=40x40]assets/sprites/ui/coin_cat.png[/img] [font_size=42]%s[/font_size]
 	""".strip_edges();
+	
 
 	var health_label_text := """
 		[img=40x40]assets/sprites/ui/heart_cat.png[/img] [font_size=42]%s[/font_size]

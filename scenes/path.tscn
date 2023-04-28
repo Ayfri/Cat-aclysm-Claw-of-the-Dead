@@ -1,29 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2xokag7mxnk5"]
+[gd_scene load_steps=5 format=3 uid="uid://b2xokag7mxnk5"]
 
 [ext_resource type="Script" path="res://assets/scripts/path.gd" id="1_ce8kx"]
 
+[sub_resource type="Curve2D" id="Curve2D_fv7w7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -98, 626, 0, 0, 0, 0, 130, 622, 0, 0, 0, 0, 466, 504, 0, 0, 0, 0, 684, 414, 0, 0, 0, 0, 794, 294, 0, 0, 0, 0, 1018, 0, 0, 0, 0, 0, 1666, -2, 0, 0, 0, 0, 1752, 160, 0, 0, 0, 0, 1868, 236, 0, 0, 0, 0, 2776, 230, 0, 0, 0, 0, 3100, 152, 0, 0, 0, 0, 3100, 152)
+}
+point_count = 12
+
 [sub_resource type="Curve2D" id="Curve2D_hbxpj"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -186, 742, 0, 0, 0, 0, 68, 722, 0, 0, 0, 0, 418, 562, 0, 0, 0, 0, 866, 496, 0, 0, 0, 0, 946, 424, 0, 0, 0, 0, 978, 14, 0, 0, 0, 0, 1624, 12, 0, 0, 0, 0, 1666, 188, 0, 0, 0, 0, 1790, 302, 0, 0, 0, 0, 2766, 292, 0, 0, 0, 0, 3094, 172)
+"points": PackedVector2Array(0, 0, 0, 0, -186, 774, 0, 0, 0, 0, 42.1203, 742, 0, 0, 0, 0, 418, 562, 0, 0, 0, 0, 866, 496, 0, 0, 0, 0, 946, 424, 0, 0, 0, 0, 978, 14, 0, 0, 0, 0, 1624, 12, 0, 0, 0, 0, 1666, 188, 0, 0, 0, 0, 1790, 302, 0, 0, 0, 0, 2771.34, 266, 0, 0, 0, 0, 3094, 172)
 }
 point_count = 11
+
+[sub_resource type="Curve2D" id="Curve2D_ni745"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1326, 1372, 0, 0, 0, 0, 1332, 650, 0, 0, 0, 0, 1612, 608, 0, 0, 0, 0, 1686, 388, 0, 0, 0, 0, 2074, 336, 0, 0, 0, 0, 2670, 308, 0, 0, 0, 0, 2882, 278, 0, 0, 0, 0, 3100, 190)
+}
+point_count = 8
 
 [node name="Path" type="Node2D"]
 position = Vector2(49, 213)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ce8kx")
-metadata/_edit_group_ = true
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="FirstPath" type="Path2D" parent="."]
+position = Vector2(-7.62939e-06, 0)
+curve = SubResource("Curve2D_fv7w7")
+
+[node name="SecondPath" type="Path2D" parent="."]
+position = Vector2(83.0098, 0)
+scale = Vector2(0.973171, 1)
 curve = SubResource("Curve2D_hbxpj")
 
-[node name="WaveTimer" type="Timer" parent="."]
-wait_time = 0.5
+[node name="ThirdPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ni745")
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PreWaveTimer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="EnemyTimer" type="Timer" parent="."]
-one_shot = true
-
-[connection signal="timeout" from="WaveTimer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="PreWaveTimer" to="." method="_on_pre_wave_timer_timeout"]

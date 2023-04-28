@@ -7,7 +7,6 @@ enum Target {First = 0, Last = 1, Strongest = 2, Weakest = 3, Random = 4};
 
 
 var bullet_speed := 300;
-var random_generator := RandomNumberGenerator.new();
 var stats: TowerStats;
 var type_target: Target;
 var target: Enemy;
@@ -24,7 +23,6 @@ var upgraded := false;
 
 
 func _ready() -> void:
-	random_generator.randomize();
 	timer.timeout.connect(_enable_menu);
 
 
