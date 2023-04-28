@@ -16,8 +16,6 @@ const enemy = preload("res://scenes/enemy.tscn");
 
 
 func _process(delta):
-	print("pre_wave_timer:",pre_wave_timer.time_left);
-	print("enemy_spawn_timer:",enemy_spawn_timer.time_left);
 	if first_path.get_child_count() < 1 && second_path.get_child_count() < 1 && third_path.get_child_count() < 1 && mobs_to_spawn == 0:
 		if pre_wave_timer.is_stopped():
 			pre_wave_timer.start();

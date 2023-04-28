@@ -24,6 +24,8 @@ func _process(delta: float) -> void:
 
 	parent.progress = parent.progress + (speed * Globals.enemy_speed_multiplier * delta);
 
+	z_index = get_viewport().get_visible_rect().size.y + position.y;
+
 	var x_pos_difference := parent.position.x - previous_point.x;
 	var y_pos_difference := parent.position.y - previous_point.y;
 

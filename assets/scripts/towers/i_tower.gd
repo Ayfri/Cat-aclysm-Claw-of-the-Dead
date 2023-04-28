@@ -24,6 +24,7 @@ var upgraded := false;
 
 func _ready() -> void:
 	timer.timeout.connect(_enable_menu);
+	z_index = get_viewport().get_visible_rect().size.y + position.y;
 
 
 func _process(_delta: float) -> void:
@@ -143,6 +144,7 @@ func _on_close_gui_pressed():
 
 func _on_upgrade_tower_pressed():
 	if Globals.level.money < stats.upgrade_price: return;
+	Globals.level.money -= stats.upgrade_price;
 	target_menu.visible = false;
 	glowing_effect.enabled = false;
 	bullet_texture = load("res://assets/sprites/projectiles/bullet.png");
