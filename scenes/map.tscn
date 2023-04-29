@@ -997,6 +997,7 @@ script = ExtResource("3_redex")
 zoom_duration = 0.4
 
 [node name="Zones" type="Node2D" parent="."]
+visible = false
 script = ExtResource("6_codll")
 
 [node name="Zone1" type="Area2D" parent="Zones" groups=["Zones"]]

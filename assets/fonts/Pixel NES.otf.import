@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Pixel NES.otf-2181f56e3f2906d51597f2d1bf6ea90
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
