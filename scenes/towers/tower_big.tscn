@@ -48,5 +48,9 @@ animations = [{
 [node name="TowerBig" instance=ExtResource("1_sufsh")]
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_5m1a4")
 animation = &"idle_1"
+
+[node name="CollisionShape2D" parent="ClickableArea" index="0"]
+position = Vector2(0, -14.5)

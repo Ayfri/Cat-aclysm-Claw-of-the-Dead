@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmlqqek7bhtcq"]
+
+[ext_resource type="Script" path="res://assets/scripts/towers/placement_tower.gd" id="1_exkhg"]
+
+[node name="PlacementTower" type="Button"]
+custom_minimum_size = Vector2(200, 200)
+offset_right = 200.0
+offset_bottom = 200.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_exkhg")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

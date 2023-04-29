@@ -1,7 +1,20 @@
 extends CanvasLayer;
 
+const PlacementTowerScene := preload("res://scenes/towers/placement_tower.tscn");
+
 @onready var money_label := $MoneyDisplay as RichTextLabel;
 @onready var health_label := $HealthDisplay as RichTextLabel;
+@onready var placement_towers_list := $TowerSelectorContainer/TowersList as HBoxContainer;
+
+
+func _ready() -> void:
+	for index in len(Globals.tower_stats):
+		var tower_stat := Globals.tower_stats[index];
+
+		var placement_tower := PlacementTowerScene.instantiate() as PlacementTower;
+		placement_towers_list.add_child(placement_tower);
+		placement_tower.set_tower(tower_stat.tower_scene, index);
+
 
 func _process(_delta: float) -> void:
 	if Globals.level == null: return;

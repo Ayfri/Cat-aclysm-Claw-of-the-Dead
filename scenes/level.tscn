@@ -8,7 +8,9 @@
 process_mode = 3
 script = ExtResource("1_uvlv4")
 
-[node name="level_interface" parent="." instance=ExtResource("3_xgdqo")]
+[node name="Interface" parent="." instance=ExtResource("3_xgdqo")]
 
 [node name="Map" parent="." instance=ExtResource("2_wn1wg")]
 process_mode = 1
+
+[connection signal="map_editing_toggle" from="Map" to="." method="_on_map_editing_toggle"]

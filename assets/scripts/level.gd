@@ -32,3 +32,7 @@ func toggle_pause() -> void:
 
 	elif pause_scene != null:
 		remove_child(pause_scene);
+
+
+func _on_map_editing_toggle(enabled: bool) -> void:
+	$Interface/TowerSelectorContainer.visible = enabled;

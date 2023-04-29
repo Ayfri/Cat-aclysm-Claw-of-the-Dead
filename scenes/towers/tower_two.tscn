@@ -50,5 +50,9 @@ animations = [{
 script = ExtResource("2_yp1wc")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_dspq2")
 animation = &"idle_2"
+
+[node name="CollisionShape2D" parent="ClickableArea" index="0"]
+position = Vector2(0, -14.5)
