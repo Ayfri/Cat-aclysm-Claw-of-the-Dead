@@ -3,6 +3,8 @@ extends Area2D;
 
 var stats: TowerStats;
 
+@onready var sprite := $Sprite2D as Sprite2D;
+
 @export var is_valid_placement := true:
 	set(value):
 		if stats == null || Globals.level.money < stats.base_price: value = false;
@@ -49,6 +51,11 @@ func _on_area_exited(area: Area2D) -> void:
 	if area.get_node_or_null("CollisionPolygon2D") == overlapping_zone:
 		overlapping_zone = null;
 		is_valid_placement = false;
+
+
+func set_texture() -> void:
+	if stats == null: return;
+	sprite.texture = stats.texture;
 
 
 func snap_position_to_grid() -> void:

@@ -43,6 +43,7 @@ func activate_editing() -> void:
 
 	$Grid.position = editing_sprite.position;
 	add_child(editing_sprite);
+	editing_sprite.set_texture();
 
 
 func cancel_editing() -> void:
@@ -91,3 +92,9 @@ func map_editing() -> void:
 
 		remove_child(editing_sprite);
 		cancel_editing();
+
+
+func update_selected_tower(index: int) -> void:
+	current_tower_index = index;
+	editing_sprite.stats = Globals.tower_stats[index];
+	editing_sprite.set_texture();

@@ -18,4 +18,5 @@ func set_tower(tower_scene: PackedScene, index: int) -> void:
 
 
 func _on_pressed() -> void:
-	Globals.level.map.current_tower_index = index;
+	var map := Globals.level.map as Map;
+	map.update_selected_tower(index);
