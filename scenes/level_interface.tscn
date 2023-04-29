@@ -12,6 +12,7 @@ offset_top = 10.0
 offset_right = 270.0
 offset_bottom = 60.0
 bbcode_enabled = true
+text = "[img=40x40]assets/sprites/ui/coin_cat.png[/img] [font_size=41]0[/font_size]"
 shortcut_keys_enabled = false
 
 [node name="HealthDisplay" type="RichTextLabel" parent="."]
@@ -21,4 +22,9 @@ offset_top = 60.0
 offset_right = 270.0
 offset_bottom = 110.0
 bbcode_enabled = true
+text = "[img=40x40]assets/sprites/ui/heart_cat.png[/img] [font_size=41]0[/font_size]"
 shortcut_keys_enabled = false
+
+[node name="TowerSelectorContainer" type="MarginContainer" parent="."]
+offset_right = 1909.0
+offset_bottom = 1190.0
