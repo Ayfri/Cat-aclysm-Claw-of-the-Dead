@@ -13,6 +13,7 @@ script = ExtResource("1_67yvn")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 4096
 scale = Vector2(3, 3)
 texture = ExtResource("2_dkq4i")
 
