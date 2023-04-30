@@ -3,7 +3,7 @@ extends CharacterBody2D;
 
 var damages: float;
 var speed: int;
-var target: Enemy;
+var target: IEnemy;
 var tower: ITower;
 
 @export var sprite_texture: Texture2D;
@@ -21,6 +21,6 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area is Enemy:
+	if area is IEnemy:
 		area.on_hit.emit(tower, damages);
 		queue_free();

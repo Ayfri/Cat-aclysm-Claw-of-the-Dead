@@ -7,6 +7,7 @@ extends Node;
 	TowerStats.new(7, 25, 0.75, "big", load("res://scenes/towers/tower_big.tscn"), 5, 35)
 ];
 @export var enemy_stats: Array[EnemyStats] = [
-	EnemyStats.new(10, 200, 5),
+	EnemyStats.new(10, 200, 5, load("res://scenes/ennemies/enemy_small.tscn")),
+	EnemyStats.new(25, 80, 15, load("res://scenes/ennemies/enemy_big.tscn")),
 ];
 @export var enemy_speed_multiplier := 1.0;

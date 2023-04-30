@@ -1,13 +1,14 @@
-class_name Enemy;
+class_name IEnemy;
 extends Area2D
 
 
 signal on_hit(tower: ITower, damages: float);
 
-var stats: EnemyStats = Globals.enemy_stats[0];
-var health := stats.base_health;
-var money_reward := stats.base_reward;
-var speed := stats.base_speed;
+var health: int;
+var stats: EnemyStats = null:
+	set(value):
+		stats = value;
+		health = value.base_health;
 
 @onready var animated_sprite := $AnimatedSprite2D as AnimatedSprite2D;
 @onready var parent := get_parent() as PathFollow2D;
@@ -20,9 +21,9 @@ func _init() -> void:
 
 
 func _process(delta: float) -> void:
-	if is_dead: return;
+	if is_dead || !stats: return;
 
-	parent.progress = parent.progress + (speed * Globals.enemy_speed_multiplier * delta);
+	parent.progress = parent.progress + (stats.base_speed * Globals.enemy_speed_multiplier * delta);
 
 	z_index = get_viewport().get_visible_rect().size.y + position.y;
 
@@ -39,6 +40,7 @@ func _process(delta: float) -> void:
 	if parent.progress_ratio == 1:
 		Globals.level.health -= 1;
 		parent.queue_free();
+
 
 func _on_hit(tower: ITower, damages: float) -> void:
 	if is_dead: return;
@@ -60,5 +62,5 @@ func _on_hit(tower: ITower, damages: float) -> void:
 
 
 func _on_death() -> void:
-	Globals.level.money += money_reward;
+	Globals.level.money += stats.base_reward;
 	parent.queue_free();

@@ -9,8 +9,8 @@ enum Target {First = 0, Last = 1, Strongest = 2, Weakest = 3, Random = 4};
 var bullet_speed := 300;
 var stats: TowerStats;
 var type_target: Target;
-var target: Enemy;
-var targetable_enemy: Array[Enemy] = [];
+var target: IEnemy;
+var targetable_enemy: Array[IEnemy] = [];
 var upgraded := false;
 
 
@@ -56,7 +56,7 @@ func randomize_target() -> void:
 	target = targetable_enemy.pick_random();
 
 
-func get_weakest_enemy(enemies: Array[Enemy]) -> Enemy:
+func get_weakest_enemy(enemies: Array[IEnemy]) -> IEnemy:
 	var lowest_health_enemy: Area2D = null;
 	var lowest_health: float = -1;
 
@@ -69,8 +69,8 @@ func get_weakest_enemy(enemies: Array[Enemy]) -> Enemy:
 	return lowest_health_enemy;
 
 
-func get_strongest_enemy(enemies: Array[Enemy]) -> Enemy:
-	var strongest_health_enemy: Enemy = null;
+func get_strongest_enemy(enemies: Array[IEnemy]) -> IEnemy:
+	var strongest_health_enemy: IEnemy = null;
 	var strongest_health: float = -1;
 
 	for enemy in enemies:
@@ -96,12 +96,12 @@ func fire_target() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if !(area is Enemy): return;
+	if !(area is IEnemy): return;
 	targetable_enemy.append(area);
 
 
 func _on_area_exited(area: Area2D) -> void:
-	if !(area is Enemy) || targetable_enemy.find(area) == -1: return;
+	if !(area is IEnemy) || targetable_enemy.find(area) == -1: return;
 
 	targetable_enemy.erase(area);
 	if target == area: target = null;
