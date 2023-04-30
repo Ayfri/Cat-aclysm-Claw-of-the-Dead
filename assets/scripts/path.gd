@@ -23,7 +23,7 @@ func _process(_delta: float):
 
 
 func _on_pre_wave_timer_timeout():
-	if current_wave <= len(wave_mobs):
+	if current_wave < len(wave_mobs):
 		mobs_to_spawn += wave_mobs[current_wave];
 		enemy_spawn_timer.start();
 		current_wave += 1;
