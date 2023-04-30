@@ -1,8 +1,8 @@
 class_name PowerUp;
 extends Area2D;
 
-const sprite_buff := preload("res://icon.svg");
-const sprite_debuff := preload("res://icon_debuff.svg")
+const sprite_buff := preload("res://assets/sprites/powers/buff.png");
+const sprite_debuff := preload("res://assets/sprites/powers/debuff.png")
 @export var speed := 300;
 @export var effect_duration := 5;
 @export var random_spawn := 1;

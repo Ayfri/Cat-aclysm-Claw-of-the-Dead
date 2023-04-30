@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhd4f1vigfci2"]
+[gd_scene load_steps=4 format=3 uid="uid://b2rxo8jc5idvl"]
 
 [ext_resource type="Script" path="res://assets/scripts/power_up.gd" id="1_67yvn"]
-[ext_resource type="Texture2D" uid="uid://iw6u8fvm16k3" path="res://icon.svg" id="2_wy5a3"]
+[ext_resource type="Texture2D" uid="uid://csq1kbpjxp4r1" path="res://assets/sprites/powers/buff.png" id="2_dkq4i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cej7k"]
 radius = 90.0
@@ -13,7 +13,8 @@ script = ExtResource("1_67yvn")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wy5a3")
+scale = Vector2(3, 3)
+texture = ExtResource("2_dkq4i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cej7k")
