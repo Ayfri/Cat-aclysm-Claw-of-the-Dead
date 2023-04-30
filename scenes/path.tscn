@@ -25,16 +25,16 @@ position = Vector2(49, 213)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ce8kx")
 
-[node name="FirstPath" type="Path2D" parent="."]
+[node name="FirstPath" type="Path2D" parent="." groups=["paths"]]
 position = Vector2(-7.62939e-06, 0)
 curve = SubResource("Curve2D_fv7w7")
 
-[node name="SecondPath" type="Path2D" parent="."]
+[node name="SecondPath" type="Path2D" parent="." groups=["paths"]]
 position = Vector2(83.0098, 0)
 scale = Vector2(0.973171, 1)
 curve = SubResource("Curve2D_hbxpj")
 
-[node name="ThirdPath" type="Path2D" parent="."]
+[node name="ThirdPath" type="Path2D" parent="." groups=["paths"]]
 curve = SubResource("Curve2D_ni745")
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
