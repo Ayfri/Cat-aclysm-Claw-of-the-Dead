@@ -4,9 +4,11 @@ extends Node2D;
 const PauseScene := preload("res://scenes/pause_interface.tscn");
 const starting_money := 30;
 const starting_health := 10;
+const starting_wave := 0;
 
 @export var health := starting_health;
 @export var money := starting_money;
+@export var wave := starting_wave;
 
 @onready var map := $Map as Map;
 

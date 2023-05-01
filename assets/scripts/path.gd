@@ -1,6 +1,5 @@
 extends Node2D;
 
-var current_wave := 0;
 var mobs_to_spawn := 0;
 
 # Waves should only contains an even number of monsters.
@@ -23,10 +22,10 @@ func _process(_delta: float):
 
 
 func _on_pre_wave_timer_timeout():
-	if current_wave < len(wave_mobs):
-		mobs_to_spawn += wave_mobs[current_wave];
+	if Globals.level.wave < len(wave_mobs):
+		mobs_to_spawn += wave_mobs[Globals.level.wave];
 		enemy_spawn_timer.start();
-		current_wave += 1;
+		Globals.level.wave += 1;
 
 
 func _on_enemy_spawn_timer_timeout():
