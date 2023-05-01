@@ -1,10 +1,7 @@
 class_name ITower;
 extends Node2D;
 
-const BulletScene := preload("res://scenes/bullet.tscn");
-var bullet_texture := preload("res://assets/sprites/projectiles/arrow.png");
 enum Target {First = 0, Last = 1, Strongest = 2, Weakest = 3, Random = 4};
-
 
 var bullet_speed := 300;
 var stats: TowerStats;
@@ -13,6 +10,8 @@ var target: IEnemy;
 var targetable_enemy: Array[IEnemy] = [];
 var upgraded := false;
 
+@export var projectile_scene: PackedScene;
+@export var projectile_upgrade_texture: Texture2D;
 
 @onready var sprite := $AnimatedSprite2D as AnimatedSprite2D;
 @onready var target_menu := $MarginContainer as MarginContainer;
@@ -84,15 +83,17 @@ func get_strongest_enemy(enemies: Array[IEnemy]) -> IEnemy:
 func fire_target() -> void:
 	if $ReloadTimer.is_stopped():
 		$ReloadTimer.start();
-		var bullet := BulletScene.instantiate() as Bullet;
+		var bullet := projectile_scene.instantiate() as IBullet;
 		bullet.damages = stats.base_damage + stats.upgrade_damages if upgraded else stats.base_damage;
-		bullet.speed = bullet_speed;
 		bullet.target = target;
 		bullet.tower = self;
-		bullet.sprite_texture = bullet_texture;
+		bullet.speed = bullet_speed;
 
 		$BulletContainer.add_child(bullet);
 		bullet.global_position = $Aim.global_position;
+
+		if upgraded:
+			bullet.set_sprite_texture(projectile_upgrade_texture);
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -147,7 +148,6 @@ func _on_upgrade_tower_pressed():
 	Globals.level.money -= stats.upgrade_price;
 	target_menu.visible = false;
 	glowing_effect.enabled = false;
-	bullet_texture = load("res://assets/sprites/projectiles/bullet.png");
 	upgraded = true;
 	sprite.play("idle_2")
 	upgrade_button.queue_free();

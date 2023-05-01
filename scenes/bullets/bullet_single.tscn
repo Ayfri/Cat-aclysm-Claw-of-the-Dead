@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmydofpuyssuw"]
+
+[ext_resource type="PackedScene" uid="uid://c72ymy1p54att" path="res://scenes/bullets/i_bullet.tscn" id="1_lh45x"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_derkd"]
+load_path = "res://.godot/imported/arrow.png-96f6402105c00b4bd3969ddfa8ce7609.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pivw4"]
+radius = 4.0
+
+[node name="BulletSingle" instance=ExtResource("1_lh45x")]
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 3.14159
+texture = SubResource("CompressedTexture2D_derkd")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CapsuleShape2D_pivw4")

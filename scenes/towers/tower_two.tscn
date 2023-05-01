@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://co06ncq2rn1g2"]
+[gd_scene load_steps=12 format=3 uid="uid://co06ncq2rn1g2"]
 
 [ext_resource type="PackedScene" uid="uid://dyao8oeedxc4t" path="res://scenes/towers/i_tower.tscn" id="1_deuxm"]
 [ext_resource type="Script" path="res://assets/scripts/towers/tower_two.gd" id="2_yp1wc"]
+[ext_resource type="PackedScene" uid="uid://dd6b8ffj4o77w" path="res://scenes/bullets/bullet_multi.tscn" id="3_aforf"]
 [ext_resource type="Texture2D" uid="uid://b58hsotuaol1n" path="res://assets/sprites/towers/big_1.png" id="3_c068d"]
 [ext_resource type="Texture2D" uid="uid://cd5l66rchmp0j" path="res://assets/sprites/towers/big_2.png" id="4_0hh2x"]
+[ext_resource type="Texture2D" uid="uid://dcx0gijteyxyd" path="res://assets/sprites/projectiles/bottle2.png" id="4_dcj25"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gd2uo"]
 atlas = ExtResource("3_c068d")
@@ -48,6 +50,8 @@ animations = [{
 
 [node name="TowerTwo" instance=ExtResource("1_deuxm")]
 script = ExtResource("2_yp1wc")
+projectile_scene = ExtResource("3_aforf")
+projectile_upgrade_texture = ExtResource("4_dcj25")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -15)

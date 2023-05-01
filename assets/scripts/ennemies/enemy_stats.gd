@@ -1,7 +1,7 @@
 class_name EnemyStats;
 extends Resource
 
-@export var base_health: float;
+@export var base_health: int;
 @export var base_speed : float;
 @export var base_reward: int;
 @export var enemy_scene: PackedScene;

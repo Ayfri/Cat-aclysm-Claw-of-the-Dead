@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd6b8ffj4o77w"]
+
+[ext_resource type="PackedScene" uid="uid://c72ymy1p54att" path="res://scenes/bullets/i_bullet.tscn" id="1_37irm"]
+[ext_resource type="Texture2D" uid="uid://r3n7p44mejn5" path="res://assets/sprites/projectiles/bottle1.png" id="2_86efg"]
+[ext_resource type="Script" path="res://assets/scripts/bullets/bullet_multi.gd" id="2_covdj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l4cuf"]
+radius = 16.0
+
+[node name="BulletMulti" instance=ExtResource("1_37irm")]
+script = ExtResource("2_covdj")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_86efg")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_l4cuf")

@@ -11,6 +11,7 @@ extends Resource;
 @export var upgrade_price: int;
 
 
+@warning_ignore('shadowed_variable')
 func _init(
 	base_damage: int,
 	base_price: int,

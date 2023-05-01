@@ -3,6 +3,7 @@ extends Area2D;
 
 var stats: TowerStats;
 
+@onready var hitbox := $CollisionPolygon2D as CollisionPolygon2D;
 @onready var sprite := $Sprite2D as Sprite2D;
 
 @export var is_valid_placement := true:
@@ -20,7 +21,7 @@ func _init() -> void:
 	self.is_valid_placement = false;
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	test_current_overlapping_area();
 
 
@@ -72,7 +73,7 @@ func test_current_overlapping_area() -> void:
 	for point in overlapping_zone.polygon:
 		area_polygon_transformed.append(point * overlapping_zone.transform.affine_inverse());
 
-	for point in $CollisionPolygon2D.polygon:
+	for point in hitbox.polygon:
 		current_polygon_transformed.append(point * transform.affine_inverse());
 
 	var result := Geometry2D.clip_polygons(current_polygon_transformed, area_polygon_transformed);

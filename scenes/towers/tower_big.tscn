@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfx1m1h4y6k50"]
+[gd_scene load_steps=11 format=3 uid="uid://bfx1m1h4y6k50"]
 
 [ext_resource type="PackedScene" uid="uid://dyao8oeedxc4t" path="res://scenes/towers/i_tower.tscn" id="1_sufsh"]
 [ext_resource type="Texture2D" uid="uid://b58hsotuaol1n" path="res://assets/sprites/towers/big_1.png" id="2_62efy"]
+[ext_resource type="PackedScene" uid="uid://dd6b8ffj4o77w" path="res://scenes/bullets/bullet_multi.tscn" id="2_tie0q"]
 [ext_resource type="Texture2D" uid="uid://cd5l66rchmp0j" path="res://assets/sprites/towers/big_2.png" id="3_a6kwb"]
+[ext_resource type="Texture2D" uid="uid://dcx0gijteyxyd" path="res://assets/sprites/projectiles/bottle2.png" id="3_s6ep2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aq8ot"]
 atlas = ExtResource("2_62efy")
@@ -46,6 +48,8 @@ animations = [{
 }]
 
 [node name="TowerBig" instance=ExtResource("1_sufsh")]
+projectile_scene = ExtResource("2_tie0q")
+projectile_upgrade_texture = ExtResource("3_s6ep2")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -15)

@@ -4,7 +4,7 @@ extends Area2D
 
 signal on_hit(tower: ITower, damages: float);
 
-var health: int;
+var health: float;
 var stats: EnemyStats = null:
 	set(value):
 		stats = value;
@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 		parent.queue_free();
 
 
-func _on_hit(tower: ITower, damages: float) -> void:
+func _on_hit(_tower: ITower, damages: float) -> void:
 	if is_dead: return;
 
 	health -= damages;
