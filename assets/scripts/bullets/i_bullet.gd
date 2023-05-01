@@ -21,8 +21,9 @@ func _physics_process(_delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is IEnemy:
-		area.on_hit.emit(tower, damages);
-		on_destroy(area as IEnemy);
+		var enemy := area as IEnemy;
+		enemy.on_hit.emit(tower, damages);
+		on_destroy(enemy as IEnemy);
 
 
 func on_destroy(enemy: IEnemy) -> void:
@@ -32,7 +33,6 @@ func on_destroy(enemy: IEnemy) -> void:
 func physics() -> void:
 	velocity = global_position.direction_to(target.global_position) * speed;
 	look_at(target.global_position);
-
 
 
 func set_sprite_texture(texture: Texture2D) -> void:
