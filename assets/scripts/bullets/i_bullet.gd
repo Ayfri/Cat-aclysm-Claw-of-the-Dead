@@ -19,15 +19,20 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide();
 
 
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area is IEnemy:
+		area.on_hit.emit(tower, damages);
+		on_destroy(area as IEnemy);
+
+
+func on_destroy(enemy: IEnemy) -> void:
+	queue_free();
+
+
 func physics() -> void:
 	velocity = global_position.direction_to(target.global_position) * speed;
 	look_at(target.global_position);
 
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area is IEnemy:
-		area.on_hit.emit(tower, damages);
-		queue_free();
 
 
 func set_sprite_texture(texture: Texture2D) -> void:

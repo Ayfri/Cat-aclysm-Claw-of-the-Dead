@@ -1,11 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd6b8ffj4o77w"]
+[gd_scene load_steps=11 format=3 uid="uid://dd6b8ffj4o77w"]
 
 [ext_resource type="PackedScene" uid="uid://c72ymy1p54att" path="res://scenes/bullets/i_bullet.tscn" id="1_37irm"]
 [ext_resource type="Texture2D" uid="uid://r3n7p44mejn5" path="res://assets/sprites/projectiles/bottle1.png" id="2_86efg"]
 [ext_resource type="Script" path="res://assets/scripts/bullets/bullet_multi.gd" id="2_covdj"]
+[ext_resource type="Texture2D" uid="uid://cr6fwg02mlflj" path="res://assets/sprites/projectiles/bottle_particles.png" id="4_i48uk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l4cuf"]
 radius = 16.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pmhxa"]
+particles_animation = true
+particles_anim_h_frames = 16
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_7ns3p"]
+offsets = PackedFloat32Array(0.777143, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fvxm5"]
+gradient = SubResource("Gradient_7ns3p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p3603"]
+lifetime_randomness = 0.4
+emission_shape = 1
+emission_sphere_radius = 20.0
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 3.0
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_fvxm5")
+anim_offset_max = 0.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8os5m"]
+atlas = ExtResource("4_i48uk")
+region = Rect2(0, 0, 64, 4)
 
 [node name="BulletMulti" instance=ExtResource("1_37irm")]
 script = ExtResource("2_covdj")
@@ -15,3 +54,15 @@ texture = ExtResource("2_86efg")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_l4cuf")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
+z_index = 500
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_pmhxa")
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_p3603")
+texture = SubResource("AtlasTexture_8os5m")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
