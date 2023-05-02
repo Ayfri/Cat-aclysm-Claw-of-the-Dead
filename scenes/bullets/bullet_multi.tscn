@@ -48,6 +48,7 @@ region = Rect2(0, 0, 64, 4)
 
 [node name="BulletMulti" instance=ExtResource("1_37irm")]
 script = ExtResource("2_covdj")
+poison_duration = 2.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_86efg")

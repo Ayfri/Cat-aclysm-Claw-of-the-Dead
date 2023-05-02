@@ -12,9 +12,21 @@ var stats: EnemyStats = null:
 
 @onready var animated_sprite := $AnimatedSprite2D as AnimatedSprite2D;
 @onready var parent := get_parent() as PathFollow2D;
+@onready var poison_timer := $PoisonTimer as Timer;
 @onready var previous_point := Vector2(parent.position);
 
 @export var is_dead := false;
+@export var poison_damages: int;
+@export var poison_tower_source: ITower;
+@export var poisened := false:
+	set(value):
+		poisened = value;
+
+		if value: poison_timer.start();
+		else: poison_timer.stop();
+		modulate = Color(0.3, 1, 0.3) if value else Color(1, 1, 1);
+
+
 
 func _init() -> void:
 	on_hit.connect(_on_hit);
@@ -22,9 +34,6 @@ func _init() -> void:
 
 func _process(delta: float) -> void:
 	if is_dead || !stats: return;
-
-	parent.progress = parent.progress + (stats.base_speed * Globals.enemy_speed_multiplier * delta);
-
 	z_index = get_viewport().get_visible_rect().size.y + position.y;
 
 	var x_pos_difference := parent.position.x - previous_point.x;
@@ -37,6 +46,7 @@ func _process(delta: float) -> void:
 	else:
 		animated_sprite.play("walk_down" if y_pos_difference > 0 else "walk_up");
 
+	parent.progress = parent.progress + (stats.base_speed * Globals.enemy_speed_multiplier * delta);
 	if parent.progress_ratio == 1:
 		Globals.level.health -= 1;
 		parent.queue_free();
@@ -64,3 +74,19 @@ func _on_hit(_tower: ITower, damages: float) -> void:
 func _on_death() -> void:
 	Globals.level.money += stats.base_reward;
 	parent.queue_free();
+
+
+func poison(tower: ITower, duration: float, poison_damages: int) -> void:
+	self.poison_damages = poison_damages;
+	poisened = true;
+	poison_tower_source = tower;
+	await get_tree().create_timer(duration).timeout;
+
+	if is_dead: return;
+	poisened = false;
+
+
+func _on_poison_timer_timeout() -> void:
+	if poison_tower_source == null: return;
+
+	_on_hit(poison_tower_source, poison_damages);

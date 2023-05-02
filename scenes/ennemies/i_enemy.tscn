@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" path="res://assets/scripts/ennemies/i_enemy.gd" id="1_hmd3i"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fs3g5"]
-size = Vector2(199, 252)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_od755"]
 animations = [{
 "frames": [],
@@ -145,6 +142,9 @@ _data = {
 "hit": SubResource("Animation_edu2l")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fs3g5"]
+size = Vector2(199, 252)
+
 [node name="PathFollow2D" type="PathFollow2D"]
 rotates = false
 loop = false
@@ -152,9 +152,6 @@ loop = false
 [node name="Enemy" type="Area2D" parent="."]
 script = ExtResource("1_hmd3i")
 metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-shape = SubResource("RectangleShape2D_fs3g5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
 texture_filter = 1
@@ -167,3 +164,11 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_bleo4")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("RectangleShape2D_fs3g5")
+
+[node name="PoisonTimer" type="Timer" parent="Enemy"]
+wait_time = 0.8
+
+[connection signal="timeout" from="Enemy/PoisonTimer" to="Enemy" method="_on_poison_timer_timeout"]

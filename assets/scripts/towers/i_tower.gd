@@ -80,11 +80,15 @@ func get_strongest_enemy(enemies: Array[IEnemy]) -> IEnemy:
 	return strongest_health_enemy;
 
 
+func calculate_bullet_damages() -> int:
+	return stats.base_damage + stats.upgrade_damages if upgraded else stats.base_damage;
+
+
 func fire_target() -> void:
 	if $ReloadTimer.is_stopped():
 		$ReloadTimer.start();
 		var bullet := projectile_scene.instantiate() as IBullet;
-		bullet.damages = stats.base_damage + stats.upgrade_damages if upgraded else stats.base_damage;
+		bullet.damages = calculate_bullet_damages();
 		bullet.target = target;
 		bullet.tower = self;
 		bullet.speed = bullet_speed;
