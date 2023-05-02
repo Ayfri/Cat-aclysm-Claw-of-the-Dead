@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b47mlr283clyk"]
+[gd_scene load_steps=4 format=3 uid="uid://b47mlr283clyk"]
 
 [ext_resource type="Script" path="res://assets/scripts/menu.gd" id="1_vp2n3"]
+[ext_resource type="AudioStream" uid="uid://bnu22ca4lnfh6" path="res://assets/audio/menu.wav" id="2_gsstw"]
+[ext_resource type="AudioStream" uid="uid://casbgbgdvboa4" path="res://assets/audio/button.wav" id="3_f68bl"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -38,6 +40,14 @@ text = "Options"
 layout_mode = 2
 text = "Quit
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gsstw")
+volume_db = -8.813
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f68bl")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2rxo8jc5idvl"]
+[gd_scene load_steps=5 format=3 uid="uid://b2rxo8jc5idvl"]
 
 [ext_resource type="Script" path="res://assets/scripts/power_up.gd" id="1_67yvn"]
 [ext_resource type="Texture2D" uid="uid://csq1kbpjxp4r1" path="res://assets/sprites/powers/buff.png" id="2_dkq4i"]
+[ext_resource type="AudioStream" uid="uid://b74wikp02pvkx" path="res://assets/audio/power.wav" id="3_8vudc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cej7k"]
 radius = 90.0
@@ -22,6 +23,9 @@ shape = SubResource("CapsuleShape2D_cej7k")
 
 [node name="TimerSprite" type="Timer" parent="."]
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8vudc")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
