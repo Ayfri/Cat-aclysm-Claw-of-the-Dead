@@ -127,6 +127,9 @@ animations = [{
 
 [node name="PathFollow2D" instance=ExtResource("1_auauu")]
 
+[node name="Enemy" parent="." index="0"]
+position = Vector2(0, -62)
+
 [node name="CollisionShape2D" parent="Enemy" index="0"]
 shape = SubResource("RectangleShape2D_wkcl1")
 
