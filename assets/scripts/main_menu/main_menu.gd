@@ -1,7 +1,7 @@
 extends Control;
 
 
-const OptionsScene = preload("res://scenes/option.tscn");
+const OptionsScene = preload("res://scenes/main_menu/options_menu.tscn");
 const github_link = "https://github.com/Ayfri/Cat-aclysm-Claw-of-the-Dead"
 
 @onready var buttons_sound_player := $ButtonsPlayer as AudioStreamPlayer;
