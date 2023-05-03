@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2xokag7mxnk5"]
 
-[ext_resource type="Script" path="res://assets/scripts/path.gd" id="1_ce8kx"]
+[ext_resource type="Script" path="res://assets/scripts/path.gd" id="1_0pp7e"]
 
 [sub_resource type="Curve2D" id="Curve2D_fv7w7"]
 _data = {
@@ -23,7 +23,7 @@ point_count = 12
 [node name="Path" type="Node2D"]
 position = Vector2(49, 213)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_ce8kx")
+script = ExtResource("1_0pp7e")
 
 [node name="FirstPath" type="Path2D" parent="." groups=["paths"]]
 position = Vector2(-7.62939e-06, 0)
@@ -40,12 +40,22 @@ scale = Vector2(1.00225, 1)
 curve = SubResource("Curve2D_ni745")
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="PreWaveTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
-autostart = true
+
+[node name="WaveAnnouncerDisplay" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="WaveAnnouncerHide" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="PreWaveTimer" to="." method="_on_pre_wave_timer_timeout"]
+[connection signal="timeout" from="WaveAnnouncerDisplay" to="." method="_on_wave_announcer_display_timeout"]
+[connection signal="timeout" from="WaveAnnouncerHide" to="." method="_on_wave_announcer_hide_timeout"]

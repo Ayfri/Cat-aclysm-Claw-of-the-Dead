@@ -1063,3 +1063,48 @@ polygon = PackedVector2Array(1192, -69, 1172, -137, 910, -135, 916, -44, 1067, -
 [node name="power_up" parent="." instance=ExtResource("8_bythd")]
 
 [node name="Path" parent="." instance=ExtResource("10_rd0yf")]
+
+[node name="FirstPathLabel" type="RichTextLabel" parent="."]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(90, 50)
+offset_left = 38.0
+offset_top = 515.0
+offset_right = 128.0
+offset_bottom = 565.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "New wave !"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="SecondPathLabel" type="RichTextLabel" parent="."]
+visible = false
+texture_filter = 1
+clip_contents = false
+custom_minimum_size = Vector2(90, 50)
+offset_left = 38.0
+offset_top = 579.0
+offset_right = 128.0
+offset_bottom = 629.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "New wave !"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="ThirdPathLabel" type="RichTextLabel" parent="."]
+visible = false
+texture_filter = 1
+clip_contents = false
+custom_minimum_size = Vector2(90, 50)
+offset_left = 666.0
+offset_top = 814.0
+offset_right = 756.0
+offset_bottom = 864.0
+bbcode_enabled = true
+text = "New wave !"
+scroll_active = false
+shortcut_keys_enabled = false
