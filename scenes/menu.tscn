@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b47mlr283clyk"]
+[gd_scene load_steps=5 format=3 uid="uid://b47mlr283clyk"]
 
 [ext_resource type="Script" path="res://assets/scripts/menu.gd" id="1_vp2n3"]
 [ext_resource type="AudioStream" uid="uid://bnu22ca4lnfh6" path="res://assets/audio/menu.wav" id="2_gsstw"]
 [ext_resource type="AudioStream" uid="uid://casbgbgdvboa4" path="res://assets/audio/button.wav" id="3_f68bl"]
+[ext_resource type="Texture2D" uid="uid://dghsxo6q67sse" path="res://assets/sprites/ui/github_logo.png" id="4_7j3vm"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -41,6 +42,24 @@ layout_mode = 2
 text = "Quit
 "
 
+[node name="GitHubButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -144.0
+offset_right = -44.0
+offset_bottom = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("4_7j3vm")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_gsstw")
 volume_db = -8.813
@@ -54,3 +73,4 @@ bus = &"SFX"
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="GitHubButton" to="." method="_on_github_button_pressed"]
