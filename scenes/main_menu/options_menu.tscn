@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkt3gqdywsbbn"]
+[gd_scene load_steps=2 format=3 uid="uid://dwn3okb4x6rjk"]
 
-[ext_resource type="Script" path="res://assets/scripts/option.gd" id="1_jjtg3"]
+[ext_resource type="Script" path="res://assets/scripts/main_menu/options_menu.gd" id="1_rjll7"]
 
 [node name="option" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jjtg3")
+script = ExtResource("1_rjll7")
 
 [node name="VBoxContainer" type="BoxContainer" parent="."]
 layout_mode = 1

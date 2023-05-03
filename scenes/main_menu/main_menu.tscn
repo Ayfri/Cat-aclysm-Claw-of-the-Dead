@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b47mlr283clyk"]
+[gd_scene load_steps=5 format=3 uid="uid://diadkloq426ja"]
 
-[ext_resource type="Script" path="res://assets/scripts/menu.gd" id="1_vp2n3"]
-[ext_resource type="AudioStream" uid="uid://bnu22ca4lnfh6" path="res://assets/audio/menu.wav" id="2_gsstw"]
-[ext_resource type="AudioStream" uid="uid://casbgbgdvboa4" path="res://assets/audio/button.wav" id="3_f68bl"]
-[ext_resource type="Texture2D" uid="uid://dghsxo6q67sse" path="res://assets/sprites/ui/github_logo.png" id="4_7j3vm"]
+[ext_resource type="Script" path="res://assets/scripts/main_menu/main_menu.gd" id="1_c340b"]
+[ext_resource type="Texture2D" uid="uid://dghsxo6q67sse" path="res://assets/sprites/ui/github_logo.png" id="2_gc622"]
+[ext_resource type="AudioStream" uid="uid://bnu22ca4lnfh6" path="res://assets/audio/menu.wav" id="3_ee1o0"]
+[ext_resource type="AudioStream" uid="uid://casbgbgdvboa4" path="res://assets/audio/button.wav" id="4_ey6td"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vp2n3")
+script = ExtResource("1_c340b")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -56,18 +56,18 @@ offset_right = -44.0
 offset_bottom = -44.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_normal = ExtResource("4_7j3vm")
+texture_normal = ExtResource("2_gc622")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_gsstw")
+stream = ExtResource("3_ee1o0")
 volume_db = -8.813
 autoplay = true
 bus = &"Music"
 
 [node name="ButtonsPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_f68bl")
+stream = ExtResource("4_ey6td")
 bus = &"SFX"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
