@@ -133,14 +133,14 @@ size_flags_vertical = 0
 layout_mode = 2
 text = "Upgrade"
 
-[node name="ContainerButtonDestroy" type="VBoxContainer" parent="MarginContainer"]
+[node name="ContainerButtonSell" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="DestroyTower" type="Button" parent="MarginContainer/ContainerButtonDestroy"]
+[node name="SellTower" type="Button" parent="MarginContainer/ContainerButtonSell"]
 layout_mode = 2
-text = "Destroy"
+text = "Sell"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
@@ -152,4 +152,4 @@ text = "Destroy"
 [connection signal="pressed" from="MarginContainer/ContainerButtonRandom/SelectRandomEnemy" to="." method="_on_select_random_enemy_pressed"]
 [connection signal="pressed" from="MarginContainer/ContainerButtonClose/CloseGui" to="." method="_on_close_gui_pressed"]
 [connection signal="pressed" from="MarginContainer/ContainerButtonUpgrade/UpgradeTower" to="." method="_on_upgrade_tower_pressed"]
-[connection signal="pressed" from="MarginContainer/ContainerButtonDestroy/DestroyTower" to="." method="_on_destroy_tower_pressed"]
+[connection signal="pressed" from="MarginContainer/ContainerButtonSell/SellTower" to="." method="_on_sell_tower_pressed"]

@@ -149,8 +149,9 @@ func _on_upgrade_tower_pressed():
 	upgrade_button.queue_free();
 
 
-func _on_destroy_tower_pressed():
+func _on_sell_tower_pressed():
 	target_menu.visible = false;
+	Globals.level.money += (stats.base_price + stats.upgrade_price if upgraded else stats.base_price) * stats.sell_percent; 
 	self.queue_free();
 
 
