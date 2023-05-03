@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyao8oeedxc4t"]
+[gd_scene load_steps=6 format=3 uid="uid://dyao8oeedxc4t"]
 
 [ext_resource type="Script" path="res://assets/scripts/towers/i_tower.gd" id="1_48s8f"]
+[ext_resource type="Texture2D" uid="uid://ysbg6tqkoqoe" path="res://assets/light/2d_lights_and_shadows_neutral_point_light.webp" id="2_qnpun"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjdme"]
 radius = 213.258
@@ -15,18 +16,18 @@ size = Vector2(109, 141)
 script = ExtResource("1_48s8f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_as_relative = false
 texture_filter = 1
 position = Vector2(15, -15)
 scale = Vector2(2, 2)
 autoplay = "idle_1"
 
 [node name="GlowingEffect" type="PointLight2D" parent="AnimatedSprite2D"]
-position = Vector2(0.25, 5.25)
+z_index = 4000
 scale = Vector2(1.01758, 1.06641)
 enabled = false
-range_z_min = 2001
-range_z_max = 2002
-texture_scale = 0.4
+texture = ExtResource("2_qnpun")
+texture_scale = 0.35
 
 [node name="Area2D" type="Area2D" parent="."]
 input_pickable = false

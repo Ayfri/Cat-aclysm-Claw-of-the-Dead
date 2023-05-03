@@ -154,6 +154,7 @@ script = ExtResource("1_hmd3i")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
+z_as_relative = false
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_od755")

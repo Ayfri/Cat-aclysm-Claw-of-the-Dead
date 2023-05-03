@@ -3,9 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dlghhpgtrfv7n" path="res://scenes/ennemies/i_enemy.tscn" id="1_auauu"]
 [ext_resource type="Texture2D" uid="uid://dcyxjijbn854l" path="res://assets/sprites/zombies/zombie1.png" id="2_iw1xg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkcl1"]
-size = Vector2(84, 124)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_lieub"]
 atlas = ExtResource("2_iw1xg")
 region = Rect2(0, 64, 32, 32)
@@ -125,14 +122,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkcl1"]
+size = Vector2(84, 124)
+
 [node name="PathFollow2D" instance=ExtResource("1_auauu")]
 
 [node name="Enemy" parent="." index="0"]
 position = Vector2(0, -62)
 
-[node name="CollisionShape2D" parent="Enemy" index="0"]
-shape = SubResource("RectangleShape2D_wkcl1")
-
-[node name="AnimatedSprite2D" parent="Enemy" index="1"]
+[node name="AnimatedSprite2D" parent="Enemy" index="0"]
 sprite_frames = SubResource("SpriteFrames_q7v6l")
 animation = &"walk_down"
+
+[node name="CollisionShape2D" parent="Enemy" index="1"]
+shape = SubResource("RectangleShape2D_wkcl1")

@@ -34,7 +34,7 @@ func _init() -> void:
 
 func _process(delta: float) -> void:
 	if is_dead || !stats: return;
-	z_index = get_viewport().get_visible_rect().size.y + position.y;
+	animated_sprite.z_index = global_position.y;
 
 	var x_pos_difference := parent.position.x - previous_point.x;
 	var y_pos_difference := parent.position.y - previous_point.y;

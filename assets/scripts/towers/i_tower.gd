@@ -23,10 +23,12 @@ var upgraded := false;
 
 func _ready() -> void:
 	timer.timeout.connect(_enable_menu);
-	z_index = get_viewport().get_visible_rect().size.y + position.y;
+	sprite.z_index = global_position.y;
 
 
 func _process(_delta: float) -> void:
+	glowing_effect.range_z_min = sprite.z_index-1;
+	glowing_effect.range_z_max = sprite.z_index+1;
 	if targetable_enemy.is_empty(): return;
 
 	select_target();
