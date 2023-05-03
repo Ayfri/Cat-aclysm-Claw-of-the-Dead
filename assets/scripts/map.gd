@@ -70,7 +70,6 @@ func map_editing() -> void:
 		var last_visible_gui := GuiTowerManager.last_visible_gui
 		if last_visible_gui != null:
 			last_visible_gui.hide();
-			last_visible_gui.get_parent().find_child("Sprite").find_child("GlowingEffect").enabled = false;
 			GuiTowerManager.last_visible_gui = null;
 
 		var tower_sprite := tower_stats.tower_scene.instantiate() as ITower;
