@@ -2,19 +2,18 @@
 
 [ext_resource type="Script" path="res://assets/scripts/power_up.gd" id="1_67yvn"]
 [ext_resource type="Texture2D" uid="uid://csq1kbpjxp4r1" path="res://assets/sprites/powers/buff.png" id="2_dkq4i"]
-[ext_resource type="AudioStream" uid="uid://b74wikp02pvkx" path="res://assets/audio/power.wav" id="3_8vudc"]
+[ext_resource type="AudioStream" uid="uid://chht6ws7tfr8b" path="res://assets/audio/power.wav" id="3_8vudc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cej7k"]
-radius = 90.0
-height = 180.0
+radius = 30.0
+height = 106.0
 
 [node name="power_up" type="Area2D"]
 script = ExtResource("1_67yvn")
 
-[node name="Timer" type="Timer" parent="."]
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 4096
+z_index = 2001
+texture_filter = 1
 scale = Vector2(3, 3)
 texture = ExtResource("2_dkq4i")
 
@@ -29,5 +28,4 @@ stream = ExtResource("3_8vudc")
 bus = &"SFX"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerSprite" to="." method="_on_timer_sprite_timeout"]
