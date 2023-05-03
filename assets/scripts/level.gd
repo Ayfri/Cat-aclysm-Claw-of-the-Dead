@@ -28,11 +28,13 @@ func toggle_pause() -> void:
 	map.get_tree().paused = !map.get_tree().paused;
 
 	if map.get_tree().paused:
+		if map.editing: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 		pause_scene = PauseScene.instantiate() as PauseMenu;
 		pause_scene.transform.origin = get_viewport_transform().get_scale() / 2;
 		add_child(pause_scene);
 
 	elif pause_scene != null:
+		map.toggle_cursor();
 		remove_child(pause_scene);
 
 

@@ -26,15 +26,15 @@ func _input(event: InputEvent) -> void:
 		return;
 
 	if event is InputEventMouseMotion:
-		var sprite := get_positioning_sprite();
+		var sprite := get_preview_tower();
 		sprite.position = get_global_mouse_position();
 		sprite.snap_position_to_grid();
 		$Grid.position = sprite.position;
 
 
 func activate_editing() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN);
 	editing = true;
+	toggle_cursor();
 	$Grid.visible = editing;
 	editing_sprite = PreviewTowerScene.instantiate() as PreviewTower;
 	editing_sprite.stats = Globals.tower_stats[current_tower_index];
@@ -47,13 +47,13 @@ func activate_editing() -> void:
 
 
 func cancel_editing() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 	editing = false;
+	toggle_cursor();
 	$Grid.visible = editing;
 	editing_sprite = null;
 
 
-func get_positioning_sprite() -> PreviewTower:
+func get_preview_tower() -> PreviewTower:
 	var children := get_children();
 	var sprite := children[children.find(editing_sprite)];
 	return sprite if sprite is PreviewTower else null;
@@ -61,7 +61,7 @@ func get_positioning_sprite() -> PreviewTower:
 
 func map_editing() -> void:
 	if editing && Input.is_action_just_pressed('Place Tower'):
-		var sprite := get_positioning_sprite();
+		var sprite := get_preview_tower();
 		if !sprite.is_valid_placement: return;
 
 		var tower_stats := Globals.tower_stats[current_tower_index];
@@ -93,6 +93,10 @@ func map_editing() -> void:
 		remove_child(editing_sprite);
 		cancel_editing();
 
+
+func toggle_cursor() -> void:
+	if editing: Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN);
+	else: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 
 func update_selected_tower(index: int) -> void:
 	current_tower_index = index;
