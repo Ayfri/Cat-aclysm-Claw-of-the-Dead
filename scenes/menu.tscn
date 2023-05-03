@@ -41,13 +41,13 @@ layout_mode = 2
 text = "Quit
 "
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_gsstw")
 volume_db = -8.813
 autoplay = true
 bus = &"Music"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+[node name="ButtonsPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_f68bl")
 bus = &"SFX"
 

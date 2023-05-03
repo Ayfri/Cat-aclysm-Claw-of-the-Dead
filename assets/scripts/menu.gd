@@ -1,17 +1,20 @@
-extends Control
+extends Control;
 
-const option = preload("res://scenes/option.tscn");
+
+const OptionsScene = preload("res://scenes/option.tscn");
+
+@onready var buttons_sound_player := $ButtonsPlayer as AudioStreamPlayer;
+
 
 func _on_start_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/level.tscn")
+	get_tree().change_scene_to_file("res://scenes/level.tscn");
 
 
 func _on_options_button_pressed():
-	$AudioStreamPlayer2.play()
-	var option_menu = option.instantiate();
+	buttons_sound_player.play();
+	var option_menu := OptionsScene.instantiate();
 	add_child(option_menu);
 
 
-
 func _on_quit_button_pressed():
-	get_tree().quit()
+	get_tree().quit();
