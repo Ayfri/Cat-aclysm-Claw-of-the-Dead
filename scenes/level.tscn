@@ -1,21 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://cucnh5tbtf60v"]
+[gd_scene load_steps=6 format=3 uid="uid://cucnh5tbtf60v"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_uvlv4"]
 [ext_resource type="PackedScene" uid="uid://8yoixb3o7cfq" path="res://scenes/map.tscn" id="2_wn1wg"]
 [ext_resource type="PackedScene" uid="uid://crrvi62hvfjip" path="res://scenes/level_interface.tscn" id="3_xgdqo"]
 [ext_resource type="AudioStream" uid="uid://vhofrt5vup6d" path="res://assets/audio/main.wav" id="4_gum1d"]
 
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_qyciy"]
+db = 1
+
 [node name="Level" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_uvlv4")
+muffled_sound_effect = SubResource("AudioEffectLowPassFilter_qyciy")
 
 [node name="Interface" parent="." instance=ExtResource("3_xgdqo")]
 
 [node name="Map" parent="." instance=ExtResource("2_wn1wg")]
 process_mode = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_gum1d")
 autoplay = true
+bus = &"Music"
 
 [connection signal="map_editing_toggle" from="Map" to="." method="_on_map_editing_toggle"]
