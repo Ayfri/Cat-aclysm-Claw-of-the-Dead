@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/map.gdshader" id="4_fotjd"]
 [ext_resource type="Texture2D" uid="uid://xkfs36j6u3h1" path="res://assets/sprites/masks/circle.png" id="5_2jnwn"]
 [ext_resource type="Script" path="res://assets/scripts/zones.gd" id="6_codll"]
-[ext_resource type="PackedScene" uid="uid://bhd4f1vigfci2" path="res://scenes/power_up.tscn" id="8_bythd"]
+[ext_resource type="PackedScene" uid="uid://b2rxo8jc5idvl" path="res://scenes/power_up.tscn" id="8_bythd"]
 [ext_resource type="PackedScene" uid="uid://b2xokag7mxnk5" path="res://scenes/path.tscn" id="10_rd0yf"]
 [ext_resource type="Texture2D" uid="uid://bs2aine8ccpur" path="res://assets/sprites/maps/tileset_terrain.png" id="10_x83hq"]
 [ext_resource type="Texture2D" uid="uid://b3omshlld5fvm" path="res://assets/sprites/maps/tileset_props.png" id="11_6idgb"]
