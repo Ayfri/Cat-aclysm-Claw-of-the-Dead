@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b04fjj80etq6v"]
+[gd_scene load_steps=18 format=3 uid="uid://b04fjj80etq6v"]
 
 [ext_resource type="PackedScene" uid="uid://dlghhpgtrfv7n" path="res://scenes/ennemies/i_enemy.tscn" id="1_4hk3c"]
 [ext_resource type="Texture2D" uid="uid://dq2ss6aq6v3oc" path="res://assets/sprites/zombies/zombie2.png" id="2_e75qw"]
@@ -110,8 +110,13 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yukbe"]
-size = Vector2(199, 252)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ioeko"]
+radius = 58.0
+height = 268.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7m3ax"]
+radius = 58.0
+height = 208.0
 
 [node name="PathFollow2D" instance=ExtResource("1_4hk3c")]
 
@@ -120,8 +125,12 @@ position = Vector2(0, -126)
 
 [node name="AnimatedSprite2D" parent="Enemy" index="0"]
 sprite_frames = SubResource("SpriteFrames_fpuer")
-animation = &"walk_right"
+frame = 1
+frame_progress = 0.496092
 
-[node name="CollisionShape2D" parent="Enemy" index="1"]
-position = Vector2(0.5, 3.8147e-06)
-shape = SubResource("RectangleShape2D_yukbe")
+[node name="FirstCollisionShape" parent="Enemy" index="1"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_ioeko")
+
+[node name="SecondCollisionShape" parent="Enemy" index="2"]
+shape = SubResource("CapsuleShape2D_7m3ax")

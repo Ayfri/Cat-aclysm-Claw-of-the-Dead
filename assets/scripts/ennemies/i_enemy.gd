@@ -10,6 +10,8 @@ var stats: EnemyStats = null:
 		stats = value;
 		health = value.base_health;
 
+@onready var first_collision_shape := $FirstCollisionShape as CollisionShape2D;
+@onready var second_collision_shape := $SecondCollisionShape as CollisionShape2D;
 @onready var animated_sprite := $AnimatedSprite2D as AnimatedSprite2D;
 @onready var parent := get_parent() as PathFollow2D;
 @onready var poison_timer := $PoisonTimer as Timer;
@@ -42,8 +44,12 @@ func _process(delta: float) -> void:
 	previous_point = Vector2(parent.position);
 
 	if absf(x_pos_difference) > absf(y_pos_difference):
+		first_collision_shape.set_disabled(false);
+		second_collision_shape.set_disabled(true);
 		animated_sprite.play("walk_right" if x_pos_difference > 0 else "walk_left");
 	else:
+		first_collision_shape.set_disabled(false);
+		second_collision_shape.set_disabled(false);
 		animated_sprite.play("walk_down" if y_pos_difference > 0 else "walk_up");
 
 	parent.progress = parent.progress + (stats.base_speed * Globals.enemy_speed_multiplier * delta);
