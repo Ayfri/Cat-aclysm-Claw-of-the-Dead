@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dd6b8ffj4o77w"]
+[gd_scene load_steps=16 format=3 uid="uid://dd6b8ffj4o77w"]
 
 [ext_resource type="PackedScene" uid="uid://c72ymy1p54att" path="res://scenes/bullets/i_bullet.tscn" id="1_37irm"]
 [ext_resource type="Texture2D" uid="uid://r3n7p44mejn5" path="res://assets/sprites/projectiles/bottle1.png" id="2_86efg"]
@@ -15,7 +15,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_7ns3p"]
-offsets = PackedFloat32Array(0.777143, 1)
+offsets = PackedFloat32Array(0.834286, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fvxm5"]
@@ -24,13 +24,13 @@ gradient = SubResource("Gradient_7ns3p")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p3603"]
 lifetime_randomness = 0.4
 emission_shape = 1
-emission_sphere_radius = 20.0
+emission_sphere_radius = 15.0
 particle_flag_disable_z = true
-direction = Vector3(1, 1, 0)
+direction = Vector3(0, 1, 0)
 spread = 180.0
 gravity = Vector3(0, 98, 0)
 initial_velocity_min = 30.0
-initial_velocity_max = 60.0
+initial_velocity_max = 70.0
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 orbit_velocity_min = 0.0
@@ -46,6 +46,45 @@ anim_offset_max = 0.5
 atlas = ExtResource("4_i48uk")
 region = Rect2(0, 0, 64, 4)
 
+[sub_resource type="Gradient" id="Gradient_xq0en"]
+offsets = PackedFloat32Array(0, 0.131429, 0.834286, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e3d0x"]
+gradient = SubResource("Gradient_xq0en")
+
+[sub_resource type="Curve" id="Curve_hhkih"]
+max_value = 100.0
+_data = [Vector2(0.208738, 0), 0.0, 0.0, 0, 0, Vector2(0.262136, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p285j"]
+curve = SubResource("Curve_hhkih")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4e76j"]
+lifetime_randomness = 0.05
+emission_shape = 3
+emission_box_extents = Vector3(15, 2, 0)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 30.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 60.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 100.0
+damping_max = 100.0
+damping_curve = SubResource("CurveTexture_p285j")
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 2.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_e3d0x")
+anim_offset_max = 0.5
+
 [node name="BulletMulti" instance=ExtResource("1_37irm")]
 script = ExtResource("2_covdj")
 poison_duration = 2.0
@@ -57,13 +96,27 @@ texture = ExtResource("2_86efg")
 shape = SubResource("CircleShape2D_30tpd")
 debug_color = Color(0, 0.639216, 0.376471, 0.419608)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
+[node name="ExplosionParticles" type="GPUParticles2D" parent="." index="2"]
 z_index = 500
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_pmhxa")
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_p3603")
 texture = SubResource("AtlasTexture_8os5m")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+
+[node name="GroundParticles" type="GPUParticles2D" parent="." index="3"]
+z_index = 500
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_pmhxa")
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_4e76j")
+texture = SubResource("AtlasTexture_8os5m")
+lifetime = 1.3
 one_shot = true
 explosiveness = 1.0
 randomness = 1.0
