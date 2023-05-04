@@ -1,6 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dlghhpgtrfv7n"]
 
 [ext_resource type="Script" path="res://assets/scripts/ennemies/i_enemy.gd" id="1_hmd3i"]
+[ext_resource type="AudioStream" uid="uid://bdtmctco3dff" path="res://assets/audio/death.wav" id="2_kovib"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_od755"]
 animations = [{
@@ -180,5 +181,9 @@ shape = SubResource("CapsuleShape2D_ggnch")
 
 [node name="PoisonTimer" type="Timer" parent="Enemy"]
 wait_time = 0.8
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="Enemy"]
+stream = ExtResource("2_kovib")
+bus = &"SFX"
 
 [connection signal="timeout" from="Enemy/PoisonTimer" to="Enemy" method="_on_poison_timer_timeout"]

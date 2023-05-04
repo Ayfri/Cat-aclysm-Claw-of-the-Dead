@@ -146,3 +146,6 @@ shape = SubResource("CapsuleShape2D_bso6l")
 [node name="SecondCollisionShape" parent="Enemy" index="2"]
 rotation = 0.0
 shape = SubResource("CapsuleShape2D_70tck")
+
+[node name="DeathSoundPlayer" parent="Enemy" index="3"]
+pitch_scale = 2.0
