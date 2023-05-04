@@ -11,7 +11,7 @@ var tower: ITower;
 
 
 func _physics_process(_delta: float) -> void:
-	if target == null:
+	if target == null || target.is_dead:
 		queue_free();
 		return;
 

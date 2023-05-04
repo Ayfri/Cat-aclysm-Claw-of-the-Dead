@@ -167,6 +167,9 @@ func fire_target() -> void:
 
 
 func select_target() -> void:
+	targetable_enemy = targetable_enemy.filter(func(enemy: IEnemy): return !enemy.is_dead);
+	if targetable_enemy.is_empty(): return;
+
 	match type_target:
 		Target.First:
 			target = targetable_enemy.front();
