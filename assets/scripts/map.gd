@@ -1,20 +1,22 @@
 class_name Map;
 extends Node2D;
 
+
 signal map_editing_toggle(enabled: bool);
 
 const PreviewTowerScene := preload("res://scenes/towers/preview_tower.tscn");
 
 var current_tower_index := 0;
 
-
 @onready var editing := false:
 	set(value):
-		$Zones.visible = value;
+		zones.visible = value;
 		editing = value;
 		map_editing_toggle.emit(value);
 
 @onready var editing_sprite: PreviewTower;
+@onready var grid := $Grid as Sprite2D;
+@onready var zones := $Zones as Node2D;
 
 
 func _process(_delta: float) -> void:
@@ -29,19 +31,19 @@ func _input(event: InputEvent) -> void:
 		var sprite := get_preview_tower();
 		sprite.position = get_global_mouse_position();
 		sprite.snap_position_to_grid();
-		$Grid.position = sprite.position;
+		grid.position = sprite.position;
 
 
 func activate_editing() -> void:
 	editing = true;
 	toggle_cursor();
-	$Grid.visible = editing;
+	grid.visible = editing;
 	editing_sprite = PreviewTowerScene.instantiate() as PreviewTower;
 	editing_sprite.stats = Globals.tower_stats[current_tower_index];
 	editing_sprite.position = get_global_mouse_position();
 	editing_sprite.snap_position_to_grid();
 
-	$Grid.position = editing_sprite.position;
+	grid.position = editing_sprite.position;
 	add_child(editing_sprite);
 	editing_sprite.set_texture();
 
@@ -49,7 +51,7 @@ func activate_editing() -> void:
 func cancel_editing() -> void:
 	editing = false;
 	toggle_cursor();
-	$Grid.visible = editing;
+	grid.visible = editing;
 	editing_sprite = null;
 
 
@@ -96,6 +98,7 @@ func map_editing() -> void:
 func toggle_cursor() -> void:
 	if editing: Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN);
 	else: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
+
 
 func update_selected_tower(index: int) -> void:
 	current_tower_index = index;
