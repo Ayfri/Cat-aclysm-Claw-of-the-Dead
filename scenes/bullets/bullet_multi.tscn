@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://assets/scripts/bullets/bullet_multi.gd" id="2_covdj"]
 [ext_resource type="Texture2D" uid="uid://cr6fwg02mlflj" path="res://assets/sprites/projectiles/bottle_particles.png" id="4_i48uk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l4cuf"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_30tpd"]
 radius = 16.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pmhxa"]
@@ -54,7 +54,8 @@ poison_duration = 2.0
 texture = ExtResource("2_86efg")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-shape = SubResource("CircleShape2D_l4cuf")
+shape = SubResource("CircleShape2D_30tpd")
+debug_color = Color(0, 0.639216, 0.376471, 0.419608)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
 z_index = 500

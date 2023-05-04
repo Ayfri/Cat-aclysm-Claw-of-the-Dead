@@ -11,10 +11,11 @@ var tower: ITower;
 
 
 func _physics_process(_delta: float) -> void:
-	if target == null || target.is_dead:
+	if target == null:
 		queue_free();
 		return;
 
+	if !sprite.visible: return;
 	physics();
 	move_and_slide();
 
@@ -22,6 +23,10 @@ func _physics_process(_delta: float) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is IEnemy:
 		var enemy := area as IEnemy;
+		if enemy.is_dead:
+			queue_free();
+			return;
+
 		enemy.on_hit.emit(tower, damages);
 		on_destroy(enemy as IEnemy);
 

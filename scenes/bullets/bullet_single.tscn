@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmydofpuyssuw"]
+[gd_scene load_steps=5 format=3 uid="uid://bmydofpuyssuw"]
 
 [ext_resource type="PackedScene" uid="uid://c72ymy1p54att" path="res://scenes/bullets/i_bullet.tscn" id="1_lh45x"]
+[ext_resource type="Script" path="res://assets/scripts/bullets/i_bullet.gd" id="2_8v6we"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_derkd"]
 load_path = "res://.godot/imported/arrow.png-96f6402105c00b4bd3969ddfa8ce7609.ctex"
@@ -9,6 +10,7 @@ load_path = "res://.godot/imported/arrow.png-96f6402105c00b4bd3969ddfa8ce7609.ct
 radius = 4.0
 
 [node name="BulletSingle" instance=ExtResource("1_lh45x")]
+script = ExtResource("2_8v6we")
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = 3.14159
