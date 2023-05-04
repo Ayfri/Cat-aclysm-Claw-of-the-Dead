@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 		parent.queue_free();
 
 
-func _on_hit(_tower: ITower, damages: float) -> void:
+func _on_hit(tower: ITower, damages: float) -> void:
 	if is_dead: return;
 
 	health -= damages;
@@ -74,6 +74,7 @@ func _on_hit(_tower: ITower, damages: float) -> void:
 		animation_player.stop();
 		animation_player.play("death");
 		animated_sprite.pause();
+		tower.targetable_enemy.erase(self);
 
 		await get_tree().create_timer(0.3).timeout;
 		_on_death();
