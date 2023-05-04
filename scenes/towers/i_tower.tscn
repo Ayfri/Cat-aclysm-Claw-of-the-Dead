@@ -26,6 +26,7 @@ input_pickable = false
 
 [node name="HitArea" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_hjdme")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="BulletContainer" type="Node" parent="."]
 

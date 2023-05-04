@@ -1,3 +1,3 @@
 extends Node;
 
-@export var last_visible_gui: MarginContainer = null;
+@export var last_visible_tower: ITower = null;
