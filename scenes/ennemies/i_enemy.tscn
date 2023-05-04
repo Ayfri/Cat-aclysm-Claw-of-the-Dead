@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlghhpgtrfv7n"]
+[gd_scene load_steps=10 format=3 uid="uid://dlghhpgtrfv7n"]
 
 [ext_resource type="Script" path="res://assets/scripts/ennemies/i_enemy.gd" id="1_hmd3i"]
 [ext_resource type="AudioStream" uid="uid://bdtmctco3dff" path="res://assets/audio/death.wav" id="2_kovib"]

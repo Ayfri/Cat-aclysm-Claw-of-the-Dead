@@ -39,7 +39,7 @@ func _on_pre_wave_timer_timeout():
 
 func _on_enemy_spawn_timer_timeout():
 	var path_used := paths.pick_random() as Path2D;
-	if path_used.name not in Globals.waves[Globals.level.wave-1].possible_path: 
+	if path_used.name not in Globals.waves[Globals.level.wave-1].possible_path:
 		_on_enemy_spawn_timer_timeout();
 		return;
 
