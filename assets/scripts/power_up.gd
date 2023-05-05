@@ -1,28 +1,31 @@
 class_name PowerUp;
 extends Area2D;
 
+
 const sprite_buff := preload("res://assets/sprites/powers/buff.png");
 const sprite_debuff := preload("res://assets/sprites/powers/debuff.png")
 
-@onready var sprite := $Sprite2D as Sprite2D;
 @onready var audio_stream_player := $AudioStreamPlayer as AudioStreamPlayer;
+@onready var sprite := $Sprite2D as Sprite2D;
 
-@export var speed := 300;
 @export var effect_duration := 5;
-@export var random_spawn := 1;
+@export var speed := 250;
+
 
 func _ready():
 	position.x = randf_range(400, 1200);
 
+
 func _process(delta: float) -> void:
 	position.y += speed * delta;
 	if position.y > 900:
-		position.y = -200;
+		position.y = randf_range(-300, -1500);
 		position.x = randf_range(400, 1200);
 		visible = true;
 
+
 func _on_timer_sprite_timeout():
-	random_spawn = randi() % 3 + 1;
+	var random_spawn := randi() % 3 + 1;
 
 	if random_spawn == 3:
 		sprite.texture = sprite_debuff;
@@ -40,6 +43,7 @@ func apply_powerup_effect() -> void:
 		Globals.enemy_speed_multiplier = 0.5;
 		await get_tree().create_timer(2.0).timeout;
 		Globals.enemy_speed_multiplier = 1;
+
 
 func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if !event is InputEventMouseButton: return;

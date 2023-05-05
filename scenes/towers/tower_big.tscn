@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfx1m1h4y6k50"]
+[gd_scene load_steps=12 format=3 uid="uid://bfx1m1h4y6k50"]
 
 [ext_resource type="PackedScene" uid="uid://dyao8oeedxc4t" path="res://scenes/towers/i_tower.tscn" id="1_sufsh"]
 [ext_resource type="Texture2D" uid="uid://b58hsotuaol1n" path="res://assets/sprites/towers/big_1.png" id="2_62efy"]
@@ -47,6 +47,9 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_a0d4l"]
+radius = 140.0
+
 [node name="TowerBig" instance=ExtResource("1_sufsh")]
 projectile_scene = ExtResource("2_tie0q")
 projectile_upgrade_texture = ExtResource("3_s6ep2")
@@ -55,6 +58,9 @@ projectile_upgrade_texture = ExtResource("3_s6ep2")
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_5m1a4")
 animation = &"idle_1"
+
+[node name="HitArea" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_a0d4l")
 
 [node name="CollisionShape2D" parent="ClickableArea" index="0"]
 position = Vector2(0, -14.5)

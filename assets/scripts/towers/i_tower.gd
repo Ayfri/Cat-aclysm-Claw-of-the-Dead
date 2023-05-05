@@ -1,9 +1,12 @@
 class_name ITower;
 extends Node2D;
 
+
+signal upgrade(tower: ITower);
+
 enum Target {First = 0, Last = 1, Strongest = 2, Weakest = 3, Random = 4};
 
-var bullet_speed := 300;
+var bullet_speed := 500;
 var stats: TowerStats;
 var type_target: Target;
 var target: IEnemy;
@@ -98,6 +101,7 @@ func _on_upgrade_tower_pressed() -> void:
 	sprite.play("idle_2");
 
 	upgrade_button.queue_free();
+	upgrade.emit(self);
 
 
 func _on_sell_tower_pressed() -> void:

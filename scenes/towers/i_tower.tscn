@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://assets/scripts/towers/i_tower.gd" id="1_48s8f"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hjdme"]
-radius = 213.258
+[sub_resource type="CircleShape2D" id="CircleShape2D_atmfv"]
+radius = 200.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdln7"]
 size = Vector2(76, 78)
@@ -25,7 +25,7 @@ autoplay = "idle_1"
 input_pickable = false
 
 [node name="HitArea" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_hjdme")
+shape = SubResource("CircleShape2D_atmfv")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="BulletContainer" type="Node" parent="."]
@@ -36,6 +36,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 one_shot = true
 
 [node name="ShootSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="PlacementHitbox" type="Area2D" parent="."]
