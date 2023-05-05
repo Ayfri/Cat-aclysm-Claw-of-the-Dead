@@ -35,6 +35,9 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="ShootSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
+
 [node name="PlacementHitbox" type="Area2D" parent="."]
 position = Vector2(1, 8)
 collision_layer = 2

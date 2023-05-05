@@ -6,11 +6,11 @@ extends IBullet;
 
 @onready var explosion_particles := $ExplosionParticles as GPUParticles2D;
 @onready var ground_particles := $GroundParticles as GPUParticles2D;
-@onready var hitbox := $Area2D/CollisionShape2D as CollisionShape2D;
 
 
 ## Changes the animation to take colored sprites when bullet is poisonous.
 func _ready() -> void:
+	super._ready();
 	if tower.upgraded:
 		var particle_material := explosion_particles.process_material as ParticleProcessMaterial;
 		particle_material = particle_material.duplicate();
@@ -67,5 +67,5 @@ func on_destroy(enemy: IEnemy) -> void:
 
 	if sprite.visible: position = enemy.global_position;
 
+	play_hit_sound();
 	bullet_destroy_effects();
-

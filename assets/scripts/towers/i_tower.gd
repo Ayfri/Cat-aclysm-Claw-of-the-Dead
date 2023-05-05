@@ -15,10 +15,12 @@ var menu_open: bool:
 
 @export var projectile_scene: PackedScene;
 @export var projectile_upgrade_texture: Texture2D;
+@export var shoot_upgrade_sound: AudioStream = null;
 
 @onready var aim_marker := $Aim as Marker2D;
 @onready var hit_area := $Area2D/HitArea as CollisionShape2D;
 @onready var reload_timer := $ReloadTimer as Timer;
+@onready var shoot_sound_player := $ShootSoundPlayer as AudioStreamPlayer2D;
 @onready var sprite := $AnimatedSprite2D as AnimatedSprite2D;
 @onready var target_menu := $MarginContainer as MarginContainer;
 @onready var timer := get_tree().create_timer(0.2);
@@ -89,9 +91,12 @@ func _on_close_gui_pressed() -> void:
 func _on_upgrade_tower_pressed() -> void:
 	if Globals.level.money < stats.upgrade_price: return;
 	Globals.level.money -= stats.upgrade_price;
+
 	toggle_menu(false);
 	upgraded = true;
-	sprite.play("idle_2")
+	shoot_sound_player.stream = shoot_upgrade_sound;
+	sprite.play("idle_2");
+
 	upgrade_button.queue_free();
 
 
@@ -140,6 +145,7 @@ func calculate_bullet_damages() -> int:
 func fire_target() -> void:
 	if reload_timer.is_stopped():
 		reload_timer.start();
+		shoot_sound_player.play();
 
 		var bullet := projectile_scene.instantiate() as IBullet;
 		bullet.damages = calculate_bullet_damages();

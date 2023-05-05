@@ -1,22 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://c72ymy1p54att"]
 
-[sub_resource type="GDScript" id="GDScript_n6vg5"]
-script/source = "class_name BulletSingle;
-extends IBullet;
-
-
-func on_destroy(enemy: IEnemy) -> void:
-	position = enemy.position;
-	await get_tree().create_timer(1.5).timeout;
-	queue_free();
-"
+[ext_resource type="Script" path="res://assets/scripts/bullets/i_bullet.gd" id="1_tl4km"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uyr82"]
 radius = 4.0
 height = 8.0
 
 [node name="Bullet" type="CharacterBody2D"]
-script = SubResource("GDScript_n6vg5")
+script = ExtResource("1_tl4km")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -27,5 +18,9 @@ rotation = 1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_uyr82")
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -12.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

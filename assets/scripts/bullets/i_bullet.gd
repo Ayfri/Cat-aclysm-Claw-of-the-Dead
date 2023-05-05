@@ -3,12 +3,20 @@ extends CharacterBody2D;
 
 
 var damages: float;
-var speed: int;
+var hitbox: CollisionShape2D = null;
+var hit_sound_player: AudioStreamPlayer2D = null;
 var target: IEnemy;
 var tower: ITower;
+var speed: int;
+
 
 @onready var direction := Vector2();
 @onready var sprite := $Sprite2D as Sprite2D;
+
+
+func _ready() -> void:
+	hitbox = $Area2D/CollisionShape2D as CollisionShape2D;
+	hit_sound_player = $HitSoundPlayer as AudioStreamPlayer2D;
 
 
 func _physics_process(_delta: float) -> void:
@@ -40,7 +48,16 @@ func bullet_destroy_effects() -> void:
 
 
 func on_destroy(_enemy: IEnemy) -> void:
+	play_hit_sound();
+	hitbox.set_deferred("disabled", true);
+	sprite.hide();
+	await get_tree().create_timer(1.5).timeout;
+
 	queue_free();
+
+
+func play_hit_sound() -> void:
+	hit_sound_player.play();
 
 
 func physics() -> void:
@@ -52,6 +69,7 @@ func physics() -> void:
 		direction = Vector2.from_angle(randi_range(0, 360));
 
 	velocity = direction * speed;
+
 
 func set_sprite_texture(texture: Texture2D) -> void:
 	sprite.texture = texture;
