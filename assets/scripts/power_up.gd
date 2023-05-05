@@ -42,7 +42,10 @@ func apply_powerup_effect() -> void:
 		Globals.enemy_speed_multiplier = 1;
 
 func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+	if !event is InputEventMouseButton: return;
+
+	var mouse_button_event := event as InputEventMouseButton;
+	if mouse_button_event.button_index == MOUSE_BUTTON_LEFT and mouse_button_event.is_pressed():
 		audio_stream_player.play();
 		visible = false;
 		apply_powerup_effect();

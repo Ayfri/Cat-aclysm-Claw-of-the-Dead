@@ -7,14 +7,15 @@ const starting_money := 30;
 const starting_health := 10;
 const starting_wave := 0;
 
-@export var muffled_sound_effect: AudioEffect = null;
 @export var health := starting_health;
 @export var money := starting_money;
+@export var muffled_sound_effect: AudioEffect = null;
 @export var wave := starting_wave;
 
 @onready var map := $Map as Map;
 @onready var music_bus_index := AudioServer.get_bus_index(($MusicPlayer as AudioStreamPlayer).bus);
 @onready var music_player := $MusicPlayer as AudioStreamPlayer;
+@onready var tower_selector_container := $Interface/TowerSelectorContainer as Panel;
 
 var pause_scene: PauseMenu = null;
 
@@ -47,4 +48,4 @@ func toggle_pause() -> void:
 
 
 func _on_map_editing_toggle(enabled: bool) -> void:
-	$Interface/TowerSelectorContainer.visible = enabled;
+	tower_selector_container.visible = enabled;

@@ -35,7 +35,7 @@ func _init() -> void:
 
 func _process(delta: float) -> void:
 	if is_dead || !stats: return;
-	animated_sprite.z_index = global_position.y;
+	animated_sprite.z_index = roundi(global_position.y);
 
 	var x_pos_difference := parent.position.x - previous_point.x;
 	var y_pos_difference := parent.position.y - previous_point.y;
@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 		second_collision_shape.set_disabled(false);
 		animated_sprite.play("walk_down" if y_pos_difference > 0 else "walk_up");
 
-	parent.progress = parent.progress + (stats.base_speed * Globals.enemy_speed_multiplier * delta);
+	parent.progress += (stats.base_speed * Globals.enemy_speed_multiplier * delta);
 	if parent.progress_ratio == 1:
 		Globals.level.health -= 1;
 		parent.queue_free();

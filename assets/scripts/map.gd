@@ -61,6 +61,10 @@ func get_preview_tower() -> PreviewTower:
 	return sprite if sprite is PreviewTower else null;
 
 
+func get_wave_label(label_prefix_name: String) -> RichTextLabel:
+	return get_node("%sLabel" % label_prefix_name) as RichTextLabel;
+
+
 func map_editing() -> void:
 	if editing && Input.is_action_just_pressed('Place Tower'):
 		var sprite := get_preview_tower();
