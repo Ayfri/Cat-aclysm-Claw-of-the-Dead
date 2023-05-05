@@ -10,13 +10,12 @@ var stats: EnemyStats = null:
 		stats = value;
 		health = value.base_health;
 
-@onready var first_collision_shape := $FirstCollisionShape as CollisionShape2D;
-@onready var second_collision_shape := $SecondCollisionShape as CollisionShape2D;
 @onready var animated_sprite := $AnimatedSprite2D as AnimatedSprite2D;
-@onready var death_sound_player := $DeathSoundPlayer as AudioStreamPlayer2D;
+@onready var first_collision_shape := $FirstCollisionShape as CollisionShape2D;
 @onready var parent := get_parent() as PathFollow2D;
 @onready var poison_timer := $PoisonTimer as Timer;
 @onready var previous_point := Vector2(parent.position);
+@onready var second_collision_shape := $SecondCollisionShape as CollisionShape2D;
 
 @export var is_dead := false;
 @export var poison_damages: int;
@@ -28,7 +27,6 @@ var stats: EnemyStats = null:
 		if value: poison_timer.start();
 		else: poison_timer.stop();
 		modulate = Color(0.3, 1, 0.3) if value else Color(1, 1, 1);
-
 
 
 func _init() -> void:
@@ -70,7 +68,6 @@ func _on_hit(tower: ITower, damages: float) -> void:
 
 	if health <= 0:
 		is_dead = true;
-		death_sound_player.play();
 		animation_player.stop();
 		animation_player.play("death");
 		animated_sprite.pause();
@@ -83,7 +80,7 @@ func _on_hit(tower: ITower, damages: float) -> void:
 func _on_death() -> void:
 	Globals.level.money += stats.base_reward;
 	parent.hide();
-	await get_tree().create_timer(death_sound_player.stream.get_length()).timeout;
+	await get_tree().create_timer(1.5).timeout;
 	parent.queue_free();
 
 

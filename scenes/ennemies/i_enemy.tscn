@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlghhpgtrfv7n"]
+[gd_scene load_steps=11 format=3 uid="uid://dlghhpgtrfv7n"]
 
 [ext_resource type="Script" path="res://assets/scripts/ennemies/i_enemy.gd" id="1_hmd3i"]
 [ext_resource type="AudioStream" uid="uid://bdtmctco3dff" path="res://assets/audio/death.wav" id="2_kovib"]
+[ext_resource type="AudioStream" uid="uid://dt45vasp3e50e" path="res://assets/audio/hit.wav" id="3_y1534"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_od755"]
 animations = [{
@@ -65,10 +66,34 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitSoundPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeathSoundPlayer:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_vf016"]
 resource_name = "death"
-length = 0.16
+length = 2.0
 step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -106,10 +131,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0.196078, 0.196078, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DeathSoundPlayer:playing")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_edu2l"]
 resource_name = "hit"
-length = 0.166668
+length = 0.25
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -134,6 +171,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(4, 4), Vector2(-4, -4), Vector2(4, -4), Vector2(-4, 4), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitSoundPlayer:playing")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bleo4"]
@@ -184,6 +233,10 @@ wait_time = 0.8
 
 [node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="Enemy"]
 stream = ExtResource("2_kovib")
+bus = &"SFX"
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="Enemy"]
+stream = ExtResource("3_y1534")
 bus = &"SFX"
 
 [connection signal="timeout" from="Enemy/PoisonTimer" to="Enemy" method="_on_poison_timer_timeout"]
