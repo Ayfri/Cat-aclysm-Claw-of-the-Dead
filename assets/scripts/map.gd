@@ -73,13 +73,12 @@ func map_editing() -> void:
 		var tower_stats := Globals.tower_stats[current_tower_index];
 		Globals.level.money -= tower_stats.base_price;
 
-		var last_visible_tower: ITower = GuiTowerManager.last_visible_tower;
+		var last_visible_tower := GuiTowerManager.last_visible_tower;
 		if last_visible_tower != null:
 			last_visible_tower.toggle_menu(false);
 			GuiTowerManager.last_visible_tower = null;
 
 		var tower_sprite := tower_stats.tower_scene.instantiate() as ITower;
-		tower_sprite.stats = tower_stats;
 		tower_sprite.position = sprite.position;
 
 		remove_child(sprite);

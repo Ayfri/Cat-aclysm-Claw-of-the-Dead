@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfx1m1h4y6k50"]
+[gd_scene load_steps=12 format=3 uid="uid://dsqo1fe23gxq4"]
 
 [ext_resource type="PackedScene" uid="uid://dyao8oeedxc4t" path="res://scenes/towers/i_tower.tscn" id="1_sufsh"]
 [ext_resource type="Texture2D" uid="uid://b58hsotuaol1n" path="res://assets/sprites/towers/big_1.png" id="2_62efy"]

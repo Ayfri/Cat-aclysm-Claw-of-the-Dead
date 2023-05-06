@@ -4,7 +4,7 @@ extends Node;
 @export var level: Level = null;
 @export var tower_stats: Array[TowerStats] = [
 	TowerStats.new(3, 20, 0.8, "tree", load("res://scenes/towers/tower_tree.tscn"), 2, 30),
-	TowerStats.new(4, 40, 0.75, "big", load("res://scenes/towers/tower_big.tscn"), 1, 60)
+	TowerStats.new(4, 40, 0.75, "big", load("res://scenes/towers/tower_two.tscn"), 1, 60)
 ];
 @export var enemy_stats: Array[EnemyStats] = [
 	EnemyStats.new(12, 130, 4, load("res://scenes/ennemies/enemy_small.tscn")),
