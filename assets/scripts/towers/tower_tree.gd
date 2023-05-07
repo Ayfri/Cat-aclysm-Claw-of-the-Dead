@@ -6,7 +6,7 @@ func _init() -> void:
 	stats = Globals.tower_stats[0];
 
 
-func _on_upgrade(tower) -> void:
+func _on_upgrade(_tower: ITower) -> void:
 	var hit_circle_area := hit_area.shape as CircleShape2D;
 	hit_circle_area = hit_circle_area.duplicate() as CircleShape2D;
 	hit_circle_area.radius *= 1.1;
