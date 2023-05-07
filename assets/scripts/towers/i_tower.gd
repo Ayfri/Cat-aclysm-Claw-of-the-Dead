@@ -129,13 +129,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	var mouse_event := event as InputEventMouseButton;
 	var right_or_left_click := (mouse_event.button_index == MOUSE_BUTTON_LEFT or mouse_event.button_index == MOUSE_BUTTON_RIGHT);
 
-	if event.is_pressed() and right_or_left_click:
-		if GuiTowerManager.last_visible_tower != null:
-			GuiTowerManager.last_visible_tower.toggle_menu(false);
-
-			var last_visible_tower_sprite := GuiTowerManager.last_visible_tower.get_node("AnimatedSprite2D") as AnimatedSprite2D;
-			last_visible_tower_sprite.z_index = z_index_save;
-			GuiTowerManager.last_visible_tower = null;
+	if event.is_pressed() && right_or_left_click && GuiTowerManager.last_visible_tower != null:
+		GuiTowerManager.last_visible_tower.toggle_menu(false);
 
 
 func _enable_menu() -> void:
@@ -169,7 +164,7 @@ func get_weakest_enemy(enemies: Array[IEnemy]) -> IEnemy:
 	var lowest_health: float = -1;
 
 	for enemy in enemies:
-		if lowest_health == -1 or enemy.health < lowest_health:
+		if lowest_health == -1 || enemy.health < lowest_health:
 			lowest_health_enemy = enemy;
 			lowest_health = enemy.health;
 
@@ -207,4 +202,10 @@ func select_target() -> void:
 
 func toggle_menu(display: bool) -> void:
 	target_menu.visible = display;
+
+	if !display:
+		var last_visible_tower_sprite := GuiTowerManager.last_visible_tower.get_node("AnimatedSprite2D") as AnimatedSprite2D;
+		last_visible_tower_sprite.z_index = z_index_save;
+		GuiTowerManager.last_visible_tower = null;
+
 	queue_redraw();
