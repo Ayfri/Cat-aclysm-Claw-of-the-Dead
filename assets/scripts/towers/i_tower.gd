@@ -117,6 +117,8 @@ func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _sha
 
 	var mouse_event := event as InputEventMouseButton;
 	if mouse_event.button_index == MOUSE_BUTTON_LEFT and mouse_event.is_pressed():
+		if Globals.level.map.editing: return;
+
 		toggle_menu(true);
 
 		sprite.z_index = target_menu.z_index + 2;

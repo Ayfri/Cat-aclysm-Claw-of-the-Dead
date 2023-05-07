@@ -76,7 +76,6 @@ func map_editing() -> void:
 		var last_visible_tower := GuiTowerManager.last_visible_tower;
 		if last_visible_tower != null:
 			last_visible_tower.toggle_menu(false);
-			GuiTowerManager.last_visible_tower = null;
 
 		var tower_sprite := tower_stats.tower_scene.instantiate() as ITower;
 		tower_sprite.position = sprite.position;
@@ -90,6 +89,10 @@ func map_editing() -> void:
 		return;
 
 	if Input.is_action_just_pressed('Change Map Editing Mode'):
+		var last_visible_tower := GuiTowerManager.last_visible_tower;
+		if last_visible_tower != null:
+			last_visible_tower.toggle_menu(false);
+
 		if !editing:
 			activate_editing();
 			return;
