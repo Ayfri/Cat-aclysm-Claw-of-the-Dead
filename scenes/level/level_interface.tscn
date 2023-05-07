@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://crrvi62hvfjip"]
+[gd_scene load_steps=3 format=3 uid="uid://bkk73xwm67dxt"]
 
-[ext_resource type="Script" path="res://assets/scripts/level_interface.gd" id="1_am2w4"]
+[ext_resource type="Script" path="res://assets/scripts/level/level_interface.gd" id="1_8n5fq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkfhk"]
 content_margin_right = 20.0
 bg_color = Color(0, 0, 0, 0.509804)
 
 [node name="level_interface" type="CanvasLayer"]
-script = ExtResource("1_am2w4")
+script = ExtResource("1_8n5fq")
 
 [node name="MoneyDisplay" type="RichTextLabel" parent="."]
 texture_filter = 1
