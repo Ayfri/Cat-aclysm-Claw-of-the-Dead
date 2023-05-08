@@ -5,7 +5,7 @@ extends Node2D;
 const PauseScene := preload("res://scenes/pause_interface.tscn");
 const starting_health := 10;
 const starting_money := 30;
-const starting_wave := 0;
+const starting_wave := 1;
 
 var pause_scene: PauseMenu = null;
 
@@ -56,6 +56,7 @@ func toggle_pause() -> void:
 		map.toggle_cursor();
 		remove_child(pause_scene);
 		AudioServer.remove_bus_effect(music_bus_index, 0);
+
 
 func win() -> void:
 	interface.show_win_panel();
