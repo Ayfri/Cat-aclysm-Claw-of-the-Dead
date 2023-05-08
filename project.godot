@@ -23,6 +23,7 @@ buses/default_bus_layout="res://sound_bus_layout.tres"
 
 Globals="*res://assets/scripts/globals.gd"
 GuiTowerManager="*res://assets/scripts/towers/gui_tower_manager.gd"
+Debug="*res://assets/scripts/debug.gd"
 
 [debug]
 

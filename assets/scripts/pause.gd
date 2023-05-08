@@ -7,7 +7,7 @@ func _on_return_button_pressed() -> void:
 
 
 func _on_restart_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/level.tscn");
+	get_tree().change_scene_to_file("res://scenes/level/level.tscn");
 	Globals.level.toggle_pause();
 
 

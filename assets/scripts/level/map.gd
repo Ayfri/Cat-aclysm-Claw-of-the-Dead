@@ -19,13 +19,10 @@ var current_tower_index := 0;
 @onready var zones := $Zones as Node2D;
 
 
-func _process(_delta: float) -> void:
+func _input(event: InputEvent) -> void:
 	map_editing();
 
-
-func _input(event: InputEvent) -> void:
-	if !editing:
-		return;
+	if !editing: return;
 
 	if event is InputEventMouseMotion:
 		var sprite := get_preview_tower();

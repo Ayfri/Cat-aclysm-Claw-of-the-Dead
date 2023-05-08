@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://cu8710w84rpgm"]
 
 [ext_resource type="Script" path="res://assets/scripts/level/path.gd" id="1_0pp7e"]
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://bp82pycdhb48"]
 
 [ext_resource type="Script" path="res://assets/scripts/level/level.gd" id="1_uvlv4"]
-[ext_resource type="PackedScene" path="res://scenes/level/map.tscn" id="2_wn1wg"]
-[ext_resource type="PackedScene" uid="uid://crrvi62hvfjip" path="res://scenes/level/level_interface.tscn" id="3_xgdqo"]
+[ext_resource type="PackedScene" uid="uid://dwg0prafkpxy1" path="res://scenes/level/map.tscn" id="2_wn1wg"]
+[ext_resource type="PackedScene" uid="uid://bkk73xwm67dxt" path="res://scenes/level/level_interface.tscn" id="3_xgdqo"]
 [ext_resource type="AudioStream" uid="uid://vhofrt5vup6d" path="res://assets/audio/main.wav" id="4_gum1d"]
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_qyciy"]
