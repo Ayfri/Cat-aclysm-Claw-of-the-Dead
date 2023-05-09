@@ -11,6 +11,7 @@ extends PanelContainer;
 func refresh_values() -> void:
 	health_label.text = health_label.text % Globals.level.health;
 	killed_zombies_label.text = killed_zombies_label.text % Globals.level.killed_zombies;
+	total_money_label.text = total_money_label.text % Globals.level.total_money;
 
 
 func _on_restart_pressed() -> void:

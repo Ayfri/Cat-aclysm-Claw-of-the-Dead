@@ -13,8 +13,14 @@ var pause_scene: PauseMenu = null;
 @export var finished := false;
 @export var killed_zombies: Array[int] = [0, 0];
 @export var map: Map = null;
-@export var money := starting_money;
+
+@export var money := starting_money:
+	set(value):
+		money = value;
+		total_money += value;
+
 @export var muffled_sound_effect: AudioEffect = null;
+@export var total_money := starting_money;
 @export var wave := starting_wave;
 
 @onready var music_bus_index := AudioServer.get_bus_index(($MusicPlayer as AudioStreamPlayer).bus);
