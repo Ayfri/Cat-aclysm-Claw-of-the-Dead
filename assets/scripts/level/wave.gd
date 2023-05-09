@@ -1,10 +1,12 @@
 class_name Wave;
 extends Resource;
 
+
 @export var zombie_count: int;
 @export var big_probability : float;
 @export var max_duration: float;
 @export var possible_path: Array[String];
+
 
 @warning_ignore('shadowed_variable')
 func _init(

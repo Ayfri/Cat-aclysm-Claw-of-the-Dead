@@ -1,10 +1,12 @@
 class_name EnemyStats;
 extends Resource
 
+
 @export var base_health: int;
 @export var base_speed : float;
 @export var base_reward: int;
 @export var enemy_scene: PackedScene;
+
 
 @warning_ignore('shadowed_variable')
 func _init(

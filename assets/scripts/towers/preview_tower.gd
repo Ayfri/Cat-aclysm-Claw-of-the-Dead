@@ -67,8 +67,8 @@ func test_current_overlapping_area() -> void:
 	if overlapping_zone == null || !overlapping_towers.is_empty():
 		return;
 
-	var area_polygon_transformed: PackedVector2Array = [];
-	var current_polygon_transformed: PackedVector2Array = [];
+	var area_polygon_transformed := PackedVector2Array();
+	var current_polygon_transformed := PackedVector2Array();
 
 	for point in overlapping_zone.polygon:
 		area_polygon_transformed.append(point * overlapping_zone.transform.affine_inverse());

@@ -7,14 +7,15 @@ signal upgrade(tower: ITower);
 enum Target {First = 0, Last = 1, Strongest = 2, Weakest = 3, Random = 4};
 
 var bullet_speed := 500;
+
+var menu_open: bool:
+	get: return target_menu.visible;
+
 var stats: TowerStats;
 var type_target: Target;
 var target: IEnemy;
 var targetable_enemy: Array[IEnemy] = [];
 var upgraded := false;
-var menu_open: bool:
-	get:
-		return target_menu.visible;
 
 @export var projectile_scene: PackedScene;
 @export var projectile_upgrade_texture: Texture2D;
@@ -175,7 +176,7 @@ func get_weakest_enemy(enemies: Array[IEnemy]) -> IEnemy:
 
 func get_strongest_enemy(enemies: Array[IEnemy]) -> IEnemy:
 	var strongest_health_enemy: IEnemy = null;
-	var strongest_health: float = -1;
+	var strongest_health := -1.0;
 
 	for enemy in enemies:
 		if enemy.health > strongest_health:

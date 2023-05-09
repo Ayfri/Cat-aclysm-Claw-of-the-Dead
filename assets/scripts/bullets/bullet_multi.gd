@@ -34,7 +34,7 @@ func bullet_destroy_effects() -> void:
 	if !hitbox.disabled:
 		var hitbox_shape := hitbox.shape as CircleShape2D;
 		hitbox_shape = hitbox_shape.duplicate();
-		hitbox_shape.radius *= 3;
+		hitbox_shape.radius *= 3.0;
 		hitbox.set_deferred("shape", hitbox_shape);
 
 	explosion_particles.emitting = true;
@@ -58,7 +58,7 @@ func physics() -> void:
 		direction = Vector2.from_angle(randi_range(0, 360));
 
 	velocity = direction * speed;
-	rotation_degrees += 12;
+	rotation_degrees += 12.0;
 
 
 func on_destroy(enemy: IEnemy) -> void:

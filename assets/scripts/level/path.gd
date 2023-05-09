@@ -23,6 +23,7 @@ var random := RandomNumberGenerator.new();
 
 func _ready():
 	random.randomize();
+	var a := 2.;
 
 
 func _process(_delta: float):

@@ -1,14 +1,14 @@
 extends Control;
 
 
-const OptionsScene = preload("res://scenes/main_menu/options_menu.tscn");
-const github_link = "https://github.com/Ayfri/Cat-aclysm-Claw-of-the-Dead"
+const OptionsScene := preload("res://scenes/main_menu/options_menu.tscn");
+const github_link := "https://github.com/Ayfri/Cat-aclysm-Claw-of-the-Dead";
 
 @onready var buttons_sound_player := $ButtonsPlayer as AudioStreamPlayer;
 
 
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/level.tscn");
+	get_tree().change_scene_to_file("res://scenes/level/level.tscn");
 
 
 func _on_options_button_pressed() -> void:

@@ -1,7 +1,10 @@
 # Godot 4+ specific ignores
-.godot/
-.import/
-.mono/
-addons/
+.godot
+.import
+.mono
+addons
 *.translation
 export_presets.cfg
+
+# JetBrains IDEs
+.idea
