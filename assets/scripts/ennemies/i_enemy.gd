@@ -79,6 +79,11 @@ func _on_hit(tower: ITower, damages: float) -> void:
 
 func _on_death() -> void:
 	Globals.level.money += stats.base_reward;
+
+	var is_boss := Globals.enemy_stats.find(stats) == 1;
+	var index := 1 if is_boss else 0;
+	Globals.level.killed_zombies[index] += 1;
+
 	parent.hide();
 	await get_tree().create_timer(1.5).timeout;
 	parent.queue_free();

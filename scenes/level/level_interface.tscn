@@ -125,7 +125,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
 bbcode_enabled = true
-text = "[font size=36]Killed Zombies : %s[/font]"
+text = "[font size=36]Killed Zombies : %s[img=32]assets/sprites/ui/small_zombie.png[/img] %s[img=32]assets/sprites/ui/big_zombie.png[/img][/font]"
 
 [node name="TotalMoney" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/VBoxContainer2/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

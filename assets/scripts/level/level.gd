@@ -11,6 +11,7 @@ var pause_scene: PauseMenu = null;
 
 @export var health := starting_health;
 @export var finished := false;
+@export var killed_zombies: Array[int] = [0, 0];
 @export var map: Map = null;
 @export var money := starting_money;
 @export var muffled_sound_effect: AudioEffect = null;
