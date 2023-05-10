@@ -50,9 +50,11 @@ alignment = 2
 [node name="VboxMaster" type="VBoxContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Main" type="Label" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VboxMaster"]
+[node name="Main" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VboxMaster"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-text = "Main"
+bbcode_enabled = true
+text = "[img=25]assets/sprites/ui/sound.png[/img] Main"
 
 [node name="Master sound" type="HSlider" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VboxMaster"]
 layout_mode = 2
@@ -60,9 +62,11 @@ layout_mode = 2
 [node name="VBoxMusic" type="VBoxContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Music" type="Label" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxMusic"]
+[node name="Music" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxMusic"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-text = "Music"
+bbcode_enabled = true
+text = "[img=20]assets/sprites/ui/music.png[/img] Music"
 
 [node name="Music sound" type="HSlider" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxMusic"]
 custom_minimum_size = Vector2(0, 50)
@@ -74,9 +78,11 @@ theme_type_variation = &"BlueSlider"
 [node name="VBoxEffect" type="VBoxContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Effect" type="Label" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxEffect"]
+[node name="Effect" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxEffect"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-text = "Effect"
+bbcode_enabled = true
+text = "[img=15]assets/sprites/ui/effect.png[/img] Effect"
 
 [node name="Effect sound" type="HSlider" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxEffect"]
 layout_mode = 2
@@ -85,21 +91,22 @@ theme_type_variation = &"GreenSlider"
 [node name="MarginGraphique" type="MarginContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
-theme_override_constants/margin_bottom = 140
+theme_override_constants/margin_bottom = 160
 
-[node name="Label" type="Label" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique"]
+[node name="HBoxContainer" type="HBoxContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique"]
 layout_mode = 2
-text = "Fullscreen"
+size_flags_vertical = 4
+theme_override_constants/separation = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique"]
+[node name="Fullscreen" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique/HBoxContainer"]
+custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
-alignment = 1
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[img=25]assets/sprites/ui/fullscreen.png[/img] Fullscreen"
+fit_content = true
 
-[node name="MarginContainer" type="MarginContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 170
-
-[node name="CheckBox" type="CheckBox" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique/VBoxContainer/MarginContainer"]
+[node name="CheckBox" type="CheckBox" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique/HBoxContainer"]
 layout_mode = 2
 
 [node name="VBoxContainer" type="BoxContainer" parent="."]
