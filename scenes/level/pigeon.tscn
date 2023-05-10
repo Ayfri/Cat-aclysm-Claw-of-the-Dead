@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cp8ur26i5yaaq"]
+[gd_scene load_steps=13 format=3 uid="uid://cp8ur26i5yaaq"]
 
 [ext_resource type="Script" path="res://assets/scripts/pigeon.gd" id="1_8y626"]
 [ext_resource type="Texture2D" uid="uid://cxa6k5kv8r6jy" path="res://assets/sprites/projectiles/pigeon.png" id="1_i0ik5"]
@@ -78,11 +78,14 @@ _data = {
 "rotate": SubResource("Animation_epmj8")
 }
 
-[node name="pigeon" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dsh0h"]
+radius = 27.4591
+
+[node name="pigeon" type="Area2D"]
 script = ExtResource("1_8y626")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(88, 116)
+position = Vector2(-4.99999, -7.99999)
 scale = Vector2(0.239584, 0.288195)
 sprite_frames = SubResource("SpriteFrames_5ws7h")
 frame_progress = 0.260885
@@ -93,5 +96,11 @@ libraries = {
 "": SubResource("AnimationLibrary_d070v")
 }
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dsh0h")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_3syt0")
+bus = &"SFX"
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
