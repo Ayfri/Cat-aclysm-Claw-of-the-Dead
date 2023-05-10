@@ -1,9 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://diadkloq426ja"]
+[gd_scene load_steps=13 format=3 uid="uid://diadkloq426ja"]
 
 [ext_resource type="Script" path="res://assets/scripts/main_menu/main_menu.gd" id="1_c340b"]
+[ext_resource type="Texture2D" uid="uid://dbqgfbluydjve" path="res://assets/sprites/background/background.png" id="2_6blws"]
 [ext_resource type="Texture2D" uid="uid://dghsxo6q67sse" path="res://assets/sprites/ui/github_logo.png" id="2_gc622"]
 [ext_resource type="AudioStream" uid="uid://bnu22ca4lnfh6" path="res://assets/audio/menu.wav" id="3_ee1o0"]
 [ext_resource type="AudioStream" uid="uid://casbgbgdvboa4" path="res://assets/audio/button.wav" id="4_ey6td"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slmtb"]
+atlas = ExtResource("2_6blws")
+region = Rect2(0, 0, 540, 398)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7f40"]
+atlas = ExtResource("2_6blws")
+region = Rect2(540, 0, 540, 398)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gphye"]
+atlas = ExtResource("2_6blws")
+region = Rect2(1080, 0, 540, 398)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmkl4"]
+atlas = ExtResource("2_6blws")
+region = Rect2(1620, 0, 540, 398)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h12g"]
+atlas = ExtResource("2_6blws")
+region = Rect2(2160, 0, 540, 398)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yijxf"]
+atlas = ExtResource("2_6blws")
+region = Rect2(2700, 0, 540, 398)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sj86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slmtb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7f40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gphye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmkl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6h12g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yijxf")
+}],
+"loop": true,
+"name": &"background",
+"speed": 3.0
+}]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -13,6 +64,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c340b")
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(800, 450)
+scale = Vector2(2.96296, 2.26131)
+sprite_frames = SubResource("SpriteFrames_8sj86")
+animation = &"background"
+autoplay = "background"
+frame_progress = 0.961552
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
