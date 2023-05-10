@@ -14,7 +14,7 @@ texture = SubResource("AtlasTexture_a1kiv")
 atlas = ExtResource("1_uxvvj")
 region = Rect2(657, 30, 45, 36)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qgkt"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ka6ee"]
 texture = SubResource("AtlasTexture_ivwmk")
 texture_margin_left = 14.0
 texture_margin_top = 17.0
@@ -220,7 +220,7 @@ default_font_size = 20
 /font_sizes/medium = 40
 /styles/normal = SubResource("StyleBoxTexture_0jpbk")
 BlueSlider/base_type = &"HSlider"
-BlueSlider/styles/slider = SubResource("StyleBoxTexture_1qgkt")
+BlueSlider/styles/slider = SubResource("StyleBoxTexture_ka6ee")
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)

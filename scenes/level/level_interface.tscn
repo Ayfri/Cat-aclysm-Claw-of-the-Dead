@@ -127,7 +127,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
 bbcode_enabled = true
-text = "[font size=32]Killed Zombies : %s[img=28]assets/sprites/ui/small_zombie.png[/img] %s[img=28]assets/sprites/ui/big_zombie.png[/img][/font]"
+text = "[img=34x30]assets/sprites/ui/brain.png[/img] [font size=32]Killed Zombies : %s[img=28]assets/sprites/ui/small_zombie.png[/img] %s[img=28]assets/sprites/ui/big_zombie.png[/img][/font]"
 
 [node name="TotalMoney" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/VBoxContainer/StatsContainer/TopStatsContainer"]
 unique_name_in_owner = true
@@ -136,7 +136,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
 bbcode_enabled = true
-text = "[font size=32]Total Money : %s[/font]"
+text = "[img=34x34]assets/sprites/ui/coin_cat.png[/img] [font size=32]Total Money : %s[/font]"
 
 [node name="Health" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/VBoxContainer/StatsContainer/TopStatsContainer"]
 unique_name_in_owner = true
@@ -145,7 +145,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
 bbcode_enabled = true
-text = "[font size=32]Health : %s[/font]"
+text = "[img=34x34]assets/sprites/ui/heart_cat.png[/img] [font size=32]Health : %s[/font]"
 
 [node name="Time" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/VBoxContainer/StatsContainer/TopStatsContainer"]
 unique_name_in_owner = true
@@ -155,7 +155,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
 bbcode_enabled = true
-text = "[font size=32]Time : %s[/font]"
+text = "[img=30x36]assets/sprites/ui/clock.png[/img] [font size=32]Time : %s[/font]"
 
 [node name="Waves" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/VBoxContainer/StatsContainer/TopStatsContainer"]
 unique_name_in_owner = true
@@ -165,7 +165,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
 bbcode_enabled = true
-text = "[font size=32]Waves : %s/%s[/font]"
+text = "[img=32x34]assets/sprites/ui/flag.png[/img] [font size=32]Waves : %s/%s[/font]"
 
 [node name="TotalScore" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/VBoxContainer/StatsContainer"]
 unique_name_in_owner = true
@@ -174,7 +174,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
 bbcode_enabled = true
-text = "[font size=32]Score : %s[/font]"
+text = "[img=36x28]assets/sprites/ui/kibble.png[/img] [font size=32]Score : %s[/font]"
 
 [node name="ButtonsContainer" type="MarginContainer" parent="EndInterface/PanelContainer"]
 layout_mode = 2
