@@ -12,7 +12,7 @@ const sprite_debuff := preload("res://assets/sprites/powers/debuff.png")
 @export var speed := 250;
 
 
-func _ready():
+func _ready() -> void:
 	position.x = randf_range(400, 1200);
 
 
@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 		visible = true;
 
 
-func _on_timer_sprite_timeout():
+func _on_timer_sprite_timeout() -> void:
 	var random_spawn := randi() % 3 + 1;
 
 	if random_spawn == 3:

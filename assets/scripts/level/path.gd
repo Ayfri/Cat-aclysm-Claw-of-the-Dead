@@ -21,12 +21,11 @@ var random := RandomNumberGenerator.new();
 		return array;
 
 
-func _ready():
+func _ready() -> void:
 	random.randomize();
-	var a := 2.;
 
 
-func _process(_delta: float):
+func _process(_delta: float) -> void:
 	if mobs_to_spawn == 0 && all_mobs_dead:
 		if pre_wave_timer.is_stopped():
 			if Globals.level.wave <= len(Globals.waves):
@@ -37,7 +36,7 @@ func _process(_delta: float):
 			Globals.level.win();
 
 
-func _on_pre_wave_timer_timeout():
+func _on_pre_wave_timer_timeout() -> void:
 	for path in Globals.waves[Globals.level.wave - 1].possible_path:
 		Globals.level.map.get_wave_label(path).visible = false;
 
@@ -47,7 +46,7 @@ func _on_pre_wave_timer_timeout():
 	enemy_spawn_timer.start();
 
 
-func _on_enemy_spawn_timer_timeout():
+func _on_enemy_spawn_timer_timeout() -> void:
 	var current_wave := Globals.waves[Globals.level.wave - 1];
 	var path_used := paths.pick_random() as Path2D;
 	if !path_used.name in current_wave.possible_path:
@@ -72,13 +71,13 @@ func _on_enemy_spawn_timer_timeout():
 		Globals.level.wave += 1;
 
 
-func _on_wave_announcer_display_timeout():
+func _on_wave_announcer_display_timeout() -> void:
 	for path in Globals.waves[Globals.level.wave - 1].possible_path:
 		Globals.level.map.get_wave_label(path).visible = true;
 	wave_announcer_hide.start();
 
 
-func _on_wave_announcer_hide_timeout():
+func _on_wave_announcer_hide_timeout() -> void:
 	for path in Globals.waves[Globals.level.wave - 1].possible_path:
 		Globals.level.map.get_wave_label(path).visible = false;
 	wave_announcer_display.start();

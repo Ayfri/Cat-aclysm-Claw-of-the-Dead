@@ -8,7 +8,6 @@ extends Resource
 @export var enemy_scene: PackedScene;
 
 
-@warning_ignore('shadowed_variable')
 func _init(
 	base_health: int,
 	base_speed: int,
