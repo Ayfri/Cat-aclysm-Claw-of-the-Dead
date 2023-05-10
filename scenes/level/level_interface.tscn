@@ -68,7 +68,6 @@ size_flags_stretch_ratio = 1.2
 theme_override_constants/separation = 15
 
 [node name="EndInterface" type="PanelContainer" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -79,7 +78,7 @@ script = ExtResource("2_bh5b0")
 
 [node name="PanelContainer" type="PanelContainer" parent="EndInterface"]
 texture_filter = 1
-custom_minimum_size = Vector2(800, 500)
+custom_minimum_size = Vector2(850, 500)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -94,7 +93,7 @@ theme_override_constants/margin_bottom = 30
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EndInterface/PanelContainer/ContentContainer"]
 texture_filter = 1
-position = Vector2(640, 310)
+position = Vector2(660, 310)
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("2_ry0nk")
 animation = &"walk_right"
@@ -116,6 +115,7 @@ alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EndInterface/PanelContainer/ContentContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 alignment = 2
 
 [node name="KilledZombies" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/VBoxContainer2/VBoxContainer/VBoxContainer"]
@@ -125,7 +125,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
 bbcode_enabled = true
-text = "[font size=36]Killed Zombies : %s[img=32]assets/sprites/ui/small_zombie.png[/img] %s[img=32]assets/sprites/ui/big_zombie.png[/img][/font]"
+text = "[font size=32]Killed Zombies : %s[img=28]assets/sprites/ui/small_zombie.png[/img] %s[img=28]assets/sprites/ui/big_zombie.png[/img][/font]"
 
 [node name="TotalMoney" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/VBoxContainer2/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -134,7 +134,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
 bbcode_enabled = true
-text = "[font size=36]Total Money : %s[/font]"
+text = "[font size=32]Total Money : %s[/font]"
 
 [node name="Health" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/VBoxContainer2/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -143,7 +143,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
 bbcode_enabled = true
-text = "[font size=36]Health : %s[/font]"
+text = "[font size=32]Health : %s[/font]"
 
 [node name="TotalScore" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/VBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
@@ -152,7 +152,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
 bbcode_enabled = true
-text = "[font size=36]Score : %s[/font]"
+text = "[font size=32]Score : %s[/font]"
 
 [node name="ButtonsContainer" type="MarginContainer" parent="EndInterface/PanelContainer"]
 layout_mode = 2
