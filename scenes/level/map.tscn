@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dwg0prafkpxy1"]
+[gd_scene load_steps=40 format=3 uid="uid://dwg0prafkpxy1"]
 
 [ext_resource type="Script" path="res://assets/scripts/level/map.gd" id="1_uwg4q"]
 [ext_resource type="Texture2D" uid="uid://b0hu7j3qp5syk" path="res://assets/sprites/maps/grid.png" id="2_qfodt"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cu8710w84rpgm" path="res://scenes/level/path.tscn" id="10_rd0yf"]
 [ext_resource type="Texture2D" uid="uid://bs2aine8ccpur" path="res://assets/sprites/maps/tileset_terrain.png" id="10_x83hq"]
 [ext_resource type="Texture2D" uid="uid://b3omshlld5fvm" path="res://assets/sprites/maps/tileset_props.png" id="11_6idgb"]
+[ext_resource type="PackedScene" uid="uid://cp8ur26i5yaaq" path="res://scenes/level/pigeon.tscn" id="11_a05g6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s5ol4"]
 resource_name = "ground"
@@ -1108,3 +1109,5 @@ bbcode_enabled = true
 text = "New wave !"
 scroll_active = false
 shortcut_keys_enabled = false
+
+[node name="pigeon" parent="." instance=ExtResource("11_a05g6")]

@@ -13,5 +13,5 @@ func _process(delta):
 	audio_stream_player.play();
 	pigeon.position.x += 130 * delta;
 	if pigeon.position.x > 5000:
-		pigeon.position.x = 0;
+		pigeon.position.x = 50;
 
