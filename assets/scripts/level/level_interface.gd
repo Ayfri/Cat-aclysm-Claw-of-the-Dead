@@ -46,6 +46,6 @@ func _process(_delta: float) -> void:
 	for tower in placement_towers:
 		tower.purchasable = tower.tower_stats.base_price <= Globals.level.money;
 
-func show_win_panel() -> void:
-	end_panel.refresh_values();
+func show_end_panel(win: bool) -> void:
+	end_panel.refresh_values(win);
 	end_panel.visible = true;

@@ -44,8 +44,19 @@ func _on_map_editing_toggle(enabled: bool) -> void:
 	tower_selector_container.visible = enabled;
 
 
-func loose() -> void:
-	pass;
+func _deactivate_map() -> void:
+	map.editing = false;
+	map.toggle_cursor();
+
+	map.set_process_input(false);
+	map.set_process_shortcut_input(false);
+	map.set_process_unhandled_input(false);
+
+
+func lose() -> void:
+	interface.show_end_panel(false);
+	finished = true;
+	_deactivate_map();
 
 
 func toggle_pause() -> void:
@@ -67,12 +78,6 @@ func toggle_pause() -> void:
 
 
 func win() -> void:
-	interface.show_win_panel();
+	interface.show_end_panel(true);
 	finished = true;
-
-	map.editing = false;
-	map.toggle_cursor();
-	map.set_process_input(false);
-	map.set_process_shortcut_input(false);
-	map.set_process_unhandled_input(false);
-	map.set_process_unhandled_key_input(true);
+	_deactivate_map();
