@@ -148,6 +148,7 @@ text = "[font size=32]Health : %s[/font]"
 
 [node name="Time" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer/VBoxContainer/StatsContainer/TopStatsContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3

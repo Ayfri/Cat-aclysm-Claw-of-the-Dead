@@ -23,4 +23,8 @@ stream = ExtResource("4_gum1d")
 autoplay = true
 bus = &"Music"
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="map_editing_toggle" from="Map" to="." method="_on_map_editing_toggle"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

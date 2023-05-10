@@ -28,6 +28,7 @@ func refresh_values(win: bool) -> void:
 	killed_zombies_label.text = killed_zombies_label.text % Globals.level.killed_zombies;
 	total_money_label.text = total_money_label.text % Globals.level.total_money;
 	total_score_label.text = total_score_label.text % Globals.level.score;
+	time_label.text = time_label.text % ("%02d:%02d" % [Globals.level.time / 60, Globals.level.time % 60]);
 
 
 func _on_restart_pressed() -> void:
