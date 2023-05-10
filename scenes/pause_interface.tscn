@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhwj4mesmj1ee"]
+[gd_scene load_steps=4 format=3 uid="uid://dhwj4mesmj1ee"]
 
+[ext_resource type="Texture2D" uid="uid://biygdpo14prej" path="res://assets/sprites/ui/settings.png" id="2_q41t8"]
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="2_uahcj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tttkv"]
@@ -73,7 +74,23 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 140
 text = "PAUSED"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 0
+offset_left = 1510.0
+offset_top = 10.0
+offset_right = 1590.0
+offset_bottom = 90.0
+
+[node name="settings" type="Button" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+icon = ExtResource("2_q41t8")
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="pressed" from="Background/MarginContainer/MarginContainer3/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/MarginContainer3/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/MarginContainer3/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/MarginContainer3/ExitToDesktopButton" to="." method="_on_exit_to_desktop_button_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="toggled" from="Background/VBoxContainer/settings" to="." method="_on_settings_toggled"]
