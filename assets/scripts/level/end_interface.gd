@@ -12,7 +12,7 @@ func refresh_values() -> void:
 	health_label.text = health_label.text % Globals.level.health;
 	killed_zombies_label.text = killed_zombies_label.text % Globals.level.killed_zombies;
 	total_money_label.text = total_money_label.text % Globals.level.total_money;
-
+	total_score_label.text = total_score_label.text % Globals.level.score;
 
 func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene();

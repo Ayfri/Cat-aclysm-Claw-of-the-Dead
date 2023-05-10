@@ -21,6 +21,7 @@ var pause_scene: PauseMenu = null;
 
 @export var muffled_sound_effect: AudioEffect = null;
 @export var total_money := starting_money;
+@export var score := 0;
 @export var wave := starting_wave;
 
 @onready var music_bus_index := AudioServer.get_bus_index(($MusicPlayer as AudioStreamPlayer).bus);

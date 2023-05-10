@@ -4,8 +4,8 @@ extends Node;
 @export var enemy_speed_multiplier := 1.0;
 
 @export var enemy_stats: Array[EnemyStats] = [
-	EnemyStats.new(12, 130, 4, load("res://scenes/ennemies/enemy_small.tscn")),
-	EnemyStats.new(90, 90, 12, load("res://scenes/ennemies/enemy_big.tscn")),
+	EnemyStats.new(12, 130, 4, load("res://scenes/ennemies/enemy_small.tscn"), 10),
+	EnemyStats.new(90, 90, 12, load("res://scenes/ennemies/enemy_big.tscn"), 50),
 ];
 
 @export var level: Level = null;

@@ -84,6 +84,8 @@ func _on_death() -> void:
 	var index := 1 if is_boss else 0;
 	Globals.level.killed_zombies[index] += 1;
 
+	Globals.level.score += stats.score;
+
 	parent.hide();
 	await get_tree().create_timer(1.5).timeout;
 	parent.queue_free();
