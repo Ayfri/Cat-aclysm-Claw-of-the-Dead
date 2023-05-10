@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=38 format=3 uid="uid://cvuqor137cfgp"]
+[gd_resource type="Theme" load_steps=40 format=3 uid="uid://cvuqor137cfgp"]
 
 [ext_resource type="FontFile" uid="uid://fk07ixlr3fc5" path="res://assets/fonts/Pixel NES.otf" id="1_sr4u3"]
 [ext_resource type="Texture2D" uid="uid://ckgbnc6a6sxhq" path="res://assets/sprites/ui/ui_theme.png" id="1_uxvvj"]
@@ -126,8 +126,15 @@ texture_margin_bottom = 9.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_st6of"]
-texture = SubResource("AtlasTexture_ivwmk")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qvm6c"]
+load_path = "res://.godot/imported/ui_theme.png-28c614f5e2f58a203135d5ed80abe628.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjn7c"]
+atlas = SubResource("CompressedTexture2D_qvm6c")
+region = Rect2(702, 30, 45, 36)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v3a3r"]
+texture = SubResource("AtlasTexture_vjn7c")
 texture_margin_left = 14.0
 texture_margin_top = 17.0
 texture_margin_right = 13.0
@@ -251,7 +258,7 @@ CheckBox/styles/hover_pressed = SubResource("StyleBoxTexture_h3h38")
 CheckBox/styles/normal = SubResource("StyleBoxTexture_bb51n")
 CheckBox/styles/pressed = SubResource("StyleBoxTexture_1c44w")
 GreenSlider/base_type = &"HSlider"
-GreenSlider/styles/slider = SubResource("StyleBoxTexture_st6of")
+GreenSlider/styles/slider = SubResource("StyleBoxTexture_v3a3r")
 HSlider/constants/grabber_offset = 0
 HSlider/icons/grabber = SubResource("ImageTexture_feylp")
 HSlider/icons/grabber_disabled = SubResource("ImageTexture_uut1l")
