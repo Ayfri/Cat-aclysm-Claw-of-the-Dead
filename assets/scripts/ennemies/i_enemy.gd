@@ -53,9 +53,11 @@ func _process(delta: float) -> void:
 
 	parent.progress += (stats.base_speed * Globals.enemy_speed_multiplier * delta);
 	if parent.progress_ratio == 1:
-		Globals.level.health -= 1;
 		parent.queue_free();
 
+		if Globals.level.finished: return;
+
+		Globals.level.health -= 1;
 		if Globals.level.health == 0: Globals.level.lose();
 
 func _on_hit(tower: ITower, damages: float) -> void:
