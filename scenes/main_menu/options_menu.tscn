@@ -11,13 +11,103 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rjll7")
 
+[node name="EndInterface" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 897.0
+
+[node name="PanelContainer" type="PanelContainer" parent="EndInterface"]
+texture_filter = 1
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"ThemedPanel"
+
+[node name="ContentContainer" type="MarginContainer" parent="EndInterface/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EndInterface/PanelContainer/ContentContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][font size=50][color=70ffee]Options[/color][/font][/center]"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EndInterface/PanelContainer/ContentContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/separation = 35
+alignment = 2
+
+[node name="VboxMaster" type="VBoxContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Main" type="Label" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VboxMaster"]
+layout_mode = 2
+text = "Main"
+
+[node name="Master sound" type="HSlider" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VboxMaster"]
+layout_mode = 2
+
+[node name="VBoxMusic" type="VBoxContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Music" type="Label" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxMusic"]
+layout_mode = 2
+text = "Music"
+
+[node name="Music sound" type="HSlider" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxMusic"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="VBoxEffect" type="VBoxContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Effect" type="Label" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxEffect"]
+layout_mode = 2
+text = "Effect"
+
+[node name="Effect sound" type="HSlider" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxEffect"]
+layout_mode = 2
+theme_type_variation = &"BlueSlider"
+
+[node name="MarginGraphique" type="MarginContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_bottom = 140
+
+[node name="Label" type="Label" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 170
+
+[node name="CheckBox" type="CheckBox" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
 [node name="VBoxContainer" type="BoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -194.0
-offset_bottom = 40.0
+offset_left = -229.0
+offset_bottom = 48.0
 grow_horizontal = 0
 alignment = 1
 
@@ -25,4 +115,7 @@ alignment = 1
 layout_mode = 2
 text = "Close option menu"
 
+[connection signal="value_changed" from="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VboxMaster/Master sound" to="." method="_on_master_sound_value_changed"]
+[connection signal="value_changed" from="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxMusic/Music sound" to="." method="_on_music_sound_value_changed"]
+[connection signal="value_changed" from="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxEffect/Effect sound" to="." method="_on_effect_sound_value_changed"]
 [connection signal="pressed" from="VBoxContainer/Close" to="." method="_on_close_pressed"]
