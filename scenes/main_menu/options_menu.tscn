@@ -69,6 +69,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
+theme_type_variation = &"BlueSlider"
 
 [node name="VBoxEffect" type="VBoxContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -79,7 +80,7 @@ text = "Effect"
 
 [node name="Effect sound" type="HSlider" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxEffect"]
 layout_mode = 2
-theme_type_variation = &"BlueSlider"
+theme_type_variation = &"GreenSlider"
 
 [node name="MarginGraphique" type="MarginContainer" parent="EndInterface/PanelContainer/ContentContainer/HBoxContainer"]
 layout_mode = 2
