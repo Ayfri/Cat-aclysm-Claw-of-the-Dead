@@ -1,0 +1,106 @@
+[gd_scene load_steps=13 format=3 uid="uid://cp8ur26i5yaaq"]
+
+[ext_resource type="Script" path="res://assets/scripts/pigeon.gd" id="1_8y626"]
+[ext_resource type="Texture2D" uid="uid://cxa6k5kv8r6jy" path="res://assets/sprites/projectiles/pigeon.png" id="1_i0ik5"]
+[ext_resource type="AudioStream" uid="uid://cd7ie20fflm78" path="res://assets/audio/pigeon.wav" id="2_3syt0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frv4o"]
+atlas = ExtResource("1_i0ik5")
+region = Rect2(0, 0, 288, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg65u"]
+atlas = ExtResource("1_i0ik5")
+region = Rect2(288, 0, 288, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_en4eo"]
+atlas = ExtResource("1_i0ik5")
+region = Rect2(576, 0, 288, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lrs7"]
+atlas = ExtResource("1_i0ik5")
+region = Rect2(864, 0, 288, 288)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ws7h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frv4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg65u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_en4eo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lrs7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_huxop"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_epmj8"]
+resource_name = "rotate"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d070v"]
+_data = {
+"RESET": SubResource("Animation_huxop"),
+"rotate": SubResource("Animation_epmj8")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dsh0h"]
+radius = 27.4591
+
+[node name="pigeon" type="Area2D"]
+script = ExtResource("1_8y626")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.99999, -7.99999)
+scale = Vector2(0.239584, 0.288195)
+sprite_frames = SubResource("SpriteFrames_5ws7h")
+frame_progress = 0.260885
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+autoplay = "rotate"
+libraries = {
+"": SubResource("AnimationLibrary_d070v")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dsh0h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3syt0")
+bus = &"SFX"
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

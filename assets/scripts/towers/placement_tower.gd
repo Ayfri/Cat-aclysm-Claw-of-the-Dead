@@ -3,9 +3,11 @@ extends Button;
 
 
 var index: int;
+
 var price_label_text := """
 	[center][color=%s][font size=30]%s[/font] [img=28x28]assets/sprites/ui/coin_cat.png[/img][/color][/center]
 """.strip_edges();
+
 var purchasable: bool:
 	set(value):
 		purchasable = value;
@@ -13,6 +15,7 @@ var purchasable: bool:
 
 		var color := "#ffffff" if value else "#ff7070";
 		price_label.text = price_label_text % [color, tower_stats.base_price];
+
 var tower_stats: TowerStats = null;
 
 @onready var price_label := $PriceLabel as RichTextLabel;

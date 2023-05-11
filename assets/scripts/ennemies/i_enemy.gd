@@ -53,9 +53,12 @@ func _process(delta: float) -> void:
 
 	parent.progress += (stats.base_speed * Globals.enemy_speed_multiplier * delta);
 	if parent.progress_ratio == 1:
-		Globals.level.health -= 1;
 		parent.queue_free();
 
+		if Globals.level.finished: return;
+
+		Globals.level.health -= 1;
+		if Globals.level.health == 0: Globals.level.lose();
 
 func _on_hit(tower: ITower, damages: float) -> void:
 	if is_dead: return;
@@ -83,6 +86,8 @@ func _on_death() -> void:
 	var is_boss := Globals.enemy_stats.find(stats) == 1;
 	var index := 1 if is_boss else 0;
 	Globals.level.killed_zombies[index] += 1;
+
+	Globals.level.score += stats.score;
 
 	parent.hide();
 	await get_tree().create_timer(1.5).timeout;

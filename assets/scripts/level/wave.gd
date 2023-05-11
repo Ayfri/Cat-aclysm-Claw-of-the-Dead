@@ -8,7 +8,6 @@ extends Resource;
 @export var possible_path: Array[String];
 
 
-@warning_ignore('shadowed_variable')
 func _init(
 	zombie_count: int = 5,
 	big_probability: float = 0.1,
