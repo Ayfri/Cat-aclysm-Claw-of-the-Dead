@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyao8oeedxc4t"]
+[gd_scene load_steps=15 format=3 uid="uid://dyao8oeedxc4t"]
 
 [ext_resource type="Script" path="res://assets/scripts/towers/i_tower.gd" id="1_48s8f"]
 [ext_resource type="Texture2D" uid="uid://bijq7gj3bys01" path="res://assets/sprites/ui/towers_button_ui.png" id="2_582oh"]
+[ext_resource type="Texture2D" uid="uid://ckgbnc6a6sxhq" path="res://assets/sprites/ui/ui_theme.png" id="3_pge51"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_atmfv"]
 radius = 200.0
@@ -32,14 +33,9 @@ region = Rect2(16, 16, 16, 16)
 atlas = ExtResource("2_582oh")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_087cb"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sngua"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3frwf"]
-modulate_color = Color(1, 1, 1, 0)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7n6g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s786"]
+atlas = ExtResource("3_pge51")
+region = Rect2(614, 71, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fmv3u"]
 atlas = ExtResource("2_582oh")
@@ -94,6 +90,7 @@ position = Vector2(15, -15)
 shape = SubResource("RectangleShape2D_hfmlb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
 z_index = 2000
 anchors_preset = 8
 anchor_left = 0.5
@@ -184,23 +181,19 @@ texture_normal = SubResource("AtlasTexture_dj1ql")
 stretch_mode = 4
 
 [node name="ContainerButtonClose" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(68, 68)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="CloseGui" type="Button" parent="MarginContainer/ContainerButtonClose"]
+[node name="CloseGui" type="TextureButton" parent="MarginContainer/ContainerButtonClose"]
 texture_filter = 1
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(1, 0.0470588, 0.203922, 1)
-theme_override_colors/font_hover_color = Color(1, 0.0470588, 0.203922, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 0.0470588, 0.203922, 1)
-theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxEmpty_087cb")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_sngua")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_3frwf")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_k7n6g")
-text = "X"
+size_flags_horizontal = 8
+size_flags_vertical = 2
+texture_normal = SubResource("AtlasTexture_7s786")
+stretch_mode = 4
 
 [node name="ContainerButtonUpgrade" type="VBoxContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(68, 68)
@@ -227,7 +220,6 @@ text = "[font_size=11]cost: %s[/font_size][img=10x10]assets/sprites/ui/coin_cat.
 scroll_active = false
 
 [node name="ContainerButtonSell" type="VBoxContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(0, 68)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -239,8 +231,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = SubResource("AtlasTexture_35q80")
-ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 4
 
 [node name="SellLabel" type="RichTextLabel" parent="MarginContainer/ContainerButtonSell"]
 texture_filter = 1
