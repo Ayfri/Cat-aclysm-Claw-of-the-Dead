@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyao8oeedxc4t"]
+[gd_scene load_steps=17 format=3 uid="uid://dyao8oeedxc4t"]
 
 [ext_resource type="Script" path="res://assets/scripts/towers/i_tower.gd" id="1_48s8f"]
+[ext_resource type="Texture2D" uid="uid://bijq7gj3bys01" path="res://assets/sprites/ui/towers_button_ui.png" id="2_582oh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_atmfv"]
 radius = 200.0
@@ -10,6 +11,43 @@ size = Vector2(76, 78)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfmlb"]
 size = Vector2(109, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghp0w"]
+atlas = ExtResource("2_582oh")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkppm"]
+atlas = ExtResource("2_582oh")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iqhp"]
+atlas = ExtResource("2_582oh")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3nur"]
+atlas = ExtResource("2_582oh")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj1ql"]
+atlas = ExtResource("2_582oh")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_087cb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sngua"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3frwf"]
+modulate_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7n6g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmv3u"]
+atlas = ExtResource("2_582oh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35q80"]
+atlas = ExtResource("2_582oh")
+region = Rect2(16, 0, 16, 16)
 
 [node name="ITower" type="Node2D"]
 script = ExtResource("1_48s8f")
@@ -56,69 +94,94 @@ position = Vector2(15, -15)
 shape = SubResource("RectangleShape2D_hfmlb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-visible = false
 z_index = 2000
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -124.5
-offset_top = -100.0
-offset_right = 124.5
-offset_bottom = 100.0
+offset_left = -135.0
+offset_top = -170.0
+offset_right = 135.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
-modulate = Color(0, 0, 0, 0.741176)
-show_behind_parent = true
 layout_mode = 2
+color = Color(0.168627, 0.168627, 0.168627, 0.65098)
 
 [node name="ContainerButtonWeakest" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(68, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="SelectWeakestEnemy" type="Button" parent="MarginContainer/ContainerButtonWeakest"]
+[node name="SelectWeakestEnemy" type="TextureButton" parent="MarginContainer/ContainerButtonWeakest"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-text = "Weakest"
+size_flags_horizontal = 0
+texture_normal = SubResource("AtlasTexture_ghp0w")
+stretch_mode = 4
 
 [node name="ContainerButtonStrongest" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(68, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="SelectStrongestEnemy" type="Button" parent="MarginContainer/ContainerButtonStrongest"]
+[node name="SelectStrongestEnemy" type="TextureButton" parent="MarginContainer/ContainerButtonStrongest"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-text = "Strongest"
+size_flags_horizontal = 8
+texture_normal = SubResource("AtlasTexture_jkppm")
+stretch_mode = 4
 
 [node name="ContainerButtonFirst" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(68, 68)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="SelectFirstEnemy" type="Button" parent="MarginContainer/ContainerButtonFirst"]
+[node name="SelectFirstEnemy" type="TextureButton" parent="MarginContainer/ContainerButtonFirst"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-text = "First"
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = SubResource("AtlasTexture_1iqhp")
+stretch_mode = 4
 
 [node name="ContainerButtonLast" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(68, 68)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="SelectLastEnemy" type="Button" parent="MarginContainer/ContainerButtonLast"]
+[node name="SelectLastEnemy" type="TextureButton" parent="MarginContainer/ContainerButtonLast"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-text = "Last"
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = SubResource("AtlasTexture_e3nur")
+stretch_mode = 4
 
 [node name="ContainerButtonRandom" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 68)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="SelectRandomEnemy" type="Button" parent="MarginContainer/ContainerButtonRandom"]
+[node name="SelectRandomEnemy" type="TextureButton" parent="MarginContainer/ContainerButtonRandom"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-text = "Random"
+size_flags_vertical = 0
+texture_normal = SubResource("AtlasTexture_dj1ql")
+stretch_mode = 4
 
 [node name="ContainerButtonClose" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -126,26 +189,68 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 
 [node name="CloseGui" type="Button" parent="MarginContainer/ContainerButtonClose"]
+texture_filter = 1
 layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 0.0470588, 0.203922, 1)
+theme_override_colors/font_hover_color = Color(1, 0.0470588, 0.203922, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.0470588, 0.203922, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_087cb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sngua")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3frwf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k7n6g")
 text = "X"
 
 [node name="ContainerButtonUpgrade" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(68, 68)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="UpgradeTower" type="Button" parent="MarginContainer/ContainerButtonUpgrade"]
+[node name="UpgradeTower" type="TextureButton" parent="MarginContainer/ContainerButtonUpgrade"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-text = "Upgrade"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_fmv3u")
+stretch_mode = 4
+
+[node name="UpgradeLabel" type="RichTextLabel" parent="MarginContainer/ContainerButtonUpgrade"]
+texture_filter = 1
+custom_minimum_size = Vector2(72, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+bbcode_enabled = true
+text = "[font_size=11]cost: %s[/font_size][img=10x10]assets/sprites/ui/coin_cat.png[/img]"
+scroll_active = false
 
 [node name="ContainerButtonSell" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 68)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="SellTower" type="Button" parent="MarginContainer/ContainerButtonSell"]
+[node name="SellTower" type="TextureButton" parent="MarginContainer/ContainerButtonSell"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-text = "Sell"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_35q80")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SellLabel" type="RichTextLabel" parent="MarginContainer/ContainerButtonSell"]
+texture_filter = 1
+custom_minimum_size = Vector2(70, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[font_size=11]sell: %s[/font_size][img=10x10]assets/sprites/ui/coin_cat.png[/img]"
+scroll_active = false
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]

@@ -21,6 +21,8 @@ var upgraded := false;
 @export var projectile_upgrade_texture: Texture2D;
 @export var shoot_upgrade_sound: AudioStream = null;
 
+@onready var upgrade_label := $MarginContainer/ContainerButtonUpgrade/UpgradeLabel as RichTextLabel;
+@onready var sell_label := $MarginContainer/ContainerButtonSell/SellLabel as RichTextLabel;
 @onready var aim_marker := $Aim as Marker2D;
 @onready var hit_area := $Area2D/HitArea as CollisionShape2D;
 @onready var reload_timer := $ReloadTimer as Timer;
@@ -35,6 +37,8 @@ var upgraded := false;
 func _ready() -> void:
 	timer.timeout.connect(_enable_menu);
 	sprite.z_index = roundi(global_position.y);
+	upgrade_label.text = upgrade_label.text % stats.upgrade_price;
+	update_sell_price();
 
 
 func _process(_delta: float) -> void:
@@ -95,6 +99,9 @@ func _on_close_gui_pressed() -> void:
 func _on_upgrade_tower_pressed() -> void:
 	if Globals.level.money < stats.upgrade_price: return;
 	Globals.level.money -= stats.upgrade_price;
+
+	!upgrade_label.visible;
+	update_sell_price();
 
 	toggle_menu(false);
 	upgraded = true;
@@ -212,3 +219,6 @@ func toggle_menu(display: bool) -> void:
 		GuiTowerManager.last_visible_tower = null;
 
 	queue_redraw();
+
+func update_sell_price() -> void:
+	sell_label.text = sell_label.text % ((stats.base_price + stats.upgrade_price if upgraded else stats.base_price) * stats.sell_percent);
