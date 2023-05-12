@@ -16,8 +16,8 @@ var stats: TowerStats;
 var type_target: Target;
 var target: IEnemy;
 var targetable_enemy: Array[IEnemy] = [];
-var sell_text := """[font_size=11]sell: %s[/font_size][img=10]assets/sprites/ui/coin_cat.png[/img]""";
-var upgrade_text := """[color=%s][font_size=11]cost: %s[/font_size][/color][img=10]assets/sprites/ui/coin_cat.png[/img]""";
+var sell_text := """[font_size=13]sell: %s[/font_size][img=10]assets/sprites/ui/coin_cat.png[/img]""";
+var upgrade_text := """[color=%s][font_size=13]cost: %s[/font_size][/color][img=10]assets/sprites/ui/coin_cat.png[/img]""";
 var upgraded := false;
 
 @export var projectile_scene: PackedScene;
