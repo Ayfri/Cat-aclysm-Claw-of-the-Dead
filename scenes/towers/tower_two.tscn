@@ -57,12 +57,15 @@ projectile_scene = ExtResource("3_aforf")
 projectile_upgrade_texture = ExtResource("4_dcj25")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_dspq2")
 animation = &"idle_2"
+offset = Vector2(-2.5, 10)
 
 [node name="HitArea" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_kyhgk")
 
+[node name="PlacementHitboxShape" parent="PlacementHitbox" index="0"]
+position = Vector2(3, 5)
+
 [node name="CollisionShape2D" parent="ClickableArea" index="0"]
-position = Vector2(0, -14.5)
+position = Vector2(6, 6)

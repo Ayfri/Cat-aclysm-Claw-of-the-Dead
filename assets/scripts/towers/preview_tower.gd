@@ -46,7 +46,6 @@ func _on_area_exited(area: Area2D) -> void:
 		overlapping_towers.remove_at(overlapping_towers.find(area));
 		return;
 
-
 	if !area.name.begins_with("Zone"): return;
 
 	if area.get_node_or_null("CollisionPolygon2D") == overlapping_zone:
@@ -74,7 +73,7 @@ func test_current_overlapping_area() -> void:
 		area_polygon_transformed.append(point * overlapping_zone.transform.affine_inverse());
 
 	for point in hitbox.polygon:
-		current_polygon_transformed.append(point * transform.affine_inverse());
+		current_polygon_transformed.append(point * hitbox.transform.affine_inverse() * transform.affine_inverse());
 
 	var result := Geometry2D.clip_polygons(current_polygon_transformed, area_polygon_transformed);
 	is_valid_placement = result.is_empty();

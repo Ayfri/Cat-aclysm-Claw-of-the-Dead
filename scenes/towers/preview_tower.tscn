@@ -11,6 +11,7 @@ script = ExtResource("1_6agia")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.588235)
 texture_filter = 1
+position = Vector2(8, 20)
 scale = Vector2(2, 2)
 texture = ExtResource("2_f5fou")
 offset = Vector2(-2, -7.5)
@@ -20,9 +21,8 @@ metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 z_as_relative = false
-position = Vector2(1, 7)
-scale = Vector2(2.5, 2.667)
-polygon = PackedVector2Array(-15, -15, 15, -15, 15, 15, -15, 15)
+position = Vector2(8, 25)
+polygon = PackedVector2Array(-37, -25, 22, -25, 22, 37, -37, 37)
 metadata/_edit_group_ = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

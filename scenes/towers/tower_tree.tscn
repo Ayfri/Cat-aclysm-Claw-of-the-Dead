@@ -59,14 +59,17 @@ projectile_upgrade_texture = ExtResource("4_0b6vx")
 shoot_upgrade_sound = ExtResource("4_sp2ko")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-position = Vector2(0, -15)
+position = Vector2(10, 0)
 sprite_frames = SubResource("SpriteFrames_75iec")
 animation = &"idle_1"
 
 [node name="HitArea" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_df1c6")
 
+[node name="PlacementHitboxShape" parent="PlacementHitbox" index="0"]
+position = Vector2(0, 15)
+
 [node name="CollisionShape2D" parent="ClickableArea" index="0"]
-position = Vector2(0, -15)
+position = Vector2(10, 0)
 
 [connection signal="upgrade" from="." to="." method="_on_upgrade"]
