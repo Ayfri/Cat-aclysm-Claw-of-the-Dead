@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dyao8oeedxc4t"]
+[gd_scene load_steps=17 format=3 uid="uid://dyao8oeedxc4t"]
 
 [ext_resource type="Script" path="res://assets/scripts/towers/i_tower.gd" id="1_48s8f"]
 [ext_resource type="Texture2D" uid="uid://bijq7gj3bys01" path="res://assets/sprites/ui/towers_button_ui.png" id="2_582oh"]
@@ -8,10 +8,27 @@
 radius = 200.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdln7"]
-size = Vector2(76, 78)
+size = Vector2(103, 104.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfmlb"]
-size = Vector2(109, 141)
+size = Vector2(119.563, 123.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw76u"]
+atlas = ExtResource("3_pge51")
+region = Rect2(760, 0, 39, 39)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qi37d"]
+texture = SubResource("AtlasTexture_gw76u")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghp0w"]
 atlas = ExtResource("2_582oh")
@@ -35,7 +52,7 @@ region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7s786"]
 atlas = ExtResource("3_pge51")
-region = Rect2(631, 72, 12, 12)
+region = Rect2(636, 78, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fmv3u"]
 atlas = ExtResource("2_582oh")
@@ -51,7 +68,7 @@ script = ExtResource("1_48s8f")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_as_relative = false
 texture_filter = 1
-position = Vector2(0, -15)
+position = Vector2(10, -15)
 scale = Vector2(2, 2)
 autoplay = "idle_1"
 
@@ -86,35 +103,46 @@ debug_color = Color(0.654902, 0.321569, 1, 0.419608)
 [node name="ClickableArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableArea"]
-position = Vector2(0, -15)
+position = Vector2(10, -15)
 shape = SubResource("RectangleShape2D_hfmlb")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
 visible = false
 z_index = 2000
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = -170.0
-offset_right = 135.0
-offset_bottom = 120.0
+offset_left = -140.0
+offset_top = -140.0
+offset_right = 140.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"SimplePanel"
+theme_override_styles/panel = SubResource("StyleBoxTexture_qi37d")
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
-layout_mode = 2
-color = Color(0.168627, 0.168627, 0.168627, 0.65098)
-
-[node name="ContainerButtonWeakest" type="VBoxContainer" parent="MarginContainer"]
+[node name="ContainerButtonWeakest" type="VBoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(68, 0)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="SelectWeakestEnemy" type="TextureButton" parent="MarginContainer/ContainerButtonWeakest"]
+[node name="SelectWeakestEnemy" type="TextureButton" parent="Panel/ContainerButtonWeakest"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -123,13 +151,20 @@ mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_ghp0w")
 stretch_mode = 4
 
-[node name="ContainerButtonStrongest" type="VBoxContainer" parent="MarginContainer"]
+[node name="ContainerButtonStrongest" type="VBoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(68, 0)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_right = 68.0
+offset_bottom = 32.0
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="SelectStrongestEnemy" type="TextureButton" parent="MarginContainer/ContainerButtonStrongest"]
+[node name="SelectStrongestEnemy" type="TextureButton" parent="Panel/ContainerButtonStrongest"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -138,13 +173,19 @@ mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_jkppm")
 stretch_mode = 4
 
-[node name="ContainerButtonFirst" type="VBoxContainer" parent="MarginContainer"]
+[node name="ContainerButtonFirst" type="VBoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(68, 68)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -68.0
+offset_right = 68.0
+grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="SelectFirstEnemy" type="TextureButton" parent="MarginContainer/ContainerButtonFirst"]
+[node name="SelectFirstEnemy" type="TextureButton" parent="Panel/ContainerButtonFirst"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -154,13 +195,22 @@ mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_1iqhp")
 stretch_mode = 4
 
-[node name="ContainerButtonLast" type="VBoxContainer" parent="MarginContainer"]
+[node name="ContainerButtonLast" type="VBoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(68, 68)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -68.0
+offset_top = -68.0
+grow_horizontal = 0
+grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="SelectLastEnemy" type="TextureButton" parent="MarginContainer/ContainerButtonLast"]
+[node name="SelectLastEnemy" type="TextureButton" parent="Panel/ContainerButtonLast"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -170,13 +220,23 @@ mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_e3nur")
 stretch_mode = 4
 
-[node name="ContainerButtonRandom" type="VBoxContainer" parent="MarginContainer"]
+[node name="ContainerButtonRandom" type="VBoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(0, 68)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -68.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="SelectRandomEnemy" type="TextureButton" parent="MarginContainer/ContainerButtonRandom"]
+[node name="SelectRandomEnemy" type="TextureButton" parent="Panel/ContainerButtonRandom"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -185,13 +245,19 @@ mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_dj1ql")
 stretch_mode = 4
 
-[node name="ContainerButtonClose" type="VBoxContainer" parent="MarginContainer"]
+[node name="ContainerButtonClose" type="VBoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 50.0
+grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="CloseGui" type="TextureButton" parent="MarginContainer/ContainerButtonClose"]
+[node name="CloseGui" type="TextureButton" parent="Panel/ContainerButtonClose"]
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -201,13 +267,15 @@ mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_7s786")
 stretch_mode = 4
 
-[node name="ContainerButtonUpgrade" type="VBoxContainer" parent="MarginContainer"]
+[node name="ContainerButtonUpgrade" type="VBoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(68, 68)
-layout_mode = 2
+layout_mode = 1
+offset_right = 72.0
+offset_bottom = 88.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="UpgradeTower" type="TextureButton" parent="MarginContainer/ContainerButtonUpgrade"]
+[node name="UpgradeTower" type="TextureButton" parent="Panel/ContainerButtonUpgrade"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -217,7 +285,7 @@ mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_fmv3u")
 stretch_mode = 4
 
-[node name="UpgradeLabel" type="RichTextLabel" parent="MarginContainer/ContainerButtonUpgrade"]
+[node name="UpgradeLabel" type="RichTextLabel" parent="Panel/ContainerButtonUpgrade"]
 texture_filter = 1
 custom_minimum_size = Vector2(72, 20)
 layout_mode = 2
@@ -226,12 +294,19 @@ bbcode_enabled = true
 text = "[font_size=11]cost: %s[/font_size][img=10x10]assets/sprites/ui/coin_cat.png[/img]"
 scroll_active = false
 
-[node name="ContainerButtonSell" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
+[node name="ContainerButtonSell" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_right = 35.0
+offset_bottom = 88.0
+grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="SellTower" type="TextureButton" parent="MarginContainer/ContainerButtonSell"]
+[node name="SellTower" type="TextureButton" parent="Panel/ContainerButtonSell"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -241,7 +316,7 @@ mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_35q80")
 stretch_mode = 4
 
-[node name="SellLabel" type="RichTextLabel" parent="MarginContainer/ContainerButtonSell"]
+[node name="SellLabel" type="RichTextLabel" parent="Panel/ContainerButtonSell"]
 texture_filter = 1
 custom_minimum_size = Vector2(70, 20)
 layout_mode = 2
@@ -254,11 +329,11 @@ scroll_active = false
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
 [connection signal="input_event" from="ClickableArea" to="." method="_on_clickable_area_input_event"]
-[connection signal="pressed" from="MarginContainer/ContainerButtonWeakest/SelectWeakestEnemy" to="." method="_on_select_weakest_enemy_pressed"]
-[connection signal="pressed" from="MarginContainer/ContainerButtonStrongest/SelectStrongestEnemy" to="." method="_on_select_strongest_enemy_pressed"]
-[connection signal="pressed" from="MarginContainer/ContainerButtonFirst/SelectFirstEnemy" to="." method="_on_select_first_enemy_pressed"]
-[connection signal="pressed" from="MarginContainer/ContainerButtonLast/SelectLastEnemy" to="." method="_on_select_last_enemy_pressed"]
-[connection signal="pressed" from="MarginContainer/ContainerButtonRandom/SelectRandomEnemy" to="." method="_on_select_random_enemy_pressed"]
-[connection signal="pressed" from="MarginContainer/ContainerButtonClose/CloseGui" to="." method="_on_close_gui_pressed"]
-[connection signal="pressed" from="MarginContainer/ContainerButtonUpgrade/UpgradeTower" to="." method="_on_upgrade_tower_pressed"]
-[connection signal="pressed" from="MarginContainer/ContainerButtonSell/SellTower" to="." method="_on_sell_tower_pressed"]
+[connection signal="pressed" from="Panel/ContainerButtonWeakest/SelectWeakestEnemy" to="." method="_on_select_weakest_enemy_pressed"]
+[connection signal="pressed" from="Panel/ContainerButtonStrongest/SelectStrongestEnemy" to="." method="_on_select_strongest_enemy_pressed"]
+[connection signal="pressed" from="Panel/ContainerButtonFirst/SelectFirstEnemy" to="." method="_on_select_first_enemy_pressed"]
+[connection signal="pressed" from="Panel/ContainerButtonLast/SelectLastEnemy" to="." method="_on_select_last_enemy_pressed"]
+[connection signal="pressed" from="Panel/ContainerButtonRandom/SelectRandomEnemy" to="." method="_on_select_random_enemy_pressed"]
+[connection signal="pressed" from="Panel/ContainerButtonClose/CloseGui" to="." method="_on_close_gui_pressed"]
+[connection signal="pressed" from="Panel/ContainerButtonUpgrade/UpgradeTower" to="." method="_on_upgrade_tower_pressed"]
+[connection signal="pressed" from="Panel/ContainerButtonSell/SellTower" to="." method="_on_sell_tower_pressed"]

@@ -24,6 +24,6 @@ func _on_exit_to_desktop_button_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
-	var option_menu := OptionsScene.instantiate();
+	var option_menu := OptionsScene.instantiate() as OptionsMenu;
 	add_child(option_menu);
 	option_menu.z_index = 4000;

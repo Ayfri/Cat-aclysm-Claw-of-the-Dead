@@ -120,6 +120,7 @@ grow_horizontal = 0
 alignment = 1
 
 [node name="Close" type="Button" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 text = "Close option menu"
 

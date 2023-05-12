@@ -6,6 +6,7 @@ signal upgrade(tower: ITower);
 
 enum Target {First = 0, Last = 1, Strongest = 2, Weakest = 3, Random = 4};
 
+
 var bullet_speed := 500;
 
 var menu_open: bool:
@@ -21,16 +22,16 @@ var upgraded := false;
 @export var projectile_upgrade_texture: Texture2D;
 @export var shoot_upgrade_sound: AudioStream = null;
 
-@onready var upgrade_label := $MarginContainer/ContainerButtonUpgrade/UpgradeLabel as RichTextLabel;
-@onready var sell_label := $MarginContainer/ContainerButtonSell/SellLabel as RichTextLabel;
 @onready var aim_marker := $Aim as Marker2D;
 @onready var hit_area := $Area2D/HitArea as CollisionShape2D;
 @onready var reload_timer := $ReloadTimer as Timer;
+@onready var sell_label := $Panel/ContainerButtonSell/SellLabel as RichTextLabel;
 @onready var shoot_sound_player := $ShootSoundPlayer as AudioStreamPlayer2D;
 @onready var sprite := $AnimatedSprite2D as AnimatedSprite2D;
-@onready var target_menu := $MarginContainer as MarginContainer;
+@onready var target_menu := $Panel as Panel;
 @onready var timer := get_tree().create_timer(0.2);
-@onready var upgrade_button := $MarginContainer/ContainerButtonUpgrade as VBoxContainer;
+@onready var upgrade_button := $Panel/ContainerButtonUpgrade as VBoxContainer;
+@onready var upgrade_label := $Panel/ContainerButtonUpgrade/UpgradeLabel as RichTextLabel;
 @onready var z_index_save: int = sprite.z_index;
 
 
@@ -100,7 +101,6 @@ func _on_upgrade_tower_pressed() -> void:
 	if Globals.level.money < stats.upgrade_price: return;
 	Globals.level.money -= stats.upgrade_price;
 
-	!upgrade_label.visible;
 	update_sell_price();
 
 	toggle_menu(false);
@@ -108,7 +108,7 @@ func _on_upgrade_tower_pressed() -> void:
 	shoot_sound_player.stream = shoot_upgrade_sound;
 	sprite.play("idle_2");
 
-	upgrade_button.queue_free();
+	upgrade_button.visible = false;
 	upgrade.emit(self);
 
 
