@@ -64,27 +64,34 @@ func get_wave_label(label_prefix_name: String) -> RichTextLabel:
 
 
 func map_editing() -> void:
-	if editing && Input.is_action_just_pressed('Place Tower'):
-		var sprite := get_preview_tower();
-		if !sprite.is_valid_placement: return;
+	if editing:
+		if Input.is_action_just_pressed('Place Tower'):
+			var sprite := get_preview_tower();
+			if !sprite.is_valid_placement: return;
 
-		var tower_stats := Globals.tower_stats[current_tower_index];
-		Globals.level.money -= tower_stats.base_price;
+			var tower_stats := Globals.tower_stats[current_tower_index];
+			Globals.level.money -= tower_stats.base_price;
 
-		var last_visible_tower := GuiTowerManager.last_visible_tower;
-		if last_visible_tower != null:
-			last_visible_tower.toggle_menu(false);
+			var last_visible_tower := GuiTowerManager.last_visible_tower;
+			if last_visible_tower != null:
+				last_visible_tower.toggle_menu(false);
 
-		var tower_sprite := tower_stats.tower_scene.instantiate() as ITower;
-		tower_sprite.position = sprite.position;
+			var tower_sprite := tower_stats.tower_scene.instantiate() as ITower;
+			tower_sprite.position = sprite.position;
 
-		remove_child(sprite);
-		add_child(tower_sprite);
+			remove_child(sprite);
+			add_child(tower_sprite);
 
-		cancel_editing();
-		if Input.is_action_pressed('Bulk Place Towers'):
-			activate_editing();
-		return;
+			cancel_editing();
+			if Input.is_action_pressed('Bulk Place Towers'):
+				activate_editing();
+			return;
+
+		if Input.is_action_just_pressed('Select 1'):
+			update_selected_tower(0);
+
+		if Input.is_action_just_pressed('Select 2'):
+			update_selected_tower(1);
 
 	if Input.is_action_just_pressed('Change Map Editing Mode'):
 		var last_visible_tower := GuiTowerManager.last_visible_tower;
