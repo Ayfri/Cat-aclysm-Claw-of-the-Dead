@@ -16,6 +16,8 @@ var stats: TowerStats;
 var type_target: Target;
 var target: IEnemy;
 var targetable_enemy: Array[IEnemy] = [];
+var sell_text := """[font_size=11]sell: %s[/font_size][img=10]assets/sprites/ui/coin_cat.png[/img]""";
+var upgrade_text := """[color=%s][font_size=11]cost: %s[/font_size][/color][img=10]assets/sprites/ui/coin_cat.png[/img]""";
 var upgraded := false;
 
 @export var projectile_scene: PackedScene;
@@ -43,6 +45,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if menu_open: update_upgrade_price();
 	if targetable_enemy.is_empty(): return;
 
 	select_target();
@@ -101,10 +104,11 @@ func _on_upgrade_tower_pressed() -> void:
 	if Globals.level.money < stats.upgrade_price: return;
 	Globals.level.money -= stats.upgrade_price;
 
-	update_sell_price();
+	upgraded = true;
 
 	toggle_menu(false);
-	upgraded = true;
+	update_sell_price();
+
 	shoot_sound_player.stream = shoot_upgrade_sound;
 	sprite.play("idle_2");
 
@@ -222,4 +226,11 @@ func toggle_menu(display: bool) -> void:
 
 
 func update_sell_price() -> void:
-	sell_label.text = sell_label.text % ((stats.base_price + stats.upgrade_price if upgraded else stats.base_price) * stats.sell_percent);
+	var sell_price := (stats.base_price + stats.upgrade_price if upgraded else stats.base_price) * stats.sell_percent;
+	sell_label.text = sell_text % roundi(sell_price);
+
+
+func update_upgrade_price() -> void:
+	if Globals.level == null: return
+	var upgrade_label_color := "#ffffff" if Globals.level.money >= stats.upgrade_price else "#ff7070";
+	upgrade_label.text = upgrade_text % [upgrade_label_color, stats.upgrade_price];

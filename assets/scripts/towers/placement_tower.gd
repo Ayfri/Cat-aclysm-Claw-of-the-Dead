@@ -35,4 +35,5 @@ func set_tower(tower_scene: PackedScene, index: int) -> void:
 
 	viewport.add_child(tower);
 	tower.position = viewport.size / 2;
+	tower.position.y -= 20.0;
 	tower_stats = tower.stats;
