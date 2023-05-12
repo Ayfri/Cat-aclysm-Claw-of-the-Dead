@@ -35,7 +35,7 @@ region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7s786"]
 atlas = ExtResource("3_pge51")
-region = Rect2(614, 71, 16, 16)
+region = Rect2(631, 72, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fmv3u"]
 atlas = ExtResource("2_582oh")
@@ -51,7 +51,7 @@ script = ExtResource("1_48s8f")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_as_relative = false
 texture_filter = 1
-position = Vector2(15, -15)
+position = Vector2(0, -15)
 scale = Vector2(2, 2)
 autoplay = "idle_1"
 
@@ -86,7 +86,7 @@ debug_color = Color(0.654902, 0.321569, 1, 0.419608)
 [node name="ClickableArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableArea"]
-position = Vector2(15, -15)
+position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_hfmlb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

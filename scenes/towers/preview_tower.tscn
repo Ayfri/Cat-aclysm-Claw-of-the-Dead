@@ -11,9 +11,9 @@ script = ExtResource("1_6agia")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.588235)
 texture_filter = 1
-position = Vector2(-0.5, -22.5)
 scale = Vector2(2, 2)
 texture = ExtResource("2_f5fou")
+offset = Vector2(-2, -7.5)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
