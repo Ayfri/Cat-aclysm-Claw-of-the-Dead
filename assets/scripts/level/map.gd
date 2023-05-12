@@ -4,6 +4,7 @@ extends Node2D;
 
 signal map_editing_toggle(enabled: bool);
 
+
 const PreviewTowerScene := preload("res://scenes/towers/preview_tower.tscn");
 
 var current_tower_index := 0;
@@ -13,6 +14,7 @@ var current_tower_index := 0;
 		zones.visible = value;
 		editing = value;
 		map_editing_toggle.emit(value);
+
 @onready var editing_sprite: PreviewTower;
 @onready var grid := $Grid as Sprite2D;
 @onready var zones := $Zones as Node2D;
