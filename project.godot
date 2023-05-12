@@ -13,7 +13,7 @@ config_version=5
 config/name="CatAClysm Beta"
 run/main_scene="res://scenes/level/level.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/sprites/ui/small_zombie.png"
 
 [audio]
 

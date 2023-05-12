@@ -107,6 +107,7 @@ position = Vector2(10, -15)
 shape = SubResource("RectangleShape2D_hfmlb")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 z_index = 2000
 texture_filter = 1
 anchors_preset = 8
@@ -323,7 +324,7 @@ stretch_mode = 4
 
 [node name="SellLabel" type="RichTextLabel" parent="Panel/ContainerButtonSell"]
 texture_filter = 1
-custom_minimum_size = Vector2(70, 20)
+custom_minimum_size = Vector2(80, 20)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
