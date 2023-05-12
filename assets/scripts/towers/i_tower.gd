@@ -220,5 +220,6 @@ func toggle_menu(display: bool) -> void:
 
 	queue_redraw();
 
+
 func update_sell_price() -> void:
 	sell_label.text = sell_label.text % ((stats.base_price + stats.upgrade_price if upgraded else stats.base_price) * stats.sell_percent);
