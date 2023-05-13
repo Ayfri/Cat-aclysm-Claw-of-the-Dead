@@ -19,6 +19,7 @@ func _on_restart_button_pressed() -> void:
 func _on_quit_to_menu_button_pressed() -> void:
 	Globals.play_button_audio();
 	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn");
+	Globals.level.map.editing = false;
 	Globals.level.toggle_pause();
 
 
