@@ -11,6 +11,7 @@ var music_bus := AudioServer.get_bus_index("Music");
 @onready var effect_sound_slider := %EffectSlider as HSlider;
 @onready var master_sound_slider := %MasterSlider as HSlider;
 @onready var music_sound_slider := %MusicSlider as HSlider;
+@onready var test_audio_player := $TestAudioPlayer as AudioStreamPlayer;
 
 
 func _ready() -> void:
@@ -27,6 +28,7 @@ func _on_close_pressed() -> void:
 
 func _on_effect_sound_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(effect_bus, linear_to_db(value));
+	test_audio_player.play();
 
 
 func _on_master_sound_value_changed(value: float) -> void:
