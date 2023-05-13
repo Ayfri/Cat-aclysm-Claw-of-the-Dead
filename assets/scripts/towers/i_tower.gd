@@ -34,12 +34,13 @@ var upgraded := false;
 @onready var timer := get_tree().create_timer(0.2);
 @onready var upgrade_button := $Panel/ContainerButtonUpgrade as VBoxContainer;
 @onready var upgrade_label := $Panel/ContainerButtonUpgrade/UpgradeLabel as RichTextLabel;
-@onready var z_index_save: int = sprite.z_index;
+@onready var z_index_saved := 0;
 
 
 func _ready() -> void:
 	timer.timeout.connect(_enable_menu);
 	sprite.z_index = roundi(global_position.y);
+	z_index_saved = sprite.z_index;
 	upgrade_label.text = upgrade_label.text % stats.upgrade_price;
 	update_sell_price();
 
@@ -228,7 +229,7 @@ func toggle_menu(display: bool) -> void:
 
 	if !display:
 		var last_visible_tower_sprite := GuiTowerManager.last_visible_tower.get_node("AnimatedSprite2D") as AnimatedSprite2D;
-		last_visible_tower_sprite.z_index = z_index_save;
+		last_visible_tower_sprite.z_index = z_index_saved;
 		GuiTowerManager.last_visible_tower = null;
 
 	queue_redraw();
