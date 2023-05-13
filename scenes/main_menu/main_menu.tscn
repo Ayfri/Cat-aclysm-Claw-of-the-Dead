@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://diadkloq426ja"]
+[gd_scene load_steps=14 format=3 uid="uid://diadkloq426ja"]
 
 [ext_resource type="Script" path="res://assets/scripts/main_menu/main_menu.gd" id="1_c340b"]
 [ext_resource type="Texture2D" uid="uid://dbqgfbluydjve" path="res://assets/sprites/background/background.png" id="2_6blws"]
 [ext_resource type="Texture2D" uid="uid://dghsxo6q67sse" path="res://assets/sprites/ui/github_logo.png" id="2_gc622"]
 [ext_resource type="AudioStream" uid="uid://bnu22ca4lnfh6" path="res://assets/audio/menu.wav" id="3_ee1o0"]
 [ext_resource type="AudioStream" uid="uid://casbgbgdvboa4" path="res://assets/audio/button.wav" id="4_ey6td"]
+[ext_resource type="Texture2D" uid="uid://d2vy8sueyl4g0" path="res://assets/sprites/menu/title.png" id="6_6hqk4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slmtb"]
 atlas = ExtResource("2_6blws")
@@ -74,34 +75,6 @@ animation = &"background"
 autoplay = "background"
 frame_progress = 0.961552
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -50.5
-offset_right = 75.0
-offset_bottom = 50.5
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="StartButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Play"
-
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Options"
-
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Quit
-"
-
 [node name="GitHubButton" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 1
@@ -130,7 +103,64 @@ bus = &"Music"
 stream = ExtResource("4_ey6td")
 bus = &"SFX"
 
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="OptionsPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 897.0
+
+[node name="PanelContainer" type="Panel" parent="OptionsPanel"]
+texture_filter = 1
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"ThemedPanel2"
+
+[node name="ContentContainer" type="MarginContainer" parent="OptionsPanel/PanelContainer"]
+layout_mode = 2
+offset_right = 800.0
+offset_bottom = 500.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionsPanel/PanelContainer/ContentContainer"]
+z_index = 2
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+bbcode_enabled = true
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsPanel/PanelContainer/ContentContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 171
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/PanelContainer/ContentContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="StartButton" type="Button" parent="OptionsPanel/PanelContainer/ContentContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="OptionsPanel/PanelContainer/ContentContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="OptionsPanel/PanelContainer/ContentContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(811.5, 333)
+scale = Vector2(0.492507, 0.644578)
+texture = ExtResource("6_6hqk4")
+
 [connection signal="pressed" from="GitHubButton" to="." method="_on_github_button_pressed"]
+[connection signal="pressed" from="OptionsPanel/PanelContainer/ContentContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="OptionsPanel/PanelContainer/ContentContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="OptionsPanel/PanelContainer/ContentContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

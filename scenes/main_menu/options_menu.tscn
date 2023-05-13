@@ -119,23 +119,17 @@ fit_content = true
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="BoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -229.0
-offset_bottom = 48.0
-grow_horizontal = 0
-alignment = 1
-
-[node name="Close" type="Button" parent="VBoxContainer"]
+[node name="Close" type="Button" parent="."]
 texture_filter = 1
 layout_mode = 2
-text = "Close option menu"
+offset_left = 937.0
+offset_top = 599.0
+offset_right = 1133.0
+offset_bottom = 647.0
+text = "Close"
 
 [connection signal="value_changed" from="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VboxMaster/MasterSlider" to="." method="_on_master_sound_value_changed"]
 [connection signal="value_changed" from="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxMusic/MusicSlider" to="." method="_on_music_sound_value_changed"]
 [connection signal="value_changed" from="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxEffect/EffectSlider" to="." method="_on_effect_sound_value_changed"]
 [connection signal="toggled" from="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique/HBoxContainer/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
-[connection signal="pressed" from="VBoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
