@@ -53,10 +53,10 @@ animations = [{
 radius = 215.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04lbq"]
-size = Vector2(70, 76)
+size = Vector2(65, 79)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ux77w"]
-size = Vector2(119.782, 135)
+size = Vector2(116.891, 135)
 
 [node name="TowerTree" instance=ExtResource("1_sufsh")]
 script = ExtResource("2_jxlff")
@@ -72,12 +72,15 @@ animation = &"idle_1"
 [node name="HitArea" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_df1c6")
 
+[node name="PlacementHitbox" parent="." index="6"]
+position = Vector2(0, 0)
+
 [node name="PlacementHitboxShape" parent="PlacementHitbox" index="0"]
-position = Vector2(0, 18)
+position = Vector2(0, 33.5)
 shape = SubResource("RectangleShape2D_04lbq")
 
 [node name="CollisionShape2D" parent="ClickableArea" index="0"]
-position = Vector2(9, 1)
+position = Vector2(10.4454, 1)
 shape = SubResource("RectangleShape2D_ux77w")
 
 [connection signal="upgrade" from="." to="." method="_on_upgrade"]
