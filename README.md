@@ -94,6 +94,5 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 * [@MateoPerrotNasi](https://github.com/MateoPerrotNasi) : Dev
 * [@AlexandreRocchi](https://github.com/AlexandreRocchi) : Dev
 * [@ThiboRodenburger](https://github.com/ThiboRodenburger) : Dev
-* [@Vincent-1000](https://github.com/Vincent-1000) : Dev
 * [@xhmyjae](https://github.com/xhmyjae) : Game Artist & Tester
 * [@lunasphys](https://gihtub.com/lunasphys) : Game Artist
