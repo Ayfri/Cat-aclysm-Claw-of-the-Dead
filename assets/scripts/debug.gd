@@ -1,8 +1,12 @@
 extends Node;
 
 
+var IS_DEBUG := OS.has_feature("debug");
+
 ## TODO : Remove debug tools.
 func _unhandled_key_input(event: InputEvent) -> void:
+	if !IS_DEBUG || Globals.level == null: return;
+
 	if Globals.level.finished || !event is InputEventKey: return;
 	var key_event := event as InputEventKey;
 

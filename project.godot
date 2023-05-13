@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="CatAClysm Beta"
-run/main_scene="res://scenes/level/level.tscn"
+config/name="Cat'AClysm Claw of the Dead"
+run/main_scene="res://scenes/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://assets/sprites/ui/small_zombie.png"
 

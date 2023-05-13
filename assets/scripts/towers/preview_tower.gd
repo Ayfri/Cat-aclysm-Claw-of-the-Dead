@@ -1,6 +1,7 @@
 class_name PreviewTower;
 extends Area2D;
 
+
 var stats: TowerStats;
 
 @onready var hitbox := $CollisionPolygon2D as CollisionPolygon2D;
@@ -10,7 +11,7 @@ var stats: TowerStats;
 	set(value):
 		if stats == null || Globals.level.money < stats.base_price: value = false;
 
-		modulate =  Color(1, 1, 1, modulate.a) if value else Color(.8, .2, .2, modulate.a);
+		modulate = Color(1, 1, 1, modulate.a) if value else Color(.8, .2, .2, modulate.a);
 		is_valid_placement = value;
 
 @export var overlapping_zone: CollisionPolygon2D = null;
