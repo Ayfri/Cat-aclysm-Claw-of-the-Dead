@@ -56,7 +56,7 @@ func _draw() -> void:
 	if !menu_open: return;
 
 	var hit_area_circle := hit_area.shape as CircleShape2D;
-	draw_circle(hit_area.position, hit_area_circle.radius, Color("#30a0c0", 0.3));
+	draw_circle(hit_area.position, hit_area_circle.radius, Color("#30a0c0", 0.35));
 
 
 func _on_area_entered(area: Area2D) -> void:
