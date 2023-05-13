@@ -50,6 +50,7 @@ func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) ->
 
 	var mouse_button_event := event as InputEventMouseButton;
 	if mouse_button_event.button_index == MOUSE_BUTTON_LEFT and mouse_button_event.is_pressed():
+		get_tree().get_root().set_input_as_handled();
 		audio_stream_player.play();
 		visible = false;
 		apply_powerup_effect();

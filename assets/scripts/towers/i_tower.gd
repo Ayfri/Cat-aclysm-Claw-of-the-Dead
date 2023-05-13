@@ -134,6 +134,7 @@ func _on_sell_tower_pressed() -> void:
 func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if timer != null: return;
 	if !event is InputEventMouseButton: return;
+	if get_tree().get_root().is_input_handled(): return;
 
 	var mouse_event := event as InputEventMouseButton;
 	if mouse_event.button_index == MOUSE_BUTTON_LEFT and mouse_event.is_pressed():

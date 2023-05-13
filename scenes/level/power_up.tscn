@@ -9,6 +9,8 @@ radius = 28.0
 height = 78.0
 
 [node name="power_up" type="Area2D"]
+monitoring = false
+monitorable = false
 script = ExtResource("1_67yvn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -11,7 +11,7 @@ radius = 200.0
 size = Vector2(103, 104.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfmlb"]
-size = Vector2(119.563, 123.5)
+size = Vector2(119.563, 125.75)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw76u"]
 atlas = ExtResource("3_pge51")
