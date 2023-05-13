@@ -81,8 +81,7 @@ Use the built-in editor from Godot to code or use any JetBrains IDE to edit godo
 
 ## Exporting
 
-The game is automatically exported as a `.exe` at the end of every day that received a commit.
-Other platforms are exported by the CI when a tag is pushed.
+The game is exported for Windows platform on every release, other platforms may come later.
 
 ## License
 
