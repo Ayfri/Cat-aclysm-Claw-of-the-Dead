@@ -75,24 +75,6 @@ animation = &"background"
 autoplay = "background"
 frame_progress = 0.961552
 
-[node name="GitHubButton" type="TextureButton" parent="."]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -144.0
-offset_top = -144.0
-offset_right = -44.0
-offset_bottom = -44.0
-grow_horizontal = 0
-grow_vertical = 0
-texture_normal = ExtResource("2_gc622")
-ignore_texture_size = true
-stretch_mode = 0
-
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ee1o0")
 volume_db = -8.813
@@ -104,9 +86,12 @@ stream = ExtResource("4_ey6td")
 bus = &"SFX"
 
 [node name="OptionsPanel" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_right = 1600.0
-offset_bottom = 897.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PanelContainer" type="Panel" parent="OptionsPanel"]
 texture_filter = 1
@@ -160,7 +145,18 @@ position = Vector2(811.5, 333)
 scale = Vector2(0.492507, 0.644578)
 texture = ExtResource("6_6hqk4")
 
-[connection signal="pressed" from="GitHubButton" to="." method="_on_github_button_pressed"]
+[node name="GitHubButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 2
+offset_left = 1078.0
+offset_top = 576.0
+offset_right = 1158.0
+offset_bottom = 656.0
+texture_normal = ExtResource("2_gc622")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="pressed" from="OptionsPanel/PanelContainer/ContentContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="OptionsPanel/PanelContainer/ContentContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="OptionsPanel/PanelContainer/ContentContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="GitHubButton" to="." method="_on_github_button_pressed"]
