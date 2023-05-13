@@ -14,9 +14,9 @@ var music_bus := AudioServer.get_bus_index("Music");
 
 
 func _ready() -> void:
-	effect_sound_slider.set_value_no_signal(AudioServer.get_bus_volume_db(effect_bus));
-	master_sound_slider.set_value_no_signal(AudioServer.get_bus_volume_db(master_bus));
-	music_sound_slider.set_value_no_signal(AudioServer.get_bus_volume_db(music_bus));
+	effect_sound_slider.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(effect_bus)));
+	master_sound_slider.set_value_no_signal( db_to_linear(AudioServer.get_bus_volume_db(master_bus)));
+	music_sound_slider.set_value_no_signal( db_to_linear(AudioServer.get_bus_volume_db(music_bus)));
 
 	fullscreen_check_box.set_pressed(get_window().get_mode() == Window.MODE_FULLSCREEN);
 
@@ -26,15 +26,15 @@ func _on_close_pressed() -> void:
 
 
 func _on_effect_sound_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(effect_bus, value);
+	AudioServer.set_bus_volume_db(effect_bus, linear_to_db(value));
 
 
 func _on_master_sound_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(master_bus, value);
+	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value));
 
 
 func _on_music_sound_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(music_bus, value)
+	AudioServer.set_bus_volume_db(music_bus, linear_to_db(value))
 
 
 func _on_fullscreen_check_box_toggled(button_pressed: bool) -> void:
