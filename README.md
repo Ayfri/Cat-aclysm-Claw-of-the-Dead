@@ -5,7 +5,7 @@ You play with cats, and you have to defend your city from the zombie invasion us
 
 ## Engine
 
-The game is made with [Godot Engine](https://godotengine.org/) 4.0.1.
+The game is made with [Godot Engine](https://godotengine.org/) 4.0.2.
 
 ## GitHub
 
@@ -26,6 +26,7 @@ The game is made with [Godot Engine](https://godotengine.org/) 4.0.1.
 * `perf` : Optimization of the code to improve performance
 * `refactor` : Modification of the code without changing functionality
 * `style` : Change to the code style
+* `tweak` : Small change to the code that doesn't change the functionality
 
 #### Examples :
 
@@ -73,15 +74,15 @@ Use the built-in editor from Godot to code or use any JetBrains IDE to edit godo
 * Use `PascalCase` for classes, enums and autoloads
 * Name every node with its function on the parent node (or the object name if root)
 * Type everything unless it's obvious (e.g. `var x: int = 1` is fine, but `var x := 1` is simpler)
-* Have the most safest line possible without creating too many variables (ex : if you need to access a node once, don't create a variable just for that)
-* Cast every nodes to their types, ex : `var player := $Player as Area2D`
+* Have all safe lines everywhere possible without creating too many variables (ex: if you need to access a node once, don't create a variable just for that)
+* Cast every node to their types, ex : `var player := $Player as Area2D;`
 * Keep lines relatively short (140 characters max)
 * Use tabs for indentation
 * Use `;` for every line
 
 ## Exporting
 
-The game is exported for Windows platform on every release, other platforms may come later.
+The game is exported for the Windows platform on every release, other platforms may come later.
 
 ## License
 
