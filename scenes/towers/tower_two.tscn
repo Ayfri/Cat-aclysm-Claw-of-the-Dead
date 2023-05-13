@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://co06ncq2rn1g2"]
+[gd_scene load_steps=14 format=3 uid="uid://co06ncq2rn1g2"]
 
 [ext_resource type="PackedScene" uid="uid://dyao8oeedxc4t" path="res://scenes/towers/i_tower.tscn" id="1_deuxm"]
 [ext_resource type="Script" path="res://assets/scripts/towers/tower_two.gd" id="2_yp1wc"]
@@ -51,6 +51,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_kyhgk"]
 radius = 165.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gw85v"]
+size = Vector2(78, 88)
+
 [node name="TowerTwo" instance=ExtResource("1_deuxm")]
 script = ExtResource("2_yp1wc")
 projectile_scene = ExtResource("3_aforf")
@@ -65,7 +68,8 @@ offset = Vector2(-2.5, 10)
 shape = SubResource("CircleShape2D_kyhgk")
 
 [node name="PlacementHitboxShape" parent="PlacementHitbox" index="0"]
-position = Vector2(3, 5)
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_gw85v")
 
 [node name="CollisionShape2D" parent="ClickableArea" index="0"]
-position = Vector2(6, 6)
+position = Vector2(6, 4.875)

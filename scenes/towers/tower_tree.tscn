@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://15g41tiwiqyg"]
+[gd_scene load_steps=16 format=3 uid="uid://15g41tiwiqyg"]
 
 [ext_resource type="PackedScene" uid="uid://dyao8oeedxc4t" path="res://scenes/towers/i_tower.tscn" id="1_sufsh"]
 [ext_resource type="Texture2D" uid="uid://bwt25uomsitx2" path="res://assets/sprites/towers/tree_1.png" id="2_7u7pb"]
@@ -52,6 +52,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_df1c6"]
 radius = 215.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04lbq"]
+size = Vector2(70, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ux77w"]
+size = Vector2(119.782, 135)
+
 [node name="TowerTree" instance=ExtResource("1_sufsh")]
 script = ExtResource("2_jxlff")
 projectile_scene = ExtResource("3_u7ubj")
@@ -67,9 +73,11 @@ animation = &"idle_1"
 shape = SubResource("CircleShape2D_df1c6")
 
 [node name="PlacementHitboxShape" parent="PlacementHitbox" index="0"]
-position = Vector2(0, 15)
+position = Vector2(0, 18)
+shape = SubResource("RectangleShape2D_04lbq")
 
 [node name="CollisionShape2D" parent="ClickableArea" index="0"]
-position = Vector2(10, 0)
+position = Vector2(9, 1)
+shape = SubResource("RectangleShape2D_ux77w")
 
 [connection signal="upgrade" from="." to="." method="_on_upgrade"]
