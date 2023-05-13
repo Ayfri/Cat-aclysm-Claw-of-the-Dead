@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwn3okb4x6rjk"]
+[gd_scene load_steps=3 format=3 uid="uid://dwn3okb4x6rjk"]
 
 [ext_resource type="Script" path="res://assets/scripts/main_menu/options_menu.gd" id="1_rjll7"]
+[ext_resource type="AudioStream" uid="uid://cd7ie20fflm78" path="res://assets/audio/pigeon.wav" id="2_c6oe3"]
 
 [node name="option" type="Control"]
 layout_mode = 3
@@ -62,6 +63,7 @@ text = "[img=25]assets/sprites/ui/sound.png[/img] Main"
 [node name="MasterSlider" type="HSlider" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VboxMaster"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 max_value = 1.0
 step = 0.05
 
@@ -80,6 +82,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
+mouse_default_cursor_shape = 2
 theme_type_variation = &"BlueSlider"
 max_value = 1.0
 step = 0.05
@@ -96,6 +99,7 @@ text = "[img=15]assets/sprites/ui/effect.png[/img] Effect"
 [node name="EffectSlider" type="HSlider" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxEffect"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_type_variation = &"GreenSlider"
 max_value = 1.0
 step = 0.05
@@ -121,6 +125,7 @@ fit_content = true
 [node name="FullscreenCheckBox" type="CheckBox" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 
 [node name="Close" type="Button" parent="."]
 texture_filter = 1
@@ -129,7 +134,12 @@ offset_left = 937.0
 offset_top = 599.0
 offset_right = 1133.0
 offset_bottom = 647.0
+mouse_default_cursor_shape = 2
 text = "Close"
+
+[node name="TestAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_c6oe3")
+bus = &"SFX"
 
 [connection signal="value_changed" from="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VboxMaster/MasterSlider" to="." method="_on_master_sound_value_changed"]
 [connection signal="value_changed" from="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxMusic/MusicSlider" to="." method="_on_music_sound_value_changed"]

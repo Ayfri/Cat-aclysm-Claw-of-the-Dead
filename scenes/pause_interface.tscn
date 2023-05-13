@@ -32,28 +32,32 @@ offset_right = 250.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="MarginContainer3" type="VBoxContainer" parent="Background/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="ReturnButton" type="Button" parent="Background/MarginContainer/MarginContainer3"]
+[node name="ReturnButton" type="Button" parent="Background/MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 40
 text = "Return to game"
 
-[node name="RestartButton" type="Button" parent="Background/MarginContainer/MarginContainer3"]
+[node name="RestartButton" type="Button" parent="Background/MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 40
 text = "Restart"
 
-[node name="QuitToMenuButton" type="Button" parent="Background/MarginContainer/MarginContainer3"]
+[node name="QuitToMenuButton" type="Button" parent="Background/MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 40
 text = "Quit To Menu
 "
 
-[node name="ExitToDesktopButton" type="Button" parent="Background/MarginContainer/MarginContainer3"]
+[node name="ExitToDesktopButton" type="Button" parent="Background/MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 40
 text = "Exit To Desktop"
 
@@ -68,7 +72,7 @@ offset_bottom = 248.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 150
 
-[node name="Label" type="Label" parent="Background/MarginContainer2"]
+[node name="PausedLabel" type="Label" parent="Background/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 140
@@ -81,17 +85,18 @@ offset_top = 10.0
 offset_right = 1590.0
 offset_bottom = 90.0
 
-[node name="settings" type="Button" parent="Background/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="Background/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("2_q41t8")
 icon_alignment = 1
 expand_icon = true
 
-[connection signal="pressed" from="Background/MarginContainer/MarginContainer3/ReturnButton" to="." method="_on_return_button_pressed"]
-[connection signal="pressed" from="Background/MarginContainer/MarginContainer3/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="Background/MarginContainer/MarginContainer3/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
-[connection signal="pressed" from="Background/MarginContainer/MarginContainer3/ExitToDesktopButton" to="." method="_on_exit_to_desktop_button_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/settings" to="." method="_on_settings_pressed"]
-[connection signal="toggled" from="Background/VBoxContainer/settings" to="." method="_on_settings_toggled"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ExitToDesktopButton" to="." method="_on_exit_to_desktop_button_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="toggled" from="Background/VBoxContainer/SettingsButton" to="." method="_on_settings_toggled"]

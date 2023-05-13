@@ -193,6 +193,7 @@ alignment = 1
 [node name="Restart" type="Button" parent="EndInterface/PanelContainer/ButtonsContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_constants/h_separation = 10
 text = "
 "
@@ -203,6 +204,7 @@ expand_icon = true
 [node name="Home" type="Button" parent="EndInterface/PanelContainer/ButtonsContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_constants/h_separation = 10
 icon = ExtResource("5_5tpsi")
 icon_alignment = 1
