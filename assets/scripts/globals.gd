@@ -1,6 +1,8 @@
 extends Node;
 
 
+const ButtonAudioScene := preload("res://scenes/button_audio.tscn") as PackedScene;
+
 @export var enemy_speed_multiplier := 1.0;
 
 @export var enemy_stats: Array[EnemyStats] = [
@@ -37,3 +39,13 @@ extends Node;
 	Wave.new(80, 0.5, -1, ["FirstPath", "SecondPath","ThirdPath"]),
 	Wave.new(20, 0.9, -1, ["FirstPath", "SecondPath","ThirdPath"]),
 ]
+
+
+func play_button_audio():
+	var button_audio := ButtonAudioScene.instantiate() as AudioStreamPlayer;
+	add_child(button_audio);
+	button_audio.play();
+
+	await get_tree().create_timer(1).timeout;
+
+	button_audio.queue_free();

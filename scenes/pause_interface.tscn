@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhwj4mesmj1ee"]
 
 [ext_resource type="Texture2D" uid="uid://biygdpo14prej" path="res://assets/sprites/ui/settings.png" id="2_q41t8"]
-[ext_resource type="Script" path="res://assets/scripts/pause.gd" id="2_uahcj"]
+[ext_resource type="Script" path="res://assets/scripts/pause_interface.gd" id="3_ocjid"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tttkv"]
 bg_color = Color(0, 0, 0, 0.196078)
 
 [node name="pause_interface" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("2_uahcj")
+script = ExtResource("3_ocjid")
 
 [node name="Background" type="Panel" parent="."]
 texture_filter = 1

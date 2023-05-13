@@ -23,6 +23,7 @@ func _ready() -> void:
 
 
 func _on_close_pressed() -> void:
+	Globals.play_button_audio();
 	queue_free();
 
 
@@ -41,3 +42,4 @@ func _on_music_sound_value_changed(value: float) -> void:
 
 func _on_fullscreen_check_box_toggled(button_pressed: bool) -> void:
 	get_window().set_mode(Window.MODE_FULLSCREEN if button_pressed else Window.MODE_WINDOWED);
+	Globals.play_button_audio();

@@ -73,30 +73,36 @@ func _on_area_exited(area: Area2D) -> void:
 
 func _on_select_weakest_enemy_pressed() -> void:
 	type_target = Target.Weakest;
+	Globals.play_button_audio();
 	toggle_menu(false);
 
 
 func _on_select_strongest_enemy_pressed() -> void:
 	type_target = Target.Strongest;
+	Globals.play_button_audio();
 	toggle_menu(false);
 
 
 func _on_select_last_enemy_pressed() -> void:
 	type_target = Target.Last;
+	Globals.play_button_audio();
 	toggle_menu(false);
 
 
 func _on_select_first_enemy_pressed() -> void:
 	type_target = Target.First;
+	Globals.play_button_audio();
 	toggle_menu(false);
 
 
 func _on_select_random_enemy_pressed() -> void:
 	type_target = Target.Random;
+	Globals.play_button_audio();
 	toggle_menu(false);
 
 
 func _on_close_gui_pressed() -> void:
+	Globals.play_button_audio();
 	toggle_menu(false);
 
 
@@ -104,6 +110,7 @@ func _on_upgrade_tower_pressed() -> void:
 	if Globals.level.money < stats.upgrade_price: return;
 	Globals.level.money -= stats.upgrade_price;
 
+	Globals.play_button_audio();
 	upgraded = true;
 
 	toggle_menu(false);
@@ -117,10 +124,11 @@ func _on_upgrade_tower_pressed() -> void:
 
 
 func _on_sell_tower_pressed() -> void:
+	Globals.play_button_audio();
 	toggle_menu(false);
 	var sell_money := (stats.base_price + stats.upgrade_price if upgraded else stats.base_price) * stats.sell_percent;
 	Globals.level.money += roundi(sell_money);
-	self.queue_free();
+	queue_free();
 
 
 func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:

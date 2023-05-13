@@ -7,7 +7,7 @@ const starting_health := 10;
 const starting_money := 30;
 const starting_wave := 1;
 
-var pause_scene: PauseMenu = null;
+var pause_scene: PauseInterface = null;
 
 @export var health := starting_health;
 @export var finished := false;
@@ -67,7 +67,7 @@ func toggle_pause() -> void:
 		if map.editing: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 		AudioServer.add_bus_effect(music_bus_index, muffled_sound_effect, 0);
 
-		pause_scene = PauseScene.instantiate() as PauseMenu;
+		pause_scene = PauseScene.instantiate() as PauseInterface;
 		pause_scene.transform.origin = get_viewport_transform().get_scale() / 2;
 		add_child(pause_scene);
 

@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://diadkloq426ja"]
+[gd_scene load_steps=13 format=3 uid="uid://diadkloq426ja"]
 
 [ext_resource type="Script" path="res://assets/scripts/main_menu/main_menu.gd" id="1_c340b"]
 [ext_resource type="Texture2D" uid="uid://dbqgfbluydjve" path="res://assets/sprites/background/background.png" id="2_6blws"]
 [ext_resource type="Texture2D" uid="uid://dghsxo6q67sse" path="res://assets/sprites/ui/github_logo.png" id="2_gc622"]
 [ext_resource type="AudioStream" uid="uid://bnu22ca4lnfh6" path="res://assets/audio/menu.wav" id="3_ee1o0"]
-[ext_resource type="AudioStream" uid="uid://casbgbgdvboa4" path="res://assets/audio/button.wav" id="4_ey6td"]
 [ext_resource type="Texture2D" uid="uid://d2vy8sueyl4g0" path="res://assets/sprites/menu/title.png" id="6_6hqk4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slmtb"]
@@ -80,10 +79,6 @@ stream = ExtResource("3_ee1o0")
 volume_db = -8.813
 autoplay = true
 bus = &"Music"
-
-[node name="ButtonsPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_ey6td")
-bus = &"SFX"
 
 [node name="OptionsPanel" type="PanelContainer" parent="."]
 layout_mode = 1
