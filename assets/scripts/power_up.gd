@@ -13,15 +13,13 @@ const sprite_debuff := preload("res://assets/sprites/powers/debuff.png")
 
 
 func _ready() -> void:
-	position.x = randf_range(400, 1200);
+	place_randomly();
 
 
 func _process(delta: float) -> void:
 	position.y += speed * delta;
-	if position.y > 900:
-		position.y = randf_range(-300, -1500);
-		position.x = randf_range(400, 1200);
-		visible = true;
+	if position.y > 1000:
+		place_randomly();
 
 
 func _on_timer_sprite_timeout() -> void:
@@ -31,6 +29,17 @@ func _on_timer_sprite_timeout() -> void:
 		sprite.texture = sprite_debuff;
 	else:
 		sprite.texture = sprite_buff;
+
+
+func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+	if !event is InputEventMouseButton: return;
+
+	var mouse_button_event := event as InputEventMouseButton;
+	if mouse_button_event.button_index == MOUSE_BUTTON_LEFT and mouse_button_event.is_pressed():
+		get_tree().get_root().set_input_as_handled();
+		audio_stream_player.play();
+		visible = false;
+		apply_powerup_effect();
 
 
 func apply_powerup_effect() -> void:
@@ -45,12 +54,7 @@ func apply_powerup_effect() -> void:
 		Globals.enemy_speed_multiplier = 1;
 
 
-func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
-	if !event is InputEventMouseButton: return;
-
-	var mouse_button_event := event as InputEventMouseButton;
-	if mouse_button_event.button_index == MOUSE_BUTTON_LEFT and mouse_button_event.is_pressed():
-		get_tree().get_root().set_input_as_handled();
-		audio_stream_player.play();
-		visible = false;
-		apply_powerup_effect();
+func place_randomly() -> void:
+	position.y = randf_range(-500, -2500);
+	position.x = randf_range(200, 1400);
+	visible = true;
