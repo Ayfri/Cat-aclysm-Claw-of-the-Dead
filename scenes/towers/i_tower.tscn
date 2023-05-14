@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyao8oeedxc4t"]
+[gd_scene load_steps=19 format=3 uid="uid://dyao8oeedxc4t"]
 
 [ext_resource type="Script" path="res://assets/scripts/towers/i_tower.gd" id="1_48s8f"]
 [ext_resource type="Texture2D" uid="uid://bijq7gj3bys01" path="res://assets/sprites/ui/towers_button_ui.png" id="2_582oh"]
+[ext_resource type="AudioStream" uid="uid://dpmpjwx6xvtyt" path="res://assets/audio/sell_tower.wav" id="2_l5fqu"]
+[ext_resource type="AudioStream" uid="uid://dpjfa52i2xrb" path="res://assets/audio/upgrade.wav" id="2_nlyq3"]
 [ext_resource type="Texture2D" uid="uid://ckgbnc6a6sxhq" path="res://assets/sprites/ui/ui_theme.png" id="3_pge51"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_atmfv"]
@@ -86,9 +88,16 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="SellSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("2_l5fqu")
+
 [node name="ShootSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 volume_db = -5.0
 bus = &"SFX"
+
+[node name="UpgradeSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nlyq3")
 
 [node name="PlacementHitbox" type="Area2D" parent="."]
 position = Vector2(1, 8)

@@ -28,12 +28,14 @@ var upgraded := false;
 @onready var hit_area := $Area2D/HitArea as CollisionShape2D;
 @onready var reload_timer := $ReloadTimer as Timer;
 @onready var sell_label := $Panel/ContainerButtonSell/SellLabel as RichTextLabel;
+@onready var sell_sound_player := $SellSoundPlayer as AudioStreamPlayer2D;
 @onready var shoot_sound_player := $ShootSoundPlayer as AudioStreamPlayer2D;
 @onready var sprite := $AnimatedSprite2D as AnimatedSprite2D;
 @onready var target_menu := $Panel as Panel;
 @onready var timer := get_tree().create_timer(0.2);
 @onready var upgrade_button := $Panel/ContainerButtonUpgrade as VBoxContainer;
 @onready var upgrade_label := $Panel/ContainerButtonUpgrade/UpgradeLabel as RichTextLabel;
+@onready var upgrade_sound_player := $UpgradeSoundPlayer as AudioStreamPlayer2D;
 @onready var z_index_saved := 0;
 
 
@@ -111,7 +113,7 @@ func _on_upgrade_tower_pressed() -> void:
 	if Globals.level.money < stats.upgrade_price: return;
 	Globals.level.money -= stats.upgrade_price;
 
-	Globals.play_button_audio();
+	upgrade_sound_player.play();
 	upgraded = true;
 
 	toggle_menu(false);
@@ -125,10 +127,15 @@ func _on_upgrade_tower_pressed() -> void:
 
 
 func _on_sell_tower_pressed() -> void:
-	Globals.play_button_audio();
+	sell_sound_player.play();
 	toggle_menu(false);
+
 	var sell_money := (stats.base_price + stats.upgrade_price if upgraded else stats.base_price) * stats.sell_percent;
 	Globals.level.money += roundi(sell_money);
+
+	visible = false;
+	process_mode = PROCESS_MODE_DISABLED;
+	await get_tree().create_timer(0.7).timeout;
 	queue_free();
 
 
