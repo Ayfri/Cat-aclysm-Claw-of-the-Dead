@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp82pycdhb48"]
+[gd_scene load_steps=13 format=3 uid="uid://bp82pycdhb48"]
 
 [ext_resource type="Script" path="res://assets/scripts/level/level.gd" id="1_uvlv4"]
 [ext_resource type="PackedScene" uid="uid://dwg0prafkpxy1" path="res://scenes/level/map.tscn" id="2_wn1wg"]
@@ -8,6 +8,44 @@
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_qyciy"]
 db = 1
+
+[sub_resource type="Animation" id="Animation_26fr3"]
+resource_name = "blink"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_i2e0w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wyqq1"]
+_data = {
+"RESET": SubResource("Animation_i2e0w"),
+"blink": SubResource("Animation_26fr3")
+}
 
 [sub_resource type="Animation" id="Animation_fnh8c"]
 resource_name = "hit"
@@ -76,10 +114,40 @@ process_mode = 3
 script = ExtResource("1_uvlv4")
 muffled_sound_effect = SubResource("AudioEffectLowPassFilter_qyciy")
 
-[node name="Interface" parent="." instance=ExtResource("3_xgdqo")]
-
 [node name="Map" parent="." instance=ExtResource("2_wn1wg")]
 process_mode = 1
+
+[node name="Interface" parent="." instance=ExtResource("3_xgdqo")]
+
+[node name="TutorialText" type="RichTextLabel" parent="."]
+visible = false
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 429.0
+offset_top = 530.0
+offset_right = 1172.0
+offset_bottom = 575.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font size=35]Press [color=70ffee]Space[/color] to place a tower.[/font]"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="TurorialAnimationPlayer" type="AnimationPlayer" parent="TutorialText"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_wyqq1")
+}
+
+[node name="TutorialTimer" type="Timer" parent="TutorialText"]
+wait_time = 5.0
+one_shot = true
+autostart = true
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_gum1d")
@@ -99,4 +167,5 @@ libraries = {
 }
 
 [connection signal="map_editing_toggle" from="Map" to="." method="_on_map_editing_toggle"]
+[connection signal="timeout" from="TutorialText/TutorialTimer" to="." method="_on_tutorial_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

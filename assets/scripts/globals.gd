@@ -10,6 +10,7 @@ const ButtonAudioScene := preload("res://scenes/button_audio.tscn") as PackedSce
 	EnemyStats.new(90, 90, 12, load("res://scenes/ennemies/enemy_big.tscn"), 50),
 ];
 
+@export var has_seen_tutorial := false;
 @export var level: Level = null;
 
 @export var tower_stats: Array[TowerStats] = [

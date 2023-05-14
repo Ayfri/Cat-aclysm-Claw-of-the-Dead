@@ -30,7 +30,7 @@ var pause_scene: PauseInterface = null;
 @onready var music_bus_index := AudioServer.get_bus_index(($MusicPlayer as AudioStreamPlayer).bus);
 @onready var music_player := $MusicPlayer as AudioStreamPlayer;
 @onready var tower_selector_container := $Interface/TowerSelectorContainer as Panel;
-
+@onready var tutorial_animation_player := $TutorialText/TurorialAnimationPlayer as AnimationPlayer;
 
 func _ready() -> void:
 	map = $Map as Map;
@@ -43,11 +43,19 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_map_editing_toggle(enabled: bool) -> void:
+	if !Globals.has_seen_tutorial:
+		Globals.has_seen_tutorial = true;
+		tutorial_animation_player.play("RESET");
+
 	tower_selector_container.visible = enabled;
 
 
 func _on_timer_timeout() -> void:
 	time += 1;
+
+
+func _on_tutorial_timer_timeout() -> void:
+	if !Globals.has_seen_tutorial: tutorial_animation_player.play("blink");
 
 
 func _deactivate_map() -> void:
