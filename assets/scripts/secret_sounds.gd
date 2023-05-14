@@ -1,36 +1,26 @@
 extends Node;
 
 
-const SECRET_SOUND_DIR := "res://assets/audio/secret";
 var active := false;
-var sounds: Array[String] = [];
+var linked_sounds := {};
 
-
-func _ready() -> void:
-	var dir := DirAccess.open(SECRET_SOUND_DIR);
-	if dir:
-		var found_sounds := Array(dir.get_files()).filter(func(x: String) -> bool:
-			return x.ends_with(".wav");
-		).map(func(x: String) -> String:
-			return SECRET_SOUND_DIR + "/" + x;
-		);
-
-		sounds.assign(found_sounds);
-		print("Found secret sounds !");
-	else:
-		printerr("Could not open directory " + SECRET_SOUND_DIR);
-
+var sounds: Array[AudioStream] = [
+	load("res://assets/audio/secret/arrow.wav") as AudioStream,
+	load("res://assets/audio/secret/button.wav") as AudioStream,
+	load("res://assets/audio/secret/death.wav") as AudioStream,
+	load("res://assets/audio/secret/glass_explosion.wav") as AudioStream,
+	load("res://assets/audio/secret/hit.wav") as AudioStream,
+	load("res://assets/audio/secret/nerf.wav") as AudioStream,
+	load("res://assets/audio/secret/pigeon.wav") as AudioStream,
+	load("res://assets/audio/secret/player_hit.wav") as AudioStream,
+	load("res://assets/audio/secret/power.wav") as AudioStream,
+	load("res://assets/audio/secret/sell_tower.wav") as AudioStream,
+	load("res://assets/audio/secret/upgrade.wav") as AudioStream,
+];
 
 
 func _process(_delta: float) -> void:
 	if active: apply();
-
-#func _notification(what: int) -> void:
-#	if what == NOTIFICATION_SCENE_INSTANTIATED:
-#		print("Scene instantiated !");
-#		if active:
-#			print("Applying secret sounds to all audio nodes")
-#			apply();
 
 
 func _Array(packed_string_array: PackedStringArray) -> Array[String]:
@@ -47,14 +37,17 @@ func activate():
 func apply():
 	var nodes := get_audio_nodes(get_tree().get_root());
 	for node in nodes:
-		if !node.stream: continue;
-		var current_sound_name := node.stream.get_path() as String;
+		var current_sound: AudioStream = node.stream;
+		if !current_sound: continue;
+
+		var current_sound_name := current_sound.get_path() as String;
 		if current_sound_name.contains("secret"): continue;
 
-		var secret_sound_name := get_secret_sound_from_sound(current_sound_name);
-		if secret_sound_name in sounds:
-			node.stream = ResourceLoader.load(secret_sound_name, "AudioStream");
-			print("Applied secret sound to " + Array(current_sound_name.split("/")).pop_back());
+		var secret_sound := get_secret_sound_from_sound(current_sound_name);
+		if !secret_sound: continue;
+
+		linked_sounds[secret_sound] = current_sound;
+		node.stream = secret_sound;
 
 
 func deactivate():
@@ -76,31 +69,29 @@ func get_audio_nodes(root: Node) -> Array[Node]:
 	return nodes;
 
 
-func get_secret_sound_from_sound(sound: String) -> String:
-	var path := _Array(sound.split("/"));
-	var file_name := path.pop_back() as String;
-	path.append("secret");
-	path.append(file_name);
-	return "/".join(PackedStringArray(path));
+func get_secret_sound_from_sound(sound: String) -> AudioStream:
+	var sound_name: String = Array(sound.split("/")).pop_back();
+	var found_sounds := sounds.filter(func(sound: AudioStream) -> bool:
+		return sound.get_path().ends_with(sound_name);
+	);
+
+	return found_sounds[0] if found_sounds else null;
 
 
-func get_sound_from_secret_sound(secret_sound: String) -> String:
-	var path := _Array(secret_sound.split("/"));
-	var file_name := path.pop_back() as String;
-	path.pop_back();
-	path.append(file_name);
-	return "/".join(PackedStringArray(path));
+func get_sound_from_secret_sound(secret_sound: AudioStream) -> AudioStream:
+	return linked_sounds[secret_sound];
 
 
 func unapply():
 	var nodes := get_audio_nodes(get_tree().get_root());
 	for node in nodes:
-		if !node.stream: continue;
+		var current_sound: AudioStream = node.stream;
+		if !current_sound: continue;
 
-		var current_sound_name := node.stream.get_path() as String;
+		var current_sound_name := current_sound.get_path() as String;
 		if !current_sound_name.contains("secret"): continue;
 
-		var sound_name := get_sound_from_secret_sound(current_sound_name);
-		if !ResourceLoader.exists(sound_name, "AudioStream"): continue;
+		var normal_sound := get_sound_from_secret_sound(current_sound);
+		if !normal_sound: continue;
 
-		node.stream = ResourceLoader.load(sound_name);
+		node.stream = normal_sound;
