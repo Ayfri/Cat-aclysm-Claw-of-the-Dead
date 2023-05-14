@@ -1,12 +1,75 @@
-[gd_scene load_steps=6 format=3 uid="uid://bp82pycdhb48"]
+[gd_scene load_steps=10 format=3 uid="uid://bp82pycdhb48"]
 
 [ext_resource type="Script" path="res://assets/scripts/level/level.gd" id="1_uvlv4"]
 [ext_resource type="PackedScene" uid="uid://dwg0prafkpxy1" path="res://scenes/level/map.tscn" id="2_wn1wg"]
 [ext_resource type="PackedScene" uid="uid://bkk73xwm67dxt" path="res://scenes/level/level_interface.tscn" id="3_xgdqo"]
 [ext_resource type="AudioStream" uid="uid://vhofrt5vup6d" path="res://assets/audio/main.wav" id="4_gum1d"]
+[ext_resource type="AudioStream" uid="uid://bq84tfvpvvgl7" path="res://assets/audio/player_hit.wav" id="5_1fswf"]
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_qyciy"]
 db = 1
+
+[sub_resource type="Animation" id="Animation_fnh8c"]
+resource_name = "hit"
+length = 0.24
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 2), Vector2(-5, -2), Vector2(5, 2), Vector2(-5, 2), Vector2(5, -2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHitPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_n7m0a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHitPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hdcwb"]
+_data = {
+"RESET": SubResource("Animation_n7m0a"),
+"hit": SubResource("Animation_fnh8c")
+}
 
 [node name="Level" type="Node2D"]
 process_mode = 3
@@ -23,8 +86,17 @@ stream = ExtResource("4_gum1d")
 autoplay = true
 bus = &"Music"
 
+[node name="PlayerHitPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1fswf")
+bus = &"SFX"
+
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hdcwb")
+}
 
 [connection signal="map_editing_toggle" from="Map" to="." method="_on_map_editing_toggle"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

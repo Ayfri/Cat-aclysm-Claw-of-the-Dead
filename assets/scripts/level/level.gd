@@ -25,9 +25,10 @@ var pause_scene: PauseInterface = null;
 @export var time := 0;
 @export var wave := starting_wave;
 
+@onready var animation_player := $AnimationPlayer as AnimationPlayer;
+@onready var interface := $Interface as LevelInterface;
 @onready var music_bus_index := AudioServer.get_bus_index(($MusicPlayer as AudioStreamPlayer).bus);
 @onready var music_player := $MusicPlayer as AudioStreamPlayer;
-@onready var interface := $Interface as LevelInterface;
 @onready var tower_selector_container := $Interface/TowerSelectorContainer as Panel;
 
 
@@ -45,6 +46,10 @@ func _on_map_editing_toggle(enabled: bool) -> void:
 	tower_selector_container.visible = enabled;
 
 
+func _on_timer_timeout() -> void:
+	time += 1;
+
+
 func _deactivate_map() -> void:
 	map.editing = false;
 	map.toggle_cursor();
@@ -52,6 +57,12 @@ func _deactivate_map() -> void:
 	map.set_process_input(false);
 	map.set_process_shortcut_input(false);
 	map.set_process_unhandled_input(false);
+
+
+func hit() -> void:
+	animation_player.play("hit");
+	health -= 1;
+	if health == 0: lose();
 
 
 func lose() -> void:
@@ -82,7 +93,3 @@ func win() -> void:
 	interface.show_end_panel(true);
 	finished = true;
 	_deactivate_map();
-
-
-func _on_timer_timeout() -> void:
-	time += 1;

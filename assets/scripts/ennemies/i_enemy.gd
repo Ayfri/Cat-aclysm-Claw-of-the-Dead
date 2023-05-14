@@ -56,9 +56,7 @@ func _process(delta: float) -> void:
 		parent.queue_free();
 
 		if Globals.level.finished: return;
-
-		Globals.level.health -= 1;
-		if Globals.level.health == 0: Globals.level.lose();
+		Globals.level.hit();
 
 func _on_hit(tower: ITower, damages: float) -> void:
 	if is_dead: return;
