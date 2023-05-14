@@ -43,7 +43,8 @@ text = "[center][font size=50][color=70ffee]Options[/color][/font][/center]"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="OptionsPanel/PanelContainer/ContentContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 90
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
@@ -104,27 +105,56 @@ theme_type_variation = &"GreenSlider"
 max_value = 1.0
 step = 0.05
 
-[node name="MarginGraphique" type="MarginContainer" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_bottom = 160
+theme_override_constants/margin_top = 90
 
-[node name="HBoxContainer" type="HBoxContainer" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique"]
+[node name="VboxContainer" type="VBoxContainer" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginContainer/VboxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 10
+alignment = 1
 
-[node name="Fullscreen" type="RichTextLabel" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique/HBoxContainer"]
-custom_minimum_size = Vector2(200, 30)
+[node name="Fullscreen" type="RichTextLabel" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginContainer/VboxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(220, 25)
 layout_mode = 2
 size_flags_vertical = 4
 bbcode_enabled = true
 text = "[img=25]assets/sprites/ui/fullscreen.png[/img] Fullscreen"
 fit_content = true
 
-[node name="FullscreenCheckBox" type="CheckBox" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique/HBoxContainer"]
+[node name="FullscreenCheckBox" type="CheckBox" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginContainer/VboxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginContainer/VboxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Secret" type="RichTextLabel" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginContainer/VboxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(220, 25)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[img=25]assets/sprites/ui/sound.png[/img] best sounds"
+fit_content = true
+scroll_active = false
+
+[node name="SecretSoundsCheckBox" type="CheckBox" parent="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginContainer/VboxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 
 [node name="Close" type="Button" parent="."]
@@ -144,5 +174,6 @@ bus = &"SFX"
 [connection signal="value_changed" from="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VboxMaster/MasterSlider" to="." method="_on_master_sound_value_changed"]
 [connection signal="value_changed" from="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxMusic/MusicSlider" to="." method="_on_music_sound_value_changed"]
 [connection signal="value_changed" from="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/VBoxContainer/VBoxEffect/EffectSlider" to="." method="_on_effect_sound_value_changed"]
-[connection signal="toggled" from="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginGraphique/HBoxContainer/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="toggled" from="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginContainer/VboxContainer/HBoxContainer/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="toggled" from="OptionsPanel/PanelContainer/ContentContainer/HBoxContainer/MarginContainer/VboxContainer/HBoxContainer2/SecretSoundsCheckBox" to="." method="_on_secret_sounds_check_box_toggled"]
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

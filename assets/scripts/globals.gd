@@ -3,6 +3,8 @@ extends Node;
 
 const ButtonAudioScene := preload("res://scenes/button_audio.tscn") as PackedScene;
 
+var secret_button_sound := load("res://assets/audio/secret/button.wav") as AudioStream;
+
 @export var enemy_speed_multiplier := 1.0;
 
 @export var enemy_stats: Array[EnemyStats] = [
@@ -39,11 +41,13 @@ const ButtonAudioScene := preload("res://scenes/button_audio.tscn") as PackedSce
 	Wave.new(10, 1, 30, ["FirstPath", "SecondPath","ThirdPath"]),
 	Wave.new(80, 0.5, -1, ["FirstPath", "SecondPath","ThirdPath"]),
 	Wave.new(20, 0.9, -1, ["FirstPath", "SecondPath","ThirdPath"]),
-]
+];
 
 
 func play_button_audio():
 	var button_audio := ButtonAudioScene.instantiate() as AudioStreamPlayer;
+	if SecretSounds.active: button_audio.stream = secret_button_sound;
+
 	add_child(button_audio);
 	button_audio.play();
 

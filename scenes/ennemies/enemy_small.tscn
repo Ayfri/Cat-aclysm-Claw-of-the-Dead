@@ -29,4 +29,4 @@ rotation = 0.0
 shape = SubResource("CapsuleShape2D_70tck")
 
 [node name="DeathSoundPlayer" parent="Enemy" index="4"]
-pitch_scale = 2.0
+pitch_scale = 1.5

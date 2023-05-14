@@ -72,7 +72,7 @@ animation = &"idle_1"
 [node name="HitArea" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_df1c6")
 
-[node name="PlacementHitbox" parent="." index="7"]
+[node name="PlacementHitbox" parent="." index="8"]
 position = Vector2(0, 0)
 
 [node name="PlacementHitboxShape" parent="PlacementHitbox" index="0"]
