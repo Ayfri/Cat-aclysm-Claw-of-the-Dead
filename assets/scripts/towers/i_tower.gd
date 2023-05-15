@@ -6,6 +6,7 @@ signal upgrade(tower: ITower);
 
 enum Target {First = 0, Last = 1, Strongest = 2, Weakest = 3, Random = 4};
 
+const OutlineShader := preload("res://assets/shaders/outline.tres") as ShaderMaterial;
 
 var bullet_speed := 500;
 
@@ -55,6 +56,13 @@ func _process(_delta: float) -> void:
 	if target != null: fire_target();
 
 
+
+func _physics_process(delta: float) -> void:
+	if sprite.material != null:
+		var thickness := clampf( 1 - Globals.level.camera.zoom.x * 0.1, 0.2, 0.4);
+		OutlineShader.set_shader_parameter("line_thickness", thickness);
+
+
 func _draw() -> void:
 	if !menu_open: return;
 
@@ -72,6 +80,36 @@ func _on_area_exited(area: Area2D) -> void:
 
 	targetable_enemy.erase(area);
 	if target == area: target = null;
+
+
+func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+	if timer != null: return;
+	if !event is InputEventMouseButton: return;
+	if get_tree().get_root().is_input_handled(): return;
+
+	var mouse_event := event as InputEventMouseButton;
+	if mouse_event.button_index == MOUSE_BUTTON_LEFT and mouse_event.is_pressed():
+		if Globals.level.map.editing: return;
+
+		get_tree().get_root().set_input_as_handled();
+		toggle_menu(true);
+
+		sprite.z_index = target_menu.z_index + 2;
+		GuiTowerManager.last_visible_tower = self;
+
+
+func _on_clickable_area_mouse_entered() -> void:
+	if Globals.level.map.editing: return;
+	sprite.material = OutlineShader;
+
+
+func _on_clickable_area_mouse_exited() -> void:
+	sprite.material = null;
+
+
+func _on_close_gui_pressed() -> void:
+	Globals.play_button_audio();
+	toggle_menu(false);
 
 
 func _on_select_weakest_enemy_pressed() -> void:
@@ -104,9 +142,17 @@ func _on_select_random_enemy_pressed() -> void:
 	toggle_menu(false);
 
 
-func _on_close_gui_pressed() -> void:
-	Globals.play_button_audio();
+func _on_sell_tower_pressed() -> void:
+	sell_sound_player.play();
 	toggle_menu(false);
+
+	var sell_money := (stats.base_price + stats.upgrade_price if upgraded else stats.base_price) * stats.sell_percent;
+	Globals.level.money += roundi(sell_money);
+
+	visible = false;
+	process_mode = PROCESS_MODE_DISABLED;
+	await get_tree().create_timer(0.7).timeout;
+	queue_free();
 
 
 func _on_upgrade_tower_pressed() -> void:
@@ -124,35 +170,6 @@ func _on_upgrade_tower_pressed() -> void:
 
 	upgrade_button.visible = false;
 	upgrade.emit(self);
-
-
-func _on_sell_tower_pressed() -> void:
-	sell_sound_player.play();
-	toggle_menu(false);
-
-	var sell_money := (stats.base_price + stats.upgrade_price if upgraded else stats.base_price) * stats.sell_percent;
-	Globals.level.money += roundi(sell_money);
-
-	visible = false;
-	process_mode = PROCESS_MODE_DISABLED;
-	await get_tree().create_timer(0.7).timeout;
-	queue_free();
-
-
-func _on_clickable_area_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
-	if timer != null: return;
-	if !event is InputEventMouseButton: return;
-	if get_tree().get_root().is_input_handled(): return;
-
-	var mouse_event := event as InputEventMouseButton;
-	if mouse_event.button_index == MOUSE_BUTTON_LEFT and mouse_event.is_pressed():
-		if Globals.level.map.editing: return;
-
-		get_tree().get_root().set_input_as_handled();
-		toggle_menu(true);
-
-		sprite.z_index = target_menu.z_index + 2;
-		GuiTowerManager.last_visible_tower = self;
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -233,6 +250,7 @@ func select_target() -> void:
 
 
 func toggle_menu(display: bool) -> void:
+	if display: sprite.material = null;
 	target_menu.visible = display;
 
 	if !display:

@@ -9,6 +9,7 @@ const starting_wave := 1;
 
 var pause_scene: PauseInterface = null;
 
+@export var camera: Camera2D = null;
 @export var health := starting_health;
 @export var finished := false;
 @export var killed_zombies: Array[int] = [0, 0];
@@ -29,6 +30,7 @@ var pause_scene: PauseInterface = null;
 
 func _ready() -> void:
 	map = $Map as Map;
+	camera = $Map/Camera2D as Camera2D;
 	Globals.level = self;
 
 

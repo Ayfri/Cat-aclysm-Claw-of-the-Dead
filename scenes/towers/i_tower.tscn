@@ -177,6 +177,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 
 [node name="SelectStrongestEnemy" type="TextureButton" parent="Panel/ContainerButtonStrongest"]
+unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -199,6 +200,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 
 [node name="SelectFirstEnemy" type="TextureButton" parent="Panel/ContainerButtonFirst"]
+unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -226,6 +228,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 
 [node name="SelectRandomEnemy" type="TextureButton" parent="Panel/ContainerButtonRandom"]
+unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -251,6 +254,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="SelectLastEnemy" type="TextureButton" parent="Panel/ContainerButtonLast"]
+unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -278,6 +282,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 
 [node name="SelectWeakestEnemy" type="TextureButton" parent="Panel/ContainerButtonWeakest"]
+unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -344,6 +349,8 @@ scroll_active = false
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
 [connection signal="input_event" from="ClickableArea" to="." method="_on_clickable_area_input_event"]
+[connection signal="mouse_entered" from="ClickableArea" to="." method="_on_clickable_area_mouse_entered"]
+[connection signal="mouse_exited" from="ClickableArea" to="." method="_on_clickable_area_mouse_exited"]
 [connection signal="pressed" from="Panel/ContainerButtonUpgrade/UpgradeTower" to="." method="_on_upgrade_tower_pressed"]
 [connection signal="pressed" from="Panel/ContainerButtonStrongest/SelectStrongestEnemy" to="." method="_on_select_strongest_enemy_pressed"]
 [connection signal="pressed" from="Panel/ContainerButtonFirst/SelectFirstEnemy" to="." method="_on_select_first_enemy_pressed"]

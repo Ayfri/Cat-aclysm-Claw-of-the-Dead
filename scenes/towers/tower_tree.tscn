@@ -55,8 +55,9 @@ radius = 215.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04lbq"]
 size = Vector2(65, 79)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ux77w"]
-size = Vector2(116.891, 135)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5y5wr"]
+radius = 53.0
+height = 138.0
 
 [node name="TowerTree" instance=ExtResource("1_sufsh")]
 script = ExtResource("2_jxlff")
@@ -80,7 +81,7 @@ position = Vector2(0, 33.5)
 shape = SubResource("RectangleShape2D_04lbq")
 
 [node name="CollisionShape2D" parent="ClickableArea" index="0"]
-position = Vector2(10.4454, 1)
-shape = SubResource("RectangleShape2D_ux77w")
+position = Vector2(6, 1)
+shape = SubResource("CapsuleShape2D_5y5wr")
 
 [connection signal="upgrade" from="." to="." method="_on_upgrade"]

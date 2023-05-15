@@ -1,5 +1,6 @@
 extends Camera2D;
 
+
 @export var min_zoom := 1.0;
 @export var max_zoom := 10.0;
 @export var pan_duration := 0.1;
@@ -10,6 +11,7 @@ extends Camera2D;
 var _mouse_position: Vector2;
 var _zoom_level := min_zoom:
 	set = _set_zoom_level;
+
 
 func _set_zoom_level(value: float) -> void:
 	_zoom_level = clamp(value, min_zoom, max_zoom);
