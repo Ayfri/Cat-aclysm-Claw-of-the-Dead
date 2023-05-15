@@ -13,12 +13,7 @@ var pause_scene: PauseInterface = null;
 @export var finished := false;
 @export var killed_zombies: Array[int] = [0, 0];
 @export var map: Map = null;
-
-@export var money := starting_money:
-	set(value):
-		money = value;
-		total_money += value;
-
+@export var money := starting_money;
 @export var muffled_sound_effect: AudioEffect = null;
 @export var total_money := starting_money;
 @export var score := 0;

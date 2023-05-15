@@ -80,6 +80,7 @@ func _on_hit(tower: ITower, damages: float) -> void:
 
 func _on_death() -> void:
 	Globals.level.money += stats.base_reward;
+	Globals.level.total_money += stats.base_reward;
 
 	var is_boss := Globals.enemy_stats.find(stats) == 1;
 	var index := 1 if is_boss else 0;
