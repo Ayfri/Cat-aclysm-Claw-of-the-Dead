@@ -3,8 +3,8 @@ extends Node2D;
 
 
 var mobs_to_spawn := 0;
-var zombie_type := 0;
 var random := RandomNumberGenerator.new();
+var zombie_type := 0;
 
 @onready var all_mobs_dead: bool:
 	get:
@@ -32,11 +32,12 @@ func _process(_delta: float) -> void:
 				wave_announcer_display.start();
 				pre_wave_timer.start();
 
-		if Globals.level.wave > Globals.waves.size() && !Globals.level.finished:
+		if Globals.level.wave > Globals.waves.size() && !Globals.level.finished && all_mobs_dead:
 			Globals.level.win();
 
 
 func _on_pre_wave_timer_timeout() -> void:
+	Globals.level.wave += 1;
 	for path in Globals.waves[Globals.level.wave - 1].possible_path:
 		Globals.level.map.get_wave_label(path).visible = false;
 
@@ -67,9 +68,6 @@ func _on_enemy_spawn_timer_timeout() -> void:
 	mobs_to_spawn -= 1;
 	if mobs_to_spawn > 0:
 		enemy_spawn_timer.start();
-	else:
-		Globals.level.wave += 1;
-
 
 func _on_wave_announcer_display_timeout() -> void:
 	for path in Globals.waves[Globals.level.wave - 1].possible_path:

@@ -57,7 +57,7 @@ func _process(_delta: float) -> void:
 
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if sprite.material != null:
 		var thickness := clampf( 1 - Globals.level.camera.zoom.x * 0.1, 0.2, 0.4);
 		OutlineShader.set_shader_parameter("line_thickness", thickness);

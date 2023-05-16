@@ -2,7 +2,7 @@ class_name PauseInterface;
 extends CanvasLayer;
 
 
-const OptionsScene := preload("res://scenes/main_menu/options_menu.tscn");
+const OptionsMenuScene := preload("res://scenes/main_menu/options_menu.tscn") as PackedScene;
 
 
 func _on_return_button_pressed() -> void:
@@ -31,6 +31,6 @@ func _on_exit_to_desktop_button_pressed() -> void:
 func _on_settings_pressed() -> void:
 	Globals.play_button_audio();
 
-	var option_menu := OptionsScene.instantiate() as OptionsMenu;
+	var option_menu := OptionsMenuScene.instantiate() as OptionsMenu;
 	add_child(option_menu);
 	option_menu.z_index = 4000;

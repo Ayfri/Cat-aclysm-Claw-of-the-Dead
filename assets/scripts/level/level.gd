@@ -5,7 +5,7 @@ extends Node2D;
 const PauseScene := preload("res://scenes/pause_interface.tscn");
 const starting_health := 10;
 const starting_money := 30;
-const starting_wave := 1;
+const starting_wave := 0;
 
 var pause_scene: PauseInterface = null;
 
